@@ -1,26 +1,161 @@
 @import "tailwindcss";
 
+/* ── THCMed Solutions — "grower's almanac under bloom light" ──
+   Palette is law (see design plan): canopy dark base, bloom-LED
+   magenta/violet glow reserved for the signature, muted leaf for
+   stage data, trichome amber for ripeness/member cues. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canopy: #0c120e;
+  --panel: #18211a;
+  --panel-edge: #2a3a2d;
+  --bloom: #e057c8;
+  --spectrum: #9a6bff;
+  --leaf: #6fa870;
+  --amber: #e8a33d;
+  --frost: #f2eff7;
+  --frost-dim: #a8a4b3;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-canopy: var(--canopy);
+  --color-panel: var(--panel);
+  --color-panel-edge: var(--panel-edge);
+  --color-bloom: var(--bloom);
+  --color-spectrum: var(--spectrum);
+  --color-leaf: var(--leaf);
+  --color-amber: var(--amber);
+  --color-frost: var(--frost);
+  --color-frost-dim: var(--frost-dim);
+  --font-sans: var(--font-albert), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--canopy);
+  color: var(--frost);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--bloom) 40%, transparent);
+}
+
+/* Honest focus states — visible on the dark base */
+:focus-visible {
+  outline: 2px solid var(--bloom);
+  outline-offset: 2px;
+}
+
+/* ── The signature: light-cycle bar ──
+   24 segments = 24 hours. Lit segments glow bloom-magenta (lights on),
+   dark segments are lights-off. Encodes the real photoperiod of the
+   content it sits under: 18/6 veg, 12/12 flower, 24/0 germination. */
+.light-cycle {
+  display: flex;
+  gap: 3px;
+  height: 6px;
+}
+.light-cycle > i {
+  flex: 1;
+  border-radius: 1px;
+  background: #232b25;
+}
+.light-cycle > i.on {
+  background: linear-gradient(90deg, var(--bloom), var(--spectrum));
+  box-shadow: 0 0 6px color-mix(in srgb, var(--bloom) 60%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .glow-drift {
+    animation: glow-drift 14s ease-in-out infinite alternate;
+  }
+  @keyframes glow-drift {
+    from {
+      transform: translate3d(-4%, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(4%, 2%, 0) scale(1.08);
+    }
+  }
+}
+
+/* Guide prose (MDX articles) */
+.prose-guide {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--frost) 92%, transparent);
+}
+.prose-guide h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem;
+  color: var(--frost);
+}
+.prose-guide h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem;
+  color: var(--frost);
+}
+.prose-guide p {
+  margin: 1rem 0;
+}
+.prose-guide ul,
+.prose-guide ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.prose-guide ul {
+  list-style: disc;
+}
+.prose-guide ol {
+  list-style: decimal;
+}
+.prose-guide li {
+  margin: 0.4rem 0;
+}
+.prose-guide strong {
+  color: var(--frost);
+  font-weight: 600;
+}
+.prose-guide a {
+  color: var(--bloom);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-guide table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.prose-guide th {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--leaf);
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--panel-edge);
+}
+.prose-guide td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--panel-edge) 50%, transparent);
+}
+.prose-guide blockquote {
+  border-left: 3px solid var(--amber);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--frost-dim);
+}
+.prose-guide code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--panel);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
 }
