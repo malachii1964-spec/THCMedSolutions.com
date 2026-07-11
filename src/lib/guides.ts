@@ -23,12 +23,12 @@ const frontmatterSchema = z.object({
 export type GuideMeta = z.infer<typeof frontmatterSchema> & { slug: string };
 export type Guide = GuideMeta & { content: string };
 
-function parseGuide(file: string): Guide {
+function parseGuide(file: string): { meta: GuideMeta; content: string } {
   const slug = file.replace(/\.mdx$/, "");
   const raw = fs.readFileSync(path.join(GUIDES_DIR, file), "utf8");
   const { data, content } = matter(raw);
-  const meta = frontmatterSchema.parse(data);
-  return { ...meta, slug, content };
+  const meta = { ...frontmatterSchema.parse(data), slug };
+  return { meta, content };
 }
 
 export function getAllGuides(): GuideMeta[] {
@@ -37,10 +37,7 @@ export function getAllGuides(): GuideMeta[] {
     .filter((f) => f.endsWith(".mdx"))
     .sort();
   return files
-    .map((f) => {
-      const { content: _content, ...meta } = parseGuide(f);
-      return meta;
-    })
+    .map((f) => parseGuide(f).meta)
     .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
 }
 
@@ -53,7 +50,8 @@ export function getGuide(slug: string): Guide | null {
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
   const file = path.join(GUIDES_DIR, `${slug}.mdx`);
   if (!fs.existsSync(file)) return null;
-  return parseGuide(`${slug}.mdx`);
+  const { meta, content } = parseGuide(`${slug}.mdx`);
+  return { ...meta, content };
 }
 
 /** First ~1/4 of a members-only guide shown to visitors as the teaser. */

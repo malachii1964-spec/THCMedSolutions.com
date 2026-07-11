@@ -1,8 +1,18 @@
-import Link from "next/link";
-import { getSessionUser } from "@/lib/session";
+"use client";
 
-export async function SiteHeader() {
-  const user = await getSessionUser();
+import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+
+/**
+ * Client component on purpose: resolving the session client-side keeps
+ * content pages fully static (performance budget) while the nav still
+ * personalizes after hydration. Logged-out links render first as the
+ * stable default; the member chip swaps in without layout shift.
+ */
+export function SiteHeader() {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+
   return (
     <header className="sticky top-0 z-40 border-b border-panel-edge/60 bg-canopy/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">

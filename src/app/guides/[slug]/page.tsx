@@ -9,6 +9,8 @@ import { LightCycle } from "@/components/light-cycle";
 import { getAllGuides, getGuide, teaserOf } from "@/lib/guides";
 import { getStage } from "@/lib/stages";
 import { getSessionUser } from "@/lib/session";
+import { listBookmarks } from "@/lib/bookmarks";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export function generateStaticParams() {
   return getAllGuides().map((g) => ({ slug: g.slug }));
@@ -38,6 +40,7 @@ export default async function GuidePage({
   const locked = guide.membersOnly && !user;
   const body = locked ? teaserOf(guide.content) : guide.content;
   const stage = getStage(guide.stage);
+  const saved = user ? (await listBookmarks()).includes(guide.slug) : false;
 
   return (
     <>
@@ -77,9 +80,12 @@ export default async function GuidePage({
         <p className="mt-4 text-lg leading-relaxed text-frost-dim">
           {guide.summary}
         </p>
-        {stage?.hoursOn !== null && stage ? (
-          <LightCycle hoursOn={stage.hoursOn} className="mt-8 max-w-xs" />
-        ) : null}
+        <div className="mt-8 flex flex-wrap items-center gap-6">
+          {stage?.hoursOn !== null && stage ? (
+            <LightCycle hoursOn={stage.hoursOn} className="w-full max-w-xs" />
+          ) : null}
+          {user ? <BookmarkButton slug={guide.slug} saved={saved} /> : null}
+        </div>
 
         <article className="prose-guide mt-10">
           <MDXRemote

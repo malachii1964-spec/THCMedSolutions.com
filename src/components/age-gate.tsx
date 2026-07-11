@@ -18,7 +18,10 @@ export function AgeGate() {
   const [refused, setRefused] = useState(false);
 
   useEffect(() => {
-    if (!hasConsent()) setOpen(true);
+    if (hasConsent()) return;
+    // Deferred a tick: avoids a synchronous setState cascade on mount.
+    const id = window.setTimeout(() => setOpen(true), 0);
+    return () => window.clearTimeout(id);
   }, []);
 
   useEffect(() => {

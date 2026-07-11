@@ -1,6 +1,9 @@
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
+
 /**
- * Session lookup used by server components. Wired to Better Auth in
- * src/lib/auth.ts; kept behind this seam so UI never imports auth internals.
+ * Session lookup used by server components. Kept behind this seam so UI
+ * never imports auth internals.
  */
 export type SessionUser = {
   id: string;
@@ -9,6 +12,8 @@ export type SessionUser = {
 };
 
 export async function getSessionUser(): Promise<SessionUser | null> {
-  // Auth lands with the membership feature; until then everyone is a visitor.
-  return null;
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session) return null;
+  const { id, name, email } = session.user;
+  return { id, name, email };
 }

@@ -6,7 +6,7 @@ import { AgeGate } from "@/components/age-gate";
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  axes: ["SOFT", "WONK", "opsz"],
+  axes: ["WONK", "opsz"],
 });
 
 const albert = Albert_Sans({
@@ -17,7 +17,7 @@ const albert = Albert_Sans({
 const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
