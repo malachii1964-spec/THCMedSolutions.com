@@ -9,12 +9,27 @@
  * taken, another worker won the race and this copy just exits.
  */
 import fs from "node:fs";
+import net from "node:net";
 import path from "node:path";
 import { PGlite } from "@electric-sql/pglite";
 import { PGLiteSocketServer } from "@electric-sql/pglite-socket";
 
 const PORT = 5522;
 const dataDir = path.join(process.cwd(), ".pglite", "dev");
+
+// Claim the port BEFORE touching the data dir: several Next workers can
+// spawn this script at once, and PGlite's file-backed store must only ever
+// be opened by one process. Losing the port race exits before any file I/O.
+const claim = net.createServer();
+try {
+  await new Promise((resolve, reject) => {
+    claim.once("error", reject);
+    claim.listen(PORT, "127.0.0.1", resolve);
+  });
+} catch (err) {
+  if (err && err.code === "EADDRINUSE") process.exit(0);
+  throw err;
+}
 
 const DDL = `
 create table if not exists "user" (
@@ -71,12 +86,16 @@ fs.mkdirSync(dataDir, { recursive: true });
 const db = await PGlite.create(dataDir);
 await db.exec(DDL);
 
+// Hand the claimed port over to the real server. The instant between close
+// and start only races against processes that already lost the claim above.
+await new Promise((resolve) => claim.close(resolve));
 const server = new PGLiteSocketServer({ db, port: PORT, host: "127.0.0.1" });
 
 try {
   await server.start();
   console.log(`[dev-db] embedded Postgres ready on 127.0.0.1:${PORT}`);
 } catch (err) {
+  await db.close().catch(() => {}); // never leave the data dir open on loss
   if (err && (err.code === "EADDRINUSE" || String(err).includes("EADDRINUSE"))) {
     process.exit(0); // another worker already runs the sidecar
   }

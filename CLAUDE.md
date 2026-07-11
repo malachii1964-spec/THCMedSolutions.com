@@ -125,6 +125,13 @@ At the end of every working session:
   edge cache in real deployment covers the 0.1s; revisit if field data says
   otherwise.
 ### Known issues / TODO
+- Reviews done 2026-07-10: reviewer verdict SHIP (fixed: safeNext backslash
+  open-redirect bypass + test; sidecar port-claim-before-data-dir race;
+  bookmark insert onConflictDoNothing). design-critic: all pages 4-5 after
+  fixes (frost focus ring w/o fade-in; meta text contrast to AA; guide meta
+  row wrap at 375px). Logged, not built (need approval): guide-page right
+  rail TOC on desktop; signature motif on /legal; unlit light-cycle segments
+  could read as loading skeleton on locked guides.
 - Welcome email (Resend) not wired — no API key available in this session to
   verify end-to-end per Rule 2, so the feature was deferred rather than
   shipped unverified.

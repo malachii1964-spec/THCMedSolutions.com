@@ -82,4 +82,9 @@ describe("safeNext redirect guard", () => {
     expect(safeNext(null)).toBe("/account");
     expect(safeNext("")).toBe("/account");
   });
+  it("rejects backslash variants browsers normalize to //", () => {
+    expect(safeNext("/\\evil.example")).toBe("/account");
+    expect(safeNext("/\\/evil.example")).toBe("/account");
+    expect(safeNext("/guides\\..")).toBe("/account");
+  });
 });

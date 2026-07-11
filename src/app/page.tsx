@@ -100,7 +100,7 @@ export default function HomePage() {
                         label={`Lights ${stage.cycleLabel}`}
                       />
                     ) : (
-                      <p className="mt-4 pt-[6px] font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim/70">
+                      <p className="mt-4 pt-[6px] font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
                         All stages · diagnose first
                       </p>
                     )}

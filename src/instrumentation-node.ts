@@ -32,6 +32,7 @@ export async function startDevDb(): Promise<void> {
     await new Promise((r) => setTimeout(r, 100));
   }
   console.warn(
-    "[dev-db] sidecar did not come up in time; database queries may fail",
+    "[dev-db] sidecar did not come up in 15s — auth/bookmark queries will fail. " +
+      "Try `node scripts/dev-db.mjs` in another terminal to see why, or set DATABASE_URL.",
   );
 }

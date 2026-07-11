@@ -31,7 +31,7 @@ export function SiteFooter() {
             </Link>
           </nav>
         </div>
-        <p className="mt-8 text-[11px] leading-relaxed text-frost-dim/70">
+        <p className="mt-8 text-[11px] leading-relaxed text-frost-dim">
           Cannabis cultivation is regulated and its legality varies by state
           and country. Nothing here is legal or medical advice. Know your
           local laws before you grow. 21+ only.

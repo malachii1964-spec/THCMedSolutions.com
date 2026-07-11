@@ -36,7 +36,12 @@ export async function toggleBookmark(rawSlug: string): Promise<void> {
       .delete(bookmark)
       .where(and(eq(bookmark.userId, user.id), eq(bookmark.guideSlug, slug)));
   } else {
-    await db.insert(bookmark).values({ userId: user.id, guideSlug: slug });
+    // Concurrent toggles (two tabs) can both reach the insert; the PK
+    // conflict is a no-op rather than a 500.
+    await db
+      .insert(bookmark)
+      .values({ userId: user.id, guideSlug: slug })
+      .onConflictDoNothing();
   }
   revalidatePath(`/guides/${slug}`);
   revalidatePath("/account");

@@ -79,7 +79,7 @@ export function AgeGate() {
             No, I&apos;m not
           </button>
         </div>
-        <p className="mt-5 text-[11px] leading-relaxed text-frost-dim/70">
+        <p className="mt-5 text-[11px] leading-relaxed text-frost-dim">
           Cannabis cultivation laws vary by state and country. Educational
           content only — see our{" "}
           <a href="/legal" className="underline underline-offset-2">

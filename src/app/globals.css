@@ -41,10 +41,14 @@ body {
   background: color-mix(in srgb, var(--bloom) 40%, transparent);
 }
 
-/* Honest focus states — visible on the dark base */
+/* Honest focus states — frost ring is visible on every surface we use:
+   canopy base, panel cards, and bloom/amber filled buttons. transition:none
+   beats the utility `transition` class so the ring appears instantly instead
+   of fading in from the button's text color. */
 :focus-visible {
-  outline: 2px solid var(--bloom);
+  outline: 2px solid var(--frost) !important;
   outline-offset: 2px;
+  transition: none !important;
 }
 
 /* ── The signature: light-cycle bar ──

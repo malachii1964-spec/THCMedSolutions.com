@@ -59,12 +59,12 @@ export default async function GuidePage({
           </Link>
         </nav>
 
-        <div className="mt-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-leaf">
-          <span>
+        <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-leaf">
+          <span className="whitespace-nowrap">
             {guide.week}
             {stage?.cycleLabel ? ` · ${stage.cycleLabel}` : ""}
           </span>
-          <span className="text-frost-dim/70">
+          <span className="whitespace-nowrap text-frost-dim">
             {guide.difficulty} · {guide.readMinutes} min
           </span>
           {guide.membersOnly ? (
@@ -129,7 +129,7 @@ export default async function GuidePage({
           </div>
         ) : null}
 
-        <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim/70">
+        <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
           Updated {guide.updated} · Educational content only —{" "}
           <Link href="/legal" className="underline underline-offset-2">
             legal notice

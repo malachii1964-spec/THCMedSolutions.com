@@ -26,7 +26,7 @@ export function GuideCard({ guide }: { guide: GuideMeta }) {
       <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-frost-dim">
         {guide.summary}
       </p>
-      <p className="mt-auto pt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim/70">
+      <p className="mt-auto pt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
         {guide.difficulty} · {guide.readMinutes} min read
       </p>
     </Link>
