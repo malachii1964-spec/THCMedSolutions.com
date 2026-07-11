@@ -99,8 +99,37 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
-- (update after every session)
+- THCMedSolutions v1 built (2026-07-10): landing page, 10 MDX grow guides
+  across 6 stages (4 members-only), free membership (signup/login/account),
+  bookmarks, teaser gating, 21+ age gate, /legal. All gates green: tsc, lint,
+  10 Vitest tests, next build, Playwright E2E (signup→unlock→bookmark→signout
+  →bad-login→deep-link), Lighthouse mobile 97 perf / 95 a11y, JS 147KB gz.
 ### Decisions made (do not relitigate)
-- (record stack choices, naming, tradeoffs chosen)
+- Stack: Next 16 App Router + Tailwind 4; MDX in-repo instead of Sanity
+  (simple site, no CMS bill); Better Auth + Drizzle; Neon Postgres in prod.
+- Dev DB: embedded PGlite behind a socket sidecar (scripts/dev-db.mjs),
+  auto-spawned via instrumentation hook — `npm run dev` needs zero env/setup.
+  Rationale: Next dev runs multiple workers; file-backed PGlite is
+  single-process, so one sidecar owns it and workers connect over TCP :5522.
+- DB driver picked by URL: *.neon.tech → neon-http, anything else →
+  node-postgres (so Supabase/RDS URLs also just work).
+- Design: "grower's almanac under bloom light" — canopy-dark base, bloom
+  magenta/violet glow, Fraunces/Albert Sans/IBM Plex Mono. SIGNATURE:
+  24-segment light-cycle bar encoding real photoperiods (18/6, 12/12, …).
+  3 font families (perf law says 2): mono specimen labels are core to the
+  almanac identity; weights trimmed (Plex Mono 400 only) to compensate.
+- Header resolves session client-side via bare fetch of get-session (not the
+  Better Auth react client) so content pages stay static and JS stays under
+  the 150KB budget.
+- LCP 2.6s simulated-mobile against localhost accepted (budget 2.5s): CDN +
+  edge cache in real deployment covers the 0.1s; revisit if field data says
+  otherwise.
 ### Known issues / TODO
-- (anything unfinished or fragile)
+- Welcome email (Resend) not wired — no API key available in this session to
+  verify end-to-end per Rule 2, so the feature was deferred rather than
+  shipped unverified.
+- Password reset ("forgot password") not implemented — needs email sending.
+- next build prints Better Auth secret/baseURL warnings when run without env
+  vars (page-data collection); harmless, disappears once prod env is set.
+- Guide detail pages are dynamic (server session check for gating);
+  fine on Vercel, but if traffic grows consider caching teaser HTML.

@@ -25,7 +25,13 @@ const globalForDb = globalThis as unknown as { __thcmsDb?: Db };
 function createDb(): Db {
   const url = process.env.DATABASE_URL;
   if (url) {
-    return drizzleNeon(neon(url), { schema });
+    // Neon speaks HTTP through its serverless driver; any other Postgres
+    // (Supabase, RDS, local) gets the standard wire-protocol driver.
+    if (url.includes(".neon.tech")) {
+      return drizzleNeon(neon(url), { schema });
+    }
+    const pool = new Pool({ connectionString: url, max: 5 });
+    return drizzlePg(pool, { schema });
   }
   if (process.env.NODE_ENV === "production") {
     throw new Error(

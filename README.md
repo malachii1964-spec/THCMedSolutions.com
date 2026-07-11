@@ -1,40 +1,79 @@
-# Website Factory — Template Repo
+# THCMed Solutions
 
-Everything needed to spin up a new AI-built website in 30 seconds, with quality
-gates the AI physically cannot skip.
+The grower's almanac for medical cannabis cultivation: stage-by-stage grow
+guides (germination → cure), free membership that unlocks the deep-dive
+library, bookmarks, a 21+ age gate, and a legal notice. Built with Next.js 16
+(App Router, TypeScript strict), Tailwind 4, MDX content, Better Auth, and
+Drizzle ORM on Postgres.
 
-## What's inside
-| File | Job |
+## Run it locally — zero setup
+
+```bash
+npm install
+npm run dev
+```
+
+That's it. No database to install, no env vars: in dev the site starts an
+embedded Postgres (PGlite) sidecar automatically and creates its own tables.
+Sign-ups, logins, and bookmarks all work out of the box; dev data lives in
+`.pglite/` (gitignored — delete the folder to reset).
+
+## Deploy to production (Vercel)
+
+1. Create a free Postgres at [neon.tech](https://neon.tech) and copy the
+   connection string.
+2. In Vercel → Project → Settings → Environment Variables, set:
+   - `DATABASE_URL` — the Neon connection string
+   - `BETTER_AUTH_SECRET` — generate with `openssl rand -base64 32`
+   - `BETTER_AUTH_URL` — the site's public URL, e.g. `https://thcmedsolutions.com`
+3. Create the tables once: locally run
+   `DATABASE_URL="<neon url>" npm run db:push`
+4. Push to GitHub; Vercel builds and deploys.
+
+Any standard Postgres URL works too (Supabase, RDS) — the driver is picked
+automatically.
+
+## Editing content
+
+Guides are MDX files in `content/guides/`. Frontmatter fields:
+
+```yaml
+title, summary, stage (germination | seedling | vegetative | flowering |
+harvest-cure | troubleshooting), week ("WK 03"), difficulty (beginner |
+intermediate | advanced), readMinutes, membersOnly (true/false), updated,
+order
+```
+
+Add a file → it appears in the library, filters, search, and stage counts
+automatically. Set `membersOnly: true` to gate a guide behind (free) signup —
+visitors see roughly the first quarter as a teaser.
+
+## Scripts
+
+| Command | Job |
 |---|---|
-| `CLAUDE.md` | The standing brain: interview rules, stack + service menu, workflow, project log |
-| `.claude/settings.json` | Hooks: auto-format every file on write; quality gate on every stop |
-| `.claude/hooks/quality-gate.sh` | The enforcer — typecheck, lint, tests must pass or Claude is forced to keep fixing (exit code 2) |
-| `.claude/agents/reviewer.md` | Fresh-eyes adversarial reviewer subagent, dispatched after every feature |
-| `.github/workflows/quality-gates.yml` | Re-runs all gates on GitHub's servers — the validator outside the AI |
-| `design.md` | Your taste, written once, inherited by every site |
-| `.env.example` | Where service keys go (Neon/Supabase, Resend, Stripe, Anthropic) |
-| `templates/` | 12 website blueprints — the interview offers them as a menu; the agent builds each fresh on the current stack |
-| `design-library/` | Style directions, palette library, immersive-3D contract, project ideas backlog |
-| `performance.md` | Performance law: Core Web Vitals budgets, JS/image/font limits, verification steps |
+| `npm run dev` | Dev server + auto-started embedded dev database |
+| `npm run build` / `npm start` | Production build / serve |
+| `npm test` | Vitest unit tests |
+| `npm run lint` | ESLint |
+| `npm run db:push` | Push the Drizzle schema to `DATABASE_URL` (prod setup) |
 
-## One-time setup
-1. Push this folder to GitHub as `website-factory-template`
-2. In the repo settings, tick **Template repository**
-3. Fill in `design.md` with your taste (10 minutes, once, pays forever)
+## How it's put together
 
-## Every new website, forever
-1. GitHub → "Use this template" → new repo → clone it
-2. Open Claude Code in the folder (pick your model with `/model` — Fable included)
-3. Type: `New website. Run your interview.`
-4. Answer the questions (or "use defaults") and let it build
+- `src/app/` — routes: landing, `/guides` (+ `[slug]`), `/join`, `/login`,
+  `/account`, `/legal`
+- `src/lib/guides.ts` — MDX loader with Zod-validated frontmatter and the
+  teaser cut for gated guides (gating is server-side; full content never
+  reaches a signed-out browser)
+- `src/lib/auth.ts` + `src/db/` — Better Auth on Drizzle; Neon HTTP driver
+  in prod, node-postgres elsewhere
+- `scripts/dev-db.mjs` + `src/instrumentation.ts` — the dev-only embedded
+  Postgres sidecar (one process owns PGlite, every Next worker connects over
+  the standard wire protocol on `127.0.0.1:5522`)
+- `design.md`, `performance.md`, `templates/`, `design-library/` — the
+  website-factory working docs this site was built under
 
-## How the enforcement works
-- CLAUDE.md is guidance the agent follows.
-- The Stop hook is physics it can't ignore: when Claude tries to finish, the gate
-  script runs typecheck + lint + tests. Any failure exits with code 2, which blocks
-  the stop and feeds the errors back — Claude must fix them to finish. A loop guard
-  (`stop_hook_active`) prevents infinite retries on genuinely stuck errors.
-- GitHub Actions re-runs everything on push, outside the AI entirely.
+## Compliance note
 
-Three layers: guidance → local enforcement → external verification.
-That's the honest meaning of "foolproof."
+Educational content only. The site ships with a 21+ age-gate interstitial and
+a jurisdiction disclaimer at `/legal` — cultivation law varies; keep both.

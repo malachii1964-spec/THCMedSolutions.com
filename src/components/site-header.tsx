@@ -1,17 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { authClient } from "@/lib/auth-client";
+import { useEffect, useState } from "react";
 
 /**
  * Client component on purpose: resolving the session client-side keeps
  * content pages fully static (performance budget) while the nav still
- * personalizes after hydration. Logged-out links render first as the
- * stable default; the member chip swaps in without layout shift.
+ * personalizes after hydration. A bare fetch instead of the Better Auth
+ * client keeps ~30KB of auth bundle off every content page; logged-out
+ * links render first as the stable default and the member chip swaps in
+ * without layout shift.
  */
 export function SiteHeader() {
-  const { data: session } = authClient.useSession();
-  const user = session?.user;
+  const [isMember, setIsMember] = useState(false);
+
+  useEffect(() => {
+    const ctrl = new AbortController();
+    fetch("/api/auth/get-session", { signal: ctrl.signal })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((session) => {
+        if (session?.user) setIsMember(true);
+      })
+      .catch(() => {});
+    return () => ctrl.abort();
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 border-b border-panel-edge/60 bg-canopy/85 backdrop-blur">
@@ -31,7 +43,7 @@ export function SiteHeader() {
           >
             Grow guides
           </Link>
-          {user ? (
+          {isMember ? (
             <Link
               href="/account"
               className="rounded border border-amber/50 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-amber transition hover:bg-amber/10"
