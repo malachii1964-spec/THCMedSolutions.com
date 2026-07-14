@@ -108,6 +108,7 @@ export default function HomePage() {
   const guides = getAllGuides();
   const featured = guides.filter((g) => !g.membersOnly).slice(0, 3);
   const memberCount = guides.filter((g) => g.membersOnly).length;
+  const doctorOnline = Boolean(process.env.ANTHROPIC_API_KEY);
 
   const stats = [
     { icon: "leaf" as const, n: `${guides.length}`, l: "Field guides", s: "Growing weekly" },
@@ -176,10 +177,10 @@ export default function HomePage() {
                     Enter the Sanctuary →
                   </Link>
                   <Link
-                    href="/guides"
+                    href="/start"
                     className="glass-hi w-full rounded-full px-7 py-3.5 text-center font-mono text-[12px] uppercase tracking-[0.14em] text-frost transition hover:brightness-125 sm:w-auto"
                   >
-                    Explore the Knowledge OS
+                    Start your first grow
                   </Link>
                 </div>
                 {/* trust chips */}
@@ -212,8 +213,8 @@ export default function HomePage() {
               {/* HUD — right */}
               <div className="rise order-3 mx-auto flex w-full max-w-sm flex-col gap-4 lg:max-w-none">
                 <WeatherChip className="flex sm:hidden" />
-                <SystemStatus />
-                <PlantDoctorCard />
+                <SystemStatus doctorOnline={doctorOnline} />
+                <PlantDoctorCard online={doctorOnline} />
               </div>
             </div>
           </div>

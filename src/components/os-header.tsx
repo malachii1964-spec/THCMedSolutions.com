@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NAV = [
-  { label: "Home", href: "/" },
+  { label: "Start Here", href: "/start" },
   { label: "Knowledge OS", href: "/guides" },
-  { label: "Grow Intelligence", href: "/guides?stage=vegetative" },
+  { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
   { label: "Wellness", href: "/guides?stage=troubleshooting" },
 ];

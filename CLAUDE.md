@@ -99,7 +99,18 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
-- THCMedSolutions v1 built (2026-07-10): landing page, 10 MDX grow guides
+- v3 (2026-07-12): rebranded Malachi Syndicate "Cannabis Knowledge OS" per
+  owner's reference mockups. Landing: generative crystal-plant SVG on glowing
+  dais + HUD panels (SystemStatus, PlantDoctorCard) + live Buffalo weather
+  chip (open-meteo) + module cards. New pages: /start (first-grow roadmap,
+  auto-built from stages+guides), /frostybuds-soil (grower-style soil
+  selector: Canucks living/coco, veganic, SubCool, DTE guano — from owner's
+  Soil Cookbook doc), /plant-doctor (Claude-powered chat, members-only,
+  streaming; graceful offline w/o ANTHROPIC_API_KEY). 17 guides total (7 new
+  beginner: equipment, seeds 101, watering/pH, lighting, VPD, mistakes,
+  glossary). Deployed: repo malachii1964-spec/thcmedsolutions.com → Vercel
+  (thc-med-solutions-com.vercel.app), Neon DB connected, tables created.
+- v1 (2026-07-10): landing page, 10 MDX grow guides
   across 6 stages (4 members-only), free membership (signup/login/account),
   bookmarks, teaser gating, 21+ age gate, /legal. All gates green: tsc, lint,
   10 Vitest tests, next build, Playwright E2E (signup→unlock→bookmark→signout

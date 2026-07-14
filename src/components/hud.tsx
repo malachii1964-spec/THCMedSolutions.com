@@ -78,14 +78,21 @@ export function WeatherChip({ className = "" }: { className?: string }) {
   );
 }
 
-const STATUS_ROWS = [
-  { name: "Knowledge Network", state: "Online", color: "var(--lime)" },
-  { name: "Grow Intelligence", state: "Online", color: "var(--cyan)" },
-  { name: "Wellness Systems", state: "Optimal", color: "var(--violet)" },
-  { name: "AI Plant Doctor", state: "Training", color: "var(--gold)" },
-];
-
-export function SystemStatus({ className = "" }: { className?: string }) {
+export function SystemStatus({
+  className = "",
+  doctorOnline = false,
+}: {
+  className?: string;
+  doctorOnline?: boolean;
+}) {
+  const STATUS_ROWS = [
+    { name: "Knowledge Network", state: "Online", color: "var(--lime)" },
+    { name: "Grow Intelligence", state: "Online", color: "var(--cyan)" },
+    { name: "Wellness Systems", state: "Optimal", color: "var(--violet)" },
+    doctorOnline
+      ? { name: "AI Plant Doctor", state: "Online", color: "var(--lime)" }
+      : { name: "AI Plant Doctor", state: "Training", color: "var(--gold)" },
+  ];
   return (
     <div className={`glass rounded-2xl p-4 ${className}`}>
       <div className="flex items-center justify-between gap-6">
@@ -123,27 +130,41 @@ export function SystemStatus({ className = "" }: { className?: string }) {
   );
 }
 
-export function PlantDoctorCard({ className = "" }: { className?: string }) {
+export function PlantDoctorCard({
+  className = "",
+  online = false,
+}: {
+  className?: string;
+  online?: boolean;
+}) {
   return (
     <div className={`glass iris-border rounded-2xl p-4 ${className}`}>
       <div className="flex items-center justify-between gap-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-frost">
           AI Plant Doctor
         </p>
-        <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-gold">
-          <i className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_6px_var(--gold)]" />
-          In training
-        </span>
+        {online ? (
+          <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-lime">
+            <i className="h-1.5 w-1.5 rounded-full bg-lime shadow-[0_0_6px_var(--lime)]" />
+            Online
+          </span>
+        ) : (
+          <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-gold">
+            <i className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_6px_var(--gold)]" />
+            In training
+          </span>
+        )}
       </div>
       <p className="mt-2 text-[12px] leading-relaxed text-frost-dim">
-        Point, describe, diagnose — AI-guided help for deficiencies, pests,
-        and stress is coming to the Sanctuary.
+        {online
+          ? "Ready to work your case — deficiencies, pests, watering, light stress. Free for members."
+          : "Point, describe, diagnose — AI-guided help for deficiencies, pests, and stress is coming to the Sanctuary."}
       </p>
       <Link
-        href="/join"
+        href="/plant-doctor"
         className="mt-3 inline-block rounded-full border border-cyan/40 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-cyan transition hover:bg-cyan/10"
       >
-        Join the waitlist →
+        {online ? "Ask the Doctor →" : "Meet the Doctor →"}
       </Link>
     </div>
   );
