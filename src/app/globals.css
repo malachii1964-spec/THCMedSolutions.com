@@ -362,3 +362,18 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Traveling light along the orbit ellipses (dashoffset only) */
+@media (prefers-reduced-motion: no-preference) {
+  .orbit-run {
+    animation: orbit-run 7s linear infinite;
+  }
+  .orbit-run-rev {
+    animation: orbit-run 9s linear infinite reverse;
+  }
+  @keyframes orbit-run {
+    to {
+      stroke-dashoffset: -300;
+    }
+  }
+}
