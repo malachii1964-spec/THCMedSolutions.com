@@ -22,8 +22,25 @@ type Db =
 
 const globalForDb = globalThis as unknown as { __thcmsDb?: Db };
 
+/**
+ * Find the Postgres connection string. Prefer DATABASE_URL, but Vercel's
+ * Neon integration may inject it under a prefixed name (DATABASE_POSTGRES_URL,
+ * POSTGRES_URL, DATABASE_DATABASE_URL, …) depending on the prefix chosen when
+ * connecting. So if DATABASE_URL is absent, scan the environment for any value
+ * that is a real postgres:// URL and prefer a pooled endpoint.
+ */
+function resolveDbUrl(): string | undefined {
+  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
+  const urls = Object.values(process.env).filter(
+    (v): v is string => typeof v === "string" && /^postgres(ql)?:\/\//.test(v),
+  );
+  if (urls.length === 0) return undefined;
+  // Pooled endpoints (host contains "-pooler") suit serverless best.
+  return urls.find((v) => v.includes("-pooler.")) ?? urls[0];
+}
+
 function createDb(): Db {
-  const url = process.env.DATABASE_URL;
+  const url = resolveDbUrl();
   if (url) {
     // Neon speaks HTTP through its serverless driver; any other Postgres
     // (Supabase, RDS, local) gets the standard wire-protocol driver.
@@ -35,7 +52,7 @@ function createDb(): Db {
   }
   if (process.env.NODE_ENV === "production") {
     throw new Error(
-      "DATABASE_URL is required in production. Create a free Postgres at neon.tech, set it in your Vercel project env, and run `npm run db:push` once.",
+      "No Postgres connection string found. Set DATABASE_URL (or connect a Neon/Postgres database) in your Vercel project env, and create the tables once.",
     );
   }
   // PGlite behind the socket sidecar is single-connection: max 1, released
