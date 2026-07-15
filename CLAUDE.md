@@ -99,6 +99,14 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- v6 (2026-07-15): closed the cross-linking loop — guide pages now show a
+  "Strains this applies to" section (reverse of the strain→guide links).
+  Refactored relevance into ONE source of truth (GUIDE_RULES in strains.ts)
+  used both directions; new strainsForGuide() is the exact inverse of
+  relatedGuideSlugs(); universal setup/harvest bookends stay forward-only.
+  Guide page shows ≤8 suited strains + "+N more". 20 tests (added reverse
+  cases + a round-trip invariant proving forward/reverse never contradict).
+  Gates green; pushed to origin + site main.
 - v5 (2026-07-15): Strain DB 22 → 42 (Amnesia Haze, Super Silver Haze,
   Trainwreck, Skywalker OG, Do-Si-Dos, Mimosa, Tangie, Strawberry Cough,
   Cheese, Grape Ape, LA Confidential, Maui Wowie, Hindu Kush + Acapulco
