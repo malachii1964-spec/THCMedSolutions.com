@@ -12,6 +12,7 @@ import {
   LotusFigure,
   SoilStrata,
   GemCluster,
+  GearGlyph,
   NYMap,
 } from "@/components/os-visuals";
 import { getAllGuides } from "@/lib/guides";
@@ -39,6 +40,13 @@ const MODULES = [
     visual: MiniSprout,
   },
   {
+    name: "Strain & Terpene Database",
+    body: "Grow-focused profiles — lineage, flower time, yield, terpenes, and effects. Filter by how you want to grow and feel.",
+    cta: "Explore strains",
+    href: "/strains",
+    visual: GemCluster,
+  },
+  {
     name: "Wellness Guidance",
     body: "Cannabis wellness education for body, mind, and lifestyle balance.",
     cta: "Wellness paths",
@@ -57,7 +65,7 @@ const MODULES = [
     body: "The staple products of home growing — indoor and outdoor, budget to premium, filterable to your setup.",
     cta: "Shop the setup",
     href: "/gear",
-    visual: GemCluster,
+    visual: GearGlyph,
   },
   {
     name: "Local NY Hub",

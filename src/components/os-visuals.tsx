@@ -163,3 +163,34 @@ export function SoilStrata({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
+/** LED grow-light panel with light beams — for the Gear Index card. */
+export function GearGlyph({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 100" className={className} aria-hidden>
+      <defs>
+        <linearGradient id="gearG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="var(--cyan)" />
+          <stop offset="100%" stopColor="var(--violet)" />
+        </linearGradient>
+      </defs>
+      {/* light panel */}
+      <rect x="34" y="16" width="52" height="16" rx="3" fill="none" stroke="url(#gearG)" strokeWidth="1.6" />
+      <g fill="var(--cyan)">
+        {Array.from({ length: 5 }, (_, i) => (
+          <circle key={i} cx={42 + i * 9} cy={24} r="1.6" />
+        ))}
+      </g>
+      {/* beams */}
+      <g stroke="url(#gearG)" strokeWidth="1" opacity="0.5">
+        <path d="M40 32 L34 76 M52 32 L48 78 M68 32 L72 78 M80 32 L86 76" />
+      </g>
+      {/* glow pool */}
+      <ellipse cx="60" cy="84" rx="34" ry="6" fill="var(--cyan)" opacity="0.2" />
+      <ellipse cx="60" cy="84" rx="20" ry="3.5" fill="none" stroke="var(--cyan)" strokeWidth="1" opacity="0.6" />
+      {/* little sprout under the light */}
+      <path d="M60 84 L60 70" stroke="var(--lime)" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M60 74 C54 73 51 69 50 64 C56 65 59 69 60 74 Z" fill="var(--lime)" />
+    </svg>
+  );
+}
