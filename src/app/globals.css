@@ -377,3 +377,28 @@ body {
     }
   }
 }
+
+/* Niagara scene motion — cheap transform/opacity only */
+@media (prefers-reduced-motion: no-preference) {
+  .mist-rise {
+    animation: mist-rise 9s ease-in-out infinite alternate;
+  }
+  @keyframes mist-rise {
+    from { transform: translateY(6px) scale(1); opacity: 0.7; }
+    to { transform: translateY(-10px) scale(1.06); opacity: 1; }
+  }
+  .falls-flow {
+    animation: falls-flow 2.4s linear infinite;
+  }
+  @keyframes falls-flow {
+    from { transform: translateY(-8px); }
+    to { transform: translateY(8px); }
+  }
+  .water-shimmer {
+    animation: water-shimmer 5s ease-in-out infinite alternate;
+  }
+  @keyframes water-shimmer {
+    from { transform: translateX(-10px); opacity: 0.18; }
+    to { transform: translateX(10px); opacity: 0.32; }
+  }
+}

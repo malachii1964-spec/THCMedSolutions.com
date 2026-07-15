@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
 import { CrystalPlant } from "@/components/crystal-plant";
-import { NiagaraSkyline } from "@/components/niagara-skyline";
+import { NiagaraScene } from "@/components/niagara-scene";
 import { GuideCard } from "@/components/guide-card";
 import { WeatherChip, SystemStatus, PlantDoctorCard } from "@/components/hud";
 import {
@@ -132,14 +132,32 @@ export default function HomePage() {
       <main>
         {/* ─────────────────────────── HERO ─────────────────────────── */}
         <section className="grain relative overflow-hidden">
-          <div className="starfield pointer-events-none absolute inset-0 opacity-70" />
+          {/* Niagara Falls at night — full-bleed backdrop */}
+          <NiagaraScene className="pointer-events-none absolute inset-0 h-full w-full opacity-90" />
+          {/* legibility scrims: darken left (for copy) and top (for nav) */}
           <div
             aria-hidden
-            className="aurora pointer-events-none absolute -top-40 left-1/2 h-[46rem] w-[56rem] -translate-x-1/2 rounded-full blur-3xl"
+            className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse at center, var(--violet) 0%, var(--magenta) 42%, transparent 70%)",
-              opacity: 0.5,
+                "linear-gradient(90deg, rgba(5,7,12,0.92) 0%, rgba(5,7,12,0.55) 42%, rgba(5,7,12,0.15) 70%, rgba(5,7,12,0.55) 100%)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 h-40"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(5,7,12,0.85), transparent)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="aurora pointer-events-none absolute left-1/2 top-24 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full blur-3xl"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, var(--violet) 0%, var(--magenta) 42%, transparent 68%)",
+              opacity: 0.32,
             }}
           />
           <div
@@ -249,8 +267,6 @@ export default function HomePage() {
             </dl>
           </div>
 
-          {/* western NY horizon */}
-          <NiagaraSkyline className="pointer-events-none absolute bottom-0 left-0 h-36 w-full opacity-90 sm:h-48" />
         </section>
 
         {/* ──────────────────── MODULE CARDS ──────────────────── */}
