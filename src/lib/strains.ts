@@ -536,8 +536,441 @@ export const STRAINS: Strain[] = [
     growNotes:
       "Easy, vigorous, and high-yielding with strong resistance — a genuine beginner favorite. Strong smell in flower despite the gentle name; scrub the air.",
   },
+  {
+    slug: "amnesia-haze",
+    name: "Amnesia Haze",
+    type: "Sativa",
+    lineage: "Cambodian × Laotian × Jamaican × Afghani/Hawaiian",
+    thc: "20–25%",
+    cbd: "<1%",
+    terpenes: ["terpinolene", "limonene", "myrcene"],
+    effects: ["uplifted", "energetic", "euphoric", "creative"],
+    flavors: ["Citrus", "Lemon", "Earthy", "Spicy"],
+    flowerWeeks: "10–11 wks",
+    yield: "High",
+    height: "Tall",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A soaring, cerebral haze that's a coffeeshop legend — bright citrus energy and a long, buzzy head high.",
+    growNotes:
+      "Long flower and big sativa stretch — give it warmth, height, and training. Rewards patience with heavy yields; not for the impatient first-timer.",
+  },
+  {
+    slug: "super-silver-haze",
+    name: "Super Silver Haze",
+    type: "Sativa",
+    lineage: "Skunk × Northern Lights × Haze",
+    thc: "18–23%",
+    cbd: "<1%",
+    terpenes: ["terpinolene", "limonene", "myrcene"],
+    effects: ["energetic", "uplifted", "creative", "happy"],
+    flavors: ["Citrus", "Skunk", "Herbal", "Sweet"],
+    flowerWeeks: "10–11 wks",
+    yield: "High",
+    height: "Tall",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A multi-Cup-winning haze that balances skunky body with a bright, energizing sativa lift.",
+    growNotes:
+      "Vigorous and tall with a long flower — manage height early and keep the room warm. Big yields for the space if you train the canopy flat.",
+  },
+  {
+    slug: "trainwreck",
+    name: "Trainwreck",
+    type: "Hybrid",
+    lineage: "Mexican × Thai × Afghani",
+    thc: "18–25%",
+    cbd: "<1%",
+    terpenes: ["terpinolene", "pinene", "myrcene"],
+    effects: ["euphoric", "uplifted", "creative", "happy"],
+    flavors: ["Lemon", "Pine", "Spicy", "Earthy"],
+    flowerWeeks: "8–10 wks",
+    yield: "High",
+    height: "Tall",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A fast-hitting, sativa-leaning hybrid — a rush of lemon-pine euphoria that comes on like its namesake.",
+    growNotes:
+      "Fast, vigorous, and forgiving of heat. Stretches hard in early flower; top and train to keep the colas even. Strong yields indoors or out.",
+  },
+  {
+    slug: "skywalker-og",
+    name: "Skywalker OG",
+    type: "Indica",
+    lineage: "Skywalker × OG Kush",
+    thc: "20–25%",
+    cbd: "<1%",
+    terpenes: ["myrcene", "caryophyllene", "limonene"],
+    effects: ["relaxed", "sleepy", "happy", "euphoric"],
+    flavors: ["Diesel", "Spicy", "Herbal", "Blueberry"],
+    flowerWeeks: "8–9 wks",
+    yield: "Moderate",
+    height: "Medium",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A heavy, dreamy OG cross — spicy diesel up front, a deeply relaxing body-and-mind sedation to finish.",
+    growNotes:
+      "Classic OG structure: give it airflow and a strong filter for the diesel funk. Responds well to topping and a light defoliation for penetration.",
+  },
+  {
+    slug: "do-si-dos",
+    name: "Do-Si-Dos",
+    type: "Indica",
+    lineage: "Girl Scout Cookies × Face Off OG",
+    thc: "25–30%",
+    cbd: "<1%",
+    terpenes: ["limonene", "caryophyllene", "linalool"],
+    effects: ["relaxed", "sleepy", "euphoric", "happy"],
+    flavors: ["Sweet", "Earthy", "Floral", "Mint"],
+    flowerWeeks: "9–10 wks",
+    yield: "Moderate",
+    height: "Medium",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A cookies-descended powerhouse — very high potency with a floral-sweet nose and a couch-locking finish.",
+    growNotes:
+      "Frosty and resin-heavy — great for solventless. Feeds heavy; watch for nute burn. Dense buds need airflow late to avoid bud rot.",
+  },
+  {
+    slug: "mimosa",
+    name: "Mimosa",
+    type: "Hybrid",
+    lineage: "Clementine × Purple Punch",
+    thc: "19–27%",
+    cbd: "<1%",
+    terpenes: ["limonene", "myrcene", "pinene"],
+    effects: ["uplifted", "energetic", "happy", "focused"],
+    flavors: ["Citrus", "Orange", "Tropical", "Sweet"],
+    flowerWeeks: "8–9 wks",
+    yield: "Moderate",
+    height: "Medium",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A bright, orange-forward daytime hybrid — uplifting and clear, like the brunch cocktail it's named for.",
+    growNotes:
+      "Loves light and a longer veg. Some phenos throw color in the cold. Keep humidity moderate in flower to protect the citrus terps.",
+  },
+  {
+    slug: "tangie",
+    name: "Tangie",
+    type: "Sativa",
+    lineage: "California Orange × Skunk",
+    thc: "19–22%",
+    cbd: "<1%",
+    terpenes: ["limonene", "myrcene", "pinene"],
+    effects: ["uplifted", "energetic", "creative", "happy"],
+    flavors: ["Orange", "Tangerine", "Citrus", "Sweet"],
+    flowerWeeks: "9–10 wks",
+    yield: "Moderate",
+    height: "Tall",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "The tangerine terp bomb — an intensely citrus sativa that spawned a generation of orange-flavored crosses.",
+    growNotes:
+      "Tall and stretchy — top early and train. That famous orange nose is loud, so run a filter. Rewards a warm, bright room.",
+  },
+  {
+    slug: "strawberry-cough",
+    name: "Strawberry Cough",
+    type: "Sativa",
+    lineage: "Strawberry Fields × Haze (disputed)",
+    thc: "15–20%",
+    cbd: "<1%",
+    terpenes: ["myrcene", "pinene", "caryophyllene"],
+    effects: ["uplifted", "happy", "euphoric", "focused"],
+    flavors: ["Strawberry", "Berry", "Sweet", "Earthy"],
+    flowerWeeks: "9–10 wks",
+    yield: "Moderate",
+    height: "Tall",
+    difficulty: "Beginner",
+    climate: "Both",
+    summary:
+      "A sweet strawberry sativa with a smooth, social, clear-headed lift — famous for its berry-candy smoke.",
+    growNotes:
+      "Forgiving and mold-resistant for a sativa — a friendly step up from indicas. Give it height; the sweet berry nose is a joy to grow.",
+  },
+  {
+    slug: "cheese",
+    name: "Cheese",
+    type: "Hybrid",
+    lineage: "Skunk #1 phenotype (UK)",
+    thc: "15–20%",
+    cbd: "<1%",
+    terpenes: ["myrcene", "caryophyllene", "humulene"],
+    effects: ["relaxed", "happy", "euphoric", "hungry"],
+    flavors: ["Cheese", "Pungent", "Earthy", "Sour"],
+    flowerWeeks: "8–9 wks",
+    yield: "High",
+    height: "Medium",
+    difficulty: "Beginner",
+    climate: "Both",
+    summary:
+      "The unmistakable UK Cheese — a sharp, savory, tangy funk over a balanced, mellow body high.",
+    growNotes:
+      "Loud, funky odor — a carbon filter is non-negotiable. Otherwise easy, stable, and high-yielding; a great forgiving grow.",
+  },
+  {
+    slug: "grape-ape",
+    name: "Grape Ape",
+    type: "Indica",
+    lineage: "Mendocino Purps × Skunk × Afghani",
+    thc: "18–23%",
+    cbd: "<1%",
+    terpenes: ["myrcene", "caryophyllene", "linalool"],
+    effects: ["relaxed", "sleepy", "happy", "euphoric"],
+    flavors: ["Grape", "Berry", "Sweet", "Earthy"],
+    flowerWeeks: "7–8 wks",
+    yield: "Moderate",
+    height: "Short",
+    difficulty: "Beginner",
+    climate: "Both",
+    summary:
+      "A grape-candy indica that often finishes deep purple — heavy, calming, and great for winding down.",
+    growNotes:
+      "Short and manageable — good for tents and closets. Cooler nights in late flower coax out the purple. Fast finisher.",
+  },
+  {
+    slug: "la-confidential",
+    name: "LA Confidential",
+    type: "Indica",
+    lineage: "OG LA Affie × Afghani",
+    thc: "18–24%",
+    cbd: "<1%",
+    terpenes: ["myrcene", "pinene", "limonene"],
+    effects: ["relaxed", "sleepy", "euphoric", "happy"],
+    flavors: ["Pine", "Earthy", "Skunk", "Spicy"],
+    flowerWeeks: "8 wks",
+    yield: "High",
+    height: "Short",
+    difficulty: "Beginner",
+    climate: "Both",
+    summary:
+      "A pure-indica classic — fast, compact, and heavy-hitting with a piney-skunk nose and strong yields.",
+    growNotes:
+      "Short, fast, and high-yielding — an ideal indoor indica. Very beginner-friendly; just keep late-flower airflow up on the dense colas.",
+  },
+  {
+    slug: "maui-wowie",
+    name: "Maui Wowie",
+    type: "Sativa",
+    lineage: "Hawaiian landrace heritage",
+    thc: "15–20%",
+    cbd: "<1%",
+    terpenes: ["myrcene", "limonene", "pinene"],
+    effects: ["uplifted", "energetic", "creative", "happy"],
+    flavors: ["Pineapple", "Tropical", "Citrus", "Earthy"],
+    flowerWeeks: "9–11 wks",
+    yield: "Moderate",
+    height: "Tall",
+    difficulty: "Intermediate",
+    climate: "Outdoor",
+    summary:
+      "The classic island sativa — a tropical, pineapple-sweet high that's light, creative, and endlessly sunny.",
+    growNotes:
+      "Loves heat, sun, and room to stretch — a natural outdoor plant in warm climates. Long flower; give it a full season or a warm, tall tent.",
+  },
+  {
+    slug: "hindu-kush",
+    name: "Hindu Kush",
+    type: "Indica",
+    lineage: "Hindu Kush mountains landrace",
+    thc: "15–20%",
+    cbd: "<1%",
+    terpenes: ["myrcene", "caryophyllene", "limonene"],
+    effects: ["relaxed", "sleepy", "happy"],
+    flavors: ["Earthy", "Sandalwood", "Sweet", "Hash"],
+    flowerWeeks: "7–8 wks",
+    yield: "Moderate",
+    height: "Short",
+    difficulty: "Beginner",
+    climate: "Both",
+    landrace: true,
+    summary:
+      "A foundational pure-indica landrace from the mountains between Afghanistan and Pakistan — the genetic root of countless hash plants.",
+    growNotes:
+      "Bred for harsh mountains: hardy, compact, mold- and cold-resistant, and fast. Thick resin makes it a hash and rosin favorite. Beginner-proof.",
+  },
+  {
+    slug: "acapulco-gold",
+    name: "Acapulco Gold",
+    type: "Sativa",
+    lineage: "Mexican landrace (Acapulco)",
+    thc: "15–23%",
+    cbd: "<1%",
+    terpenes: ["caryophyllene", "pinene", "myrcene"],
+    effects: ["uplifted", "energetic", "euphoric", "happy"],
+    flavors: ["Toffee", "Earthy", "Citrus", "Coffee"],
+    flowerWeeks: "10–11 wks",
+    yield: "Moderate",
+    height: "Tall",
+    difficulty: "Advanced",
+    climate: "Outdoor",
+    landrace: true,
+    summary:
+      "A legendary Mexican landrace — the gold-flecked, toffee-sweet sativa that defined connoisseur cannabis in the 1960s–70s.",
+    growNotes:
+      "A true equatorial sativa: very long flower, big stretch, and heat-loving. Hard to tame indoors — best given a long warm outdoor season and lots of room.",
+  },
+  {
+    slug: "cherry-pie",
+    name: "Cherry Pie",
+    type: "Hybrid",
+    lineage: "Granddaddy Purple × Durban Poison",
+    thc: "16–24%",
+    cbd: "<1%",
+    terpenes: ["caryophyllene", "myrcene", "limonene"],
+    effects: ["relaxed", "happy", "euphoric", "uplifted"],
+    flavors: ["Cherry", "Sweet", "Berry", "Earthy"],
+    flowerWeeks: "8–9 wks",
+    yield: "Moderate",
+    height: "Medium",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A sweet-and-sour cherry hybrid — balanced, mellow, and mood-lifting, with a dessert nose and easygoing body.",
+    growNotes:
+      "Balanced structure and a moderate stretch. Cool finishing nights can push cherry-purple hues. A solid, versatile grow indoors or out.",
+  },
+  {
+    slug: "sunset-sherbet",
+    name: "Sunset Sherbet",
+    type: "Hybrid",
+    lineage: "Girl Scout Cookies × Pink Panties",
+    thc: "18–24%",
+    cbd: "<1%",
+    terpenes: ["caryophyllene", "limonene", "linalool"],
+    effects: ["relaxed", "happy", "euphoric", "uplifted"],
+    flavors: ["Sweet", "Berry", "Citrus", "Creamy"],
+    flowerWeeks: "8–9 wks",
+    yield: "Moderate",
+    height: "Medium",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A cookies-family dessert hybrid — creamy, sweet, and colorful, with a relaxed-but-happy balanced high.",
+    growNotes:
+      "Frosty and colorful with cool nights. A parent of Gelato and Sherb crosses — feeds moderately and rewards a clean canopy.",
+  },
+  {
+    slug: "blue-cheese",
+    name: "Blue Cheese",
+    type: "Indica",
+    lineage: "Blueberry × UK Cheese",
+    thc: "15–20%",
+    cbd: "<1%",
+    terpenes: ["myrcene", "caryophyllene", "humulene"],
+    effects: ["relaxed", "happy", "sleepy", "hungry"],
+    flavors: ["Blueberry", "Cheese", "Sweet", "Earthy"],
+    flowerWeeks: "8–9 wks",
+    yield: "High",
+    height: "Medium",
+    difficulty: "Beginner",
+    climate: "Both",
+    summary:
+      "A savory-sweet oddball that just works — blueberry meets funky cheese over a mellow, comforting indica body.",
+    growNotes:
+      "Hardy and high-yielding with real mold resistance from the Blueberry side. Pungent — run a filter. A very forgiving beginner indica.",
+  },
+  {
+    slug: "super-lemon-haze",
+    name: "Super Lemon Haze",
+    type: "Sativa",
+    lineage: "Lemon Skunk × Super Silver Haze",
+    thc: "18–25%",
+    cbd: "<1%",
+    terpenes: ["limonene", "terpinolene", "caryophyllene"],
+    effects: ["energetic", "uplifted", "creative", "happy"],
+    flavors: ["Lemon", "Citrus", "Zesty", "Sweet"],
+    flowerWeeks: "9–10 wks",
+    yield: "High",
+    height: "Tall",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A zesty, electric lemon sativa — a two-time Cannabis Cup winner with a bright, giggly, energetic buzz.",
+    growNotes:
+      "Tall and hungry with a long flower — train the canopy and feed steadily. Loud lemon terps mean a filter is a must in flower.",
+  },
+  {
+    slug: "ice-cream-cake",
+    name: "Ice Cream Cake",
+    type: "Indica",
+    lineage: "Wedding Cake × Gelato #33",
+    thc: "20–25%",
+    cbd: "<1%",
+    terpenes: ["caryophyllene", "limonene", "linalool"],
+    effects: ["relaxed", "sleepy", "happy", "euphoric"],
+    flavors: ["Vanilla", "Creamy", "Sweet", "Nutty"],
+    flowerWeeks: "8–9 wks",
+    yield: "Moderate",
+    height: "Short",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A rich, creamy dessert indica — vanilla-cake sweetness over a heavy, sedating, deeply relaxing body high.",
+    growNotes:
+      "Short and bushy with dense, frosty buds — keep late-flower airflow high to prevent rot. Excellent resin for rosin. Feeds moderately.",
+  },
+  {
+    slug: "gushers",
+    name: "Gushers",
+    type: "Hybrid",
+    lineage: "Gelato #41 × Triangle Kush",
+    thc: "18–25%",
+    cbd: "<1%",
+    terpenes: ["caryophyllene", "limonene", "humulene"],
+    effects: ["relaxed", "happy", "euphoric", "hungry"],
+    flavors: ["Tropical", "Fruity", "Sweet", "Sour"],
+    flowerWeeks: "8–9 wks",
+    yield: "Moderate",
+    height: "Medium",
+    difficulty: "Intermediate",
+    climate: "Both",
+    summary:
+      "A fruity, candy-sweet cookies-family hybrid — a mellow, giggly, indica-leaning balance with a tropical nose.",
+    growNotes:
+      "Colorful and frosty with cool nights. Moderate feeder with dense buds; keep humidity in check late. Great flavor for solventless.",
+  },
 ];
 
 export function getStrain(slug: string): Strain | undefined {
   return STRAINS.find((s) => s.slug === slug);
+}
+
+/**
+ * Auto-derived grow guides most relevant to a given strain, ordered along the
+ * grow arc (setup → environment → training → finish). No per-strain curation —
+ * it scales as the guide library grows. The caller resolves these slugs to
+ * real guides and drops any that don't exist.
+ */
+export function relatedGuideSlugs(s: Strain): string[] {
+  // One pick per dimension so every strain gets a spread that actually covers
+  // its grow: setup → its climate → its structure → its risk → harvest → cure.
+  const picks: string[] = ["setting-up-your-grow-space"];
+
+  // 1) environment for its climate
+  if (s.climate === "Outdoor") picks.push("outdoor-grow-season");
+  else if (s.climate === "Indoor") picks.push("lighting-basics-ppfd");
+  else picks.push("indoor-vs-outdoor");
+
+  // 2) canopy management for its structure
+  if (s.height === "Tall") picks.push("topping-fim-mainlining");
+  else picks.push("low-stress-training-lst");
+
+  // 3) the biggest risk for its difficulty
+  if (s.difficulty === "Advanced") picks.push("pests-mites-gnats-mildew");
+  else if (s.difficulty === "Intermediate") picks.push("temp-humidity-vpd");
+  else picks.push("first-grow-equipment");
+
+  // harvest + cure always finish the arc
+  picks.push("when-to-harvest-trichomes", "drying-and-curing");
+
+  return [...new Set(picks)];
 }

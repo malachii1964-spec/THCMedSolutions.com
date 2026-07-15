@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OsHeader } from "@/components/os-header";
-import { STRAINS, getStrain, TERPENES } from "@/lib/strains";
+import { STRAINS, getStrain, relatedGuideSlugs, TERPENES } from "@/lib/strains";
+import { getAllGuides } from "@/lib/guides";
 
 export function generateStaticParams() {
   return STRAINS.map((s) => ({ slug: s.slug }));
@@ -36,6 +37,11 @@ export default async function StrainPage({
   const { slug } = await params;
   const s = getStrain(slug);
   if (!s) notFound();
+
+  const allGuides = getAllGuides();
+  const relatedGuides = relatedGuideSlugs(s)
+    .map((gslug) => allGuides.find((g) => g.slug === gslug))
+    .filter((g): g is NonNullable<typeof g> => Boolean(g));
 
   const specs = [
     { l: "Type", v: s.type },
@@ -172,6 +178,40 @@ export default async function StrainPage({
             </Link>
           </div>
         </div>
+
+        {/* grow guides for this strain (auto-matched) */}
+        {relatedGuides.length > 0 ? (
+          <section className="mt-12">
+            <h2 className="font-mono text-[11px] uppercase tracking-[0.2em] text-cyan">
+              Grow guides for {s.name}
+            </h2>
+            <p className="mt-2 text-sm text-frost-dim">
+              Matched to this strain&apos;s {s.difficulty.toLowerCase()}{" "}
+              difficulty, {s.climate.toLowerCase()} climate, and {s.height.toLowerCase()}{" "}
+              structure.
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {relatedGuides.map((g) => (
+                <Link
+                  key={g.slug}
+                  href={`/guides/${g.slug}`}
+                  className="glass group flex items-center justify-between gap-3 rounded-2xl p-4 transition hover:brightness-125"
+                >
+                  <div className="min-w-0">
+                    <h3 className="truncate font-display text-base font-semibold">
+                      {g.title}
+                    </h3>
+                    <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-frost-dim">
+                      {g.readMinutes} min read
+                      {g.membersOnly ? " · members" : ""}
+                    </p>
+                  </div>
+                  <span className="iris-text shrink-0 font-mono text-sm">→</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
           Educational profile · data varies by phenotype & grow · not medical
