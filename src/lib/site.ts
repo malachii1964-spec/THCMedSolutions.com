@@ -1,17 +1,20 @@
 /**
  * Site-wide config the owner edits in one place.
  *
- * ⚠️ MEDICAL PROVIDER — confirm and fill these before publishing the
- * /medical-card page. Do NOT publish a real practice's name, phone, or
- * booking link until verified with the provider.
+ * MEDICAL PROVIDER — the real Western New York provider the site owner uses
+ * and refers patients to. Details sourced from the practice's public listings
+ * (NPI registry, Weedmaps, directories). Update here if the office's phone,
+ * address, or booking link changes.
  */
 export const MEDICAL_PROVIDER = {
-  confirmed: false, // flip to true once the details below are verified
-  name: "[Provider name — confirm]",
-  practice: "[Practice name — confirm]",
-  location: "Western New York",
-  phone: "[Phone — confirm]",
-  bookingUrl: "", // e.g. https://... — leave empty to hide the button
+  confirmed: true,
+  name: "Dr. Troy Sasse",
+  practice: "Lakeside Medical Care",
+  location: "Angola, NY · Buffalo / Western New York",
+  address: "8746 Erie Rd, Suite A, Angola, NY 14006",
+  phone: "716-549-4999",
+  website: "https://lakesidemedicalmarijuana.com/",
+  bookingUrl: "https://lakesidemedicalmarijuana.com/",
   blurb:
-    "A trusted local provider we work with to help Western New York patients get certified for New York's medical cannabis program.",
+    "Board-certified in family medicine and practicing since 1997, Dr. Sasse provides same-day medical cannabis certifications in Angola — in-person or by telemedicine — with new patients and walk-ins welcome, plus discounts for veterans and disabled patients.",
 };

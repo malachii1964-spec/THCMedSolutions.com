@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
+import { MedicalIntakeForm } from "@/components/medical-intake-form";
 import { MEDICAL_PROVIDER } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -89,6 +90,11 @@ export default function MedicalCardPage() {
                   <p className="mt-1 text-sm text-frost-dim">
                     {p.practice} · {p.location}
                   </p>
+                  {"address" in p && p.address ? (
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-frost-dim">
+                      {p.address}
+                    </p>
+                  ) : null}
                   <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-frost-dim">
                     {p.blurb}
                   </p>
@@ -128,6 +134,15 @@ export default function MedicalCardPage() {
             </div>
           </div>
         </section>
+
+        {/* request an appointment (emails the office) */}
+        {p.confirmed ? (
+          <section className="relative">
+            <div className="mx-auto mt-8 max-w-3xl px-4 sm:px-6">
+              <MedicalIntakeForm phone={p.phone} />
+            </div>
+          </section>
+        ) : null}
 
         {/* how it works */}
         <section className="relative">
