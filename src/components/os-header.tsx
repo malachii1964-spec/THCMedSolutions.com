@@ -9,6 +9,7 @@ const NAV = [
   { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
   { label: "Gear Index", href: "/gear" },
+  { label: "Medical Card", href: "/medical-card" },
 ];
 
 function Emblem() {

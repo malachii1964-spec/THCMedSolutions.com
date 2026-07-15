@@ -389,6 +389,9 @@ export default function HomePage() {
               <Link href="/guides" className="transition hover:text-frost">
                 Knowledge OS
               </Link>
+              <Link href="/medical-card" className="transition hover:text-frost">
+                Medical Card
+              </Link>
               <Link href="/faq" className="transition hover:text-frost">
                 FAQ
               </Link>
