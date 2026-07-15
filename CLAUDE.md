@@ -99,6 +99,16 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- v5 (2026-07-15): Strain DB 22 → 42 (Amnesia Haze, Super Silver Haze,
+  Trainwreck, Skywalker OG, Do-Si-Dos, Mimosa, Tangie, Strawberry Cough,
+  Cheese, Grape Ape, LA Confidential, Maui Wowie, Hindu Kush + Acapulco
+  Gold landraces, Cherry Pie, Sunset Sherbet, Blue Cheese, Super Lemon
+  Haze, Ice Cream Cake, Gushers). NEW: strain→guide cross-linking —
+  relatedGuideSlugs() auto-matches each strain to 6 guides by climate/
+  structure/difficulty (setup→env→canopy→risk→harvest→cure), rendered as
+  "Grow guides for X" on every strain detail page; scales as guides grow.
+  strains.test.ts (17 tests total) guarantees no dead cross-links. Gates
+  green (tsc/lint/17 tests/build 87 pages); pushed to origin + site main.
 - v4 (2026-07-15): added /local-ny (Local NY Hub — plain-English WNY law
   summary, licensed-dispensary safety flow, official OCM links; module +
   footer + header now point here instead of /legal). New guide
