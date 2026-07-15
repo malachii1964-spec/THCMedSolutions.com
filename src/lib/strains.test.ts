@@ -4,6 +4,7 @@ import {
   TERPENES,
   getStrain,
   relatedGuideSlugs,
+  strainsForGuide,
   type Terp,
 } from "./strains";
 import { getAllGuides } from "./guides";
@@ -67,5 +68,44 @@ describe("strain → guide cross-linking", () => {
 
     const tall = STRAINS.find((s) => s.height === "Tall");
     if (tall) expect(relatedGuideSlugs(tall)).toContain("topping-fim-mainlining");
+  });
+});
+
+describe("guide → strain reverse links", () => {
+  // The topical guides that carry a reverse strain list.
+  const TOPICAL = [
+    "outdoor-grow-season",
+    "lighting-basics-ppfd",
+    "indoor-vs-outdoor",
+    "topping-fim-mainlining",
+    "low-stress-training-lst",
+    "pests-mites-gnats-mildew",
+    "temp-humidity-vpd",
+    "first-grow-equipment",
+  ];
+
+  it("returns [] for guides with no strain-selection rule", () => {
+    expect(strainsForGuide("germinate-cannabis-seeds")).toEqual([]);
+    expect(strainsForGuide("making-edibles-safely")).toEqual([]);
+    expect(strainsForGuide("not-a-guide")).toEqual([]);
+  });
+
+  it("every topical guide surfaces at least one strain", () => {
+    for (const g of TOPICAL) {
+      expect(strainsForGuide(g).length, `no strains for ${g}`).toBeGreaterThan(0);
+    }
+  });
+
+  it("forward and reverse never contradict (round-trip invariant)", () => {
+    for (const g of TOPICAL) {
+      const reverse = new Set(strainsForGuide(g).map((s) => s.slug));
+      for (const s of STRAINS) {
+        const forward = relatedGuideSlugs(s).includes(g);
+        expect(
+          reverse.has(s.slug),
+          `${s.slug} ↔ ${g} disagree (forward=${forward})`,
+        ).toBe(forward);
+      }
+    }
   });
 });

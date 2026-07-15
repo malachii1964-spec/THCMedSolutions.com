@@ -945,32 +945,49 @@ export function getStrain(slug: string): Strain | undefined {
 }
 
 /**
- * Auto-derived grow guides most relevant to a given strain, ordered along the
- * grow arc (setup → environment → training → finish). No per-strain curation —
- * it scales as the guide library grows. The caller resolves these slugs to
- * real guides and drops any that don't exist.
+ * The single source of truth for strain↔guide relevance. Each rule answers
+ * one question — "does this guide suit this strain?" — and is used in BOTH
+ * directions, so the forward links (on a strain page) and the reverse links
+ * (on a guide page) can never contradict each other. Rules are topical: one
+ * per grow dimension (climate, structure, difficulty), mutually exclusive
+ * within a dimension. The universal setup/harvest/cure guides are bookends
+ * added only to the forward view — they'd match all 42 strains in reverse,
+ * which isn't a useful "strains for this guide" list.
+ */
+const GUIDE_RULES: { slug: string; suits: (s: Strain) => boolean }[] = [
+  { slug: "outdoor-grow-season", suits: (s) => s.climate === "Outdoor" },
+  { slug: "lighting-basics-ppfd", suits: (s) => s.climate === "Indoor" },
+  { slug: "indoor-vs-outdoor", suits: (s) => s.climate === "Both" },
+  { slug: "topping-fim-mainlining", suits: (s) => s.height === "Tall" },
+  { slug: "low-stress-training-lst", suits: (s) => s.height !== "Tall" },
+  { slug: "pests-mites-gnats-mildew", suits: (s) => s.difficulty === "Advanced" },
+  { slug: "temp-humidity-vpd", suits: (s) => s.difficulty === "Intermediate" },
+  { slug: "first-grow-equipment", suits: (s) => s.difficulty === "Beginner" },
+];
+
+/**
+ * Grow guides most relevant to a given strain, ordered along the grow arc
+ * (setup → environment → training → risk → harvest → cure). No per-strain
+ * curation — it scales as the guide library grows. The caller resolves these
+ * slugs to real guides and drops any that don't exist.
  */
 export function relatedGuideSlugs(s: Strain): string[] {
-  // One pick per dimension so every strain gets a spread that actually covers
-  // its grow: setup → its climate → its structure → its risk → harvest → cure.
-  const picks: string[] = ["setting-up-your-grow-space"];
+  const topical = GUIDE_RULES.filter((r) => r.suits(s)).map((r) => r.slug);
+  return [
+    "setting-up-your-grow-space",
+    ...topical,
+    "when-to-harvest-trichomes",
+    "drying-and-curing",
+  ];
+}
 
-  // 1) environment for its climate
-  if (s.climate === "Outdoor") picks.push("outdoor-grow-season");
-  else if (s.climate === "Indoor") picks.push("lighting-basics-ppfd");
-  else picks.push("indoor-vs-outdoor");
-
-  // 2) canopy management for its structure
-  if (s.height === "Tall") picks.push("topping-fim-mainlining");
-  else picks.push("low-stress-training-lst");
-
-  // 3) the biggest risk for its difficulty
-  if (s.difficulty === "Advanced") picks.push("pests-mites-gnats-mildew");
-  else if (s.difficulty === "Intermediate") picks.push("temp-humidity-vpd");
-  else picks.push("first-grow-equipment");
-
-  // harvest + cure always finish the arc
-  picks.push("when-to-harvest-trichomes", "drying-and-curing");
-
-  return [...new Set(picks)];
+/**
+ * Reverse of {@link relatedGuideSlugs}: the strains a given guide is most
+ * relevant to. Returns [] for guides with no topical rule (e.g. germination
+ * or edibles guides, which aren't strain-selection topics).
+ */
+export function strainsForGuide(guideSlug: string): Strain[] {
+  const rule = GUIDE_RULES.find((r) => r.slug === guideSlug);
+  if (!rule) return [];
+  return STRAINS.filter((s) => rule.suits(s));
 }

@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { LightCycle } from "@/components/light-cycle";
 import { getAllGuides, getGuide, teaserOf } from "@/lib/guides";
+import { strainsForGuide } from "@/lib/strains";
 import { getStage } from "@/lib/stages";
 import { getSessionUser } from "@/lib/session";
 import { listBookmarks } from "@/lib/bookmarks";
@@ -41,6 +42,11 @@ export default async function GuidePage({
   const body = locked ? teaserOf(guide.content) : guide.content;
   const stage = getStage(guide.stage);
   const saved = user ? (await listBookmarks()).includes(guide.slug) : false;
+
+  // Reverse cross-link: strains this guide is most relevant to (may be empty).
+  const suitedStrains = strainsForGuide(guide.slug);
+  const shownStrains = suitedStrains.slice(0, 8);
+  const moreStrains = suitedStrains.length - shownStrains.length;
 
   return (
     <>
@@ -127,6 +133,39 @@ export default async function GuidePage({
               </div>
             </div>
           </div>
+        ) : null}
+
+        {shownStrains.length > 0 ? (
+          <section className="mt-12 border-t border-panel-edge pt-8">
+            <h2 className="font-mono text-[11px] uppercase tracking-[0.2em] text-leaf">
+              Strains this applies to
+            </h2>
+            <p className="mt-2 text-sm text-frost-dim">
+              Cultivars in our database whose grow calls for this guide.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {shownStrains.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/strains/${s.slug}`}
+                  className="rounded-full border border-panel-edge bg-panel px-3.5 py-1.5 text-sm text-frost transition hover:border-leaf/60 hover:text-frost"
+                >
+                  {s.name}
+                  <span className="ml-2 font-mono text-[10px] uppercase tracking-[0.1em] text-frost-dim">
+                    {s.type}
+                  </span>
+                </Link>
+              ))}
+              {moreStrains > 0 ? (
+                <Link
+                  href="/strains"
+                  className="rounded-full px-3.5 py-1.5 text-sm text-leaf underline underline-offset-2 transition hover:text-frost"
+                >
+                  +{moreStrains} more
+                </Link>
+              ) : null}
+            </div>
+          </section>
         ) : null}
 
         <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
