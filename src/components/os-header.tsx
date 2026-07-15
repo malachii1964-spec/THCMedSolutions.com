@@ -10,6 +10,7 @@ const NAV = [
   { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
   { label: "Gear Index", href: "/gear" },
+  { label: "Local NY", href: "/local-ny" },
   { label: "Medical Card", href: "/medical-card" },
 ];
 

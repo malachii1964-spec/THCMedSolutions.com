@@ -71,7 +71,7 @@ const MODULES = [
     name: "Local NY Hub",
     body: "Buffalo to Niagara: laws, licensed dispensaries, and community resources.",
     cta: "View local resources",
-    href: "/legal",
+    href: "/local-ny",
     visual: NYMap,
   },
 ];
@@ -406,8 +406,11 @@ export default function HomePage() {
               <Link href="/join" className="transition hover:text-frost">
                 Join free
               </Link>
+              <Link href="/local-ny" className="transition hover:text-frost">
+                Local NY Hub
+              </Link>
               <Link href="/legal" className="transition hover:text-frost">
-                Legal & Local NY
+                Legal
               </Link>
             </nav>
           </div>
