@@ -5,6 +5,9 @@ import {
   getStrain,
   relatedGuideSlugs,
   strainsForGuide,
+  sortStrains,
+  thcCeiling,
+  flowerWeeksMin,
   type Terp,
 } from "./strains";
 import { getAllGuides } from "./guides";
@@ -107,5 +110,41 @@ describe("guide → strain reverse links", () => {
         ).toBe(forward);
       }
     }
+  });
+});
+
+describe("strain sorting", () => {
+  it("parses THC ceiling and flower minimum from ranges", () => {
+    const gsc = getStrain("do-si-dos")!; // "25–30%", "9–10 wks"
+    expect(thcCeiling(gsc)).toBe(30);
+    expect(flowerWeeksMin(gsc)).toBe(9);
+    const afg = STRAINS.find((s) => s.thc === "<1%") ?? null;
+    if (afg) expect(thcCeiling(afg)).toBe(1);
+  });
+
+  it("sorts by THC descending, flower ascending, and name", () => {
+    const byThc = sortStrains(STRAINS, "thc-desc");
+    for (let i = 1; i < byThc.length; i++) {
+      expect(thcCeiling(byThc[i - 1])).toBeGreaterThanOrEqual(thcCeiling(byThc[i]));
+    }
+    const byFlower = sortStrains(STRAINS, "flower-asc");
+    for (let i = 1; i < byFlower.length; i++) {
+      expect(flowerWeeksMin(byFlower[i - 1])).toBeLessThanOrEqual(
+        flowerWeeksMin(byFlower[i]),
+      );
+    }
+    const byName = sortStrains(STRAINS, "name-asc");
+    expect(byName[0].name.localeCompare(byName[byName.length - 1].name)).toBeLessThan(
+      0,
+    );
+  });
+
+  it("does not mutate the source array and preserves featured order", () => {
+    const before = STRAINS.map((s) => s.slug);
+    const featured = sortStrains(STRAINS, "featured");
+    expect(featured).not.toBe(STRAINS);
+    expect(featured.map((s) => s.slug)).toEqual(before);
+    sortStrains(STRAINS, "thc-desc");
+    expect(STRAINS.map((s) => s.slug)).toEqual(before);
   });
 });

@@ -944,6 +944,40 @@ export function getStrain(slug: string): Strain | undefined {
   return STRAINS.find((s) => s.slug === slug);
 }
 
+export type StrainSort = "featured" | "thc-desc" | "flower-asc" | "name-asc";
+
+/** Upper bound of a THC range like "16–22%" or "<1%" → number for sorting. */
+export function thcCeiling(s: Strain): number {
+  const nums = s.thc.match(/\d+/g)?.map(Number);
+  return nums && nums.length ? Math.max(...nums) : 0;
+}
+
+/** Fastest week of a flower range like "8–9 wks" or "10–11 wks" → number. */
+export function flowerWeeksMin(s: Strain): number {
+  const nums = s.flowerWeeks.match(/\d+/g)?.map(Number);
+  return nums && nums.length ? Math.min(...nums) : Number.POSITIVE_INFINITY;
+}
+
+/** Non-mutating sort. "featured" preserves the curated array order. */
+export function sortStrains(list: Strain[], sort: StrainSort): Strain[] {
+  const out = [...list];
+  switch (sort) {
+    case "thc-desc":
+      return out.sort(
+        (a, b) => thcCeiling(b) - thcCeiling(a) || a.name.localeCompare(b.name),
+      );
+    case "flower-asc":
+      return out.sort(
+        (a, b) =>
+          flowerWeeksMin(a) - flowerWeeksMin(b) || a.name.localeCompare(b.name),
+      );
+    case "name-asc":
+      return out.sort((a, b) => a.name.localeCompare(b.name));
+    default:
+      return out;
+  }
+}
+
 /**
  * The single source of truth for strain↔guide relevance. Each rule answers
  * one question — "does this guide suit this strain?" — and is used in BOTH

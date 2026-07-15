@@ -2,7 +2,14 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { STRAINS, type Effect } from "@/lib/strains";
+import {
+  STRAINS,
+  TERPENES,
+  sortStrains,
+  type Effect,
+  type StrainSort,
+  type Terp,
+} from "@/lib/strains";
 
 const TYPES = ["All", "Indica", "Sativa", "Hybrid"] as const;
 const EFFECTS: Effect[] = [
@@ -17,6 +24,13 @@ const EFFECTS: Effect[] = [
   "hungry",
 ];
 const DIFFS = ["All", "Beginner", "Intermediate", "Advanced"] as const;
+const TERPS = Object.keys(TERPENES) as Terp[];
+const SORTS: { id: StrainSort; label: string }[] = [
+  { id: "featured", label: "Featured" },
+  { id: "thc-desc", label: "THC ↓" },
+  { id: "flower-asc", label: "Fastest" },
+  { id: "name-asc", label: "A–Z" },
+];
 
 const TYPE_COLOR: Record<string, string> = {
   Indica: "var(--violet)",
@@ -28,27 +42,29 @@ export function StrainIndex() {
   const [type, setType] = useState<(typeof TYPES)[number]>("All");
   const [effect, setEffect] = useState<Effect | "any">("any");
   const [diff, setDiff] = useState<(typeof DIFFS)[number]>("All");
+  const [terp, setTerp] = useState<Terp | "any">("any");
+  const [sort, setSort] = useState<StrainSort>("featured");
   const [q, setQ] = useState("");
 
   const query = q.trim().toLowerCase();
-  const results = useMemo(
-    () =>
-      STRAINS.filter((s) => {
-        if (type !== "All" && s.type !== type) return false;
-        if (diff !== "All" && s.difficulty !== diff) return false;
-        if (effect !== "any" && !s.effects.includes(effect)) return false;
-        if (
-          query &&
-          !s.name.toLowerCase().includes(query) &&
-          !s.flavors.join(" ").toLowerCase().includes(query) &&
-          !s.lineage.toLowerCase().includes(query) &&
-          !s.summary.toLowerCase().includes(query)
-        )
-          return false;
-        return true;
-      }),
-    [type, effect, diff, query],
-  );
+  const results = useMemo(() => {
+    const filtered = STRAINS.filter((s) => {
+      if (type !== "All" && s.type !== type) return false;
+      if (diff !== "All" && s.difficulty !== diff) return false;
+      if (effect !== "any" && !s.effects.includes(effect)) return false;
+      if (terp !== "any" && !s.terpenes.includes(terp)) return false;
+      if (
+        query &&
+        !s.name.toLowerCase().includes(query) &&
+        !s.flavors.join(" ").toLowerCase().includes(query) &&
+        !s.lineage.toLowerCase().includes(query) &&
+        !s.summary.toLowerCase().includes(query)
+      )
+        return false;
+      return true;
+    });
+    return sortStrains(filtered, sort);
+  }, [type, effect, diff, terp, sort, query]);
 
   const chip = (active: boolean) =>
     `rounded-full px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] transition ${
@@ -91,6 +107,33 @@ export function StrainIndex() {
             </button>
           ))}
         </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-frost-dim">
+            Terpene
+          </span>
+          <button onClick={() => setTerp("any")} className={chip(terp === "any")}>
+            Any
+          </button>
+          {TERPS.map((t) => (
+            <button key={t} onClick={() => setTerp(t)} className={chip(terp === t)}>
+              {TERPENES[t].name}
+            </button>
+          ))}
+        </div>
+        <div className="flex flex-wrap items-center gap-2 border-t border-white/5 pt-3">
+          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-frost-dim">
+            Sort
+          </span>
+          {SORTS.map((so) => (
+            <button
+              key={so.id}
+              onClick={() => setSort(so.id)}
+              className={chip(sort === so.id)}
+            >
+              {so.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
@@ -114,6 +157,8 @@ export function StrainIndex() {
               setType("All");
               setEffect("any");
               setDiff("All");
+              setTerp("any");
+              setSort("featured");
               setQ("");
             }}
             className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-cyan underline-offset-4 hover:underline"
