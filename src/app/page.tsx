@@ -185,7 +185,7 @@ export default function HomePage() {
             <div className="mt-6 grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.05fr_1.2fr_0.85fr] lg:gap-4">
               {/* copy — left */}
               <div className="rise order-2 text-center lg:order-1 lg:text-left">
-                <h1 className="font-display text-[2.5rem] font-semibold leading-[1.04] tracking-tight sm:text-5xl xl:text-[3.6rem]">
+                <h1 className="display-xl">
                   Enter the Cannabis
                   <br />
                   <span className="iris-text">Knowledge Sanctuary.</span>
@@ -380,9 +380,12 @@ export default function HomePage() {
                 A Malachi Syndicate platform · Buffalo → Niagara
               </p>
             </div>
-            <nav className="flex gap-6 text-sm text-frost-dim">
+            <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-frost-dim">
               <Link href="/guides" className="transition hover:text-frost">
                 Knowledge OS
+              </Link>
+              <Link href="/faq" className="transition hover:text-frost">
+                FAQ
               </Link>
               <Link href="/join" className="transition hover:text-frost">
                 Join free

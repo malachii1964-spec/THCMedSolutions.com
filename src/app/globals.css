@@ -26,6 +26,26 @@
   --magenta: #e24de0;
   --lime: #8cf06b;
   --gold: #e8c36b;
+
+  /* ── Graphic Token Bible (P1 measurable premium) ──
+     From the owner's spec: fluid luxury headline scale, compressed
+     line-height, tight display tracking, expo-out "expensive" easing,
+     and a consistent panel radius. These make the site read as crafted,
+     not templated — every big heading and panel derives from them. */
+  --display-clamp: clamp(2.6rem, 6vw, 5.25rem);
+  --display-leading: 0.95;
+  --display-tracking: -0.025em;
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-panel: 24px;
+}
+
+/* Luxury display heading — compressed, tight, characterful */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: var(--display-clamp);
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
+  font-weight: 600;
 }
 
 @theme inline {
@@ -226,18 +246,20 @@ body {
     0 8px 30px color-mix(in srgb, var(--violet) 45%, transparent);
 }
 
-/* Frosted glass panels + pill nav */
+/* Frosted glass panels + pill nav.
+   saturate(180%) per the Token Bible — the saturation, not the blur, is
+   what gives glass its "alive," luminous, high-end quality. */
 .glass {
-  background: color-mix(in srgb, var(--void-2) 62%, transparent);
+  background: color-mix(in srgb, var(--void-2) 60%, transparent);
   border: 1px solid color-mix(in srgb, var(--frost) 12%, transparent);
-  backdrop-filter: blur(14px) saturate(1.2);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
 }
 .glass-hi {
   background: color-mix(in srgb, var(--frost) 7%, transparent);
   border: 1px solid color-mix(in srgb, var(--frost) 16%, transparent);
-  backdrop-filter: blur(18px) saturate(1.3);
-  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
 }
 
 /* Iridescent hairline border via mask (no layout cost) */
