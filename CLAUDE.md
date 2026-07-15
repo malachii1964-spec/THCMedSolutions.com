@@ -99,6 +99,18 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- HERO (2026-07-15): homepage rebuilt around the owner's REAL diamond-leaf
+  logo — extracted from the brand PDF via pymupdf, optimized 2.3MB→136KB
+  webp, cropped the emblem (leaf-in-ring, blends on dark) for the hero
+  centerpiece + favicon + OG. Hero = emblem rising from water + drifting
+  smoke (.smoke CSS) + chrome-gradient wordmark (.chrome-text) + "Premium
+  Quality · Rooted in Excellence" + grower-first 3-button front door
+  (Start My First Grow /start · Fix My Plant /plant-doctor · Find Better
+  Genetics /strains). HUD moved below fold; dropped Niagara/CrystalPlant +
+  trust chips. Verified desktop+mobile via Playwright. Assets in /public:
+  lake-erie-hero/emblem/og .webp + icon-32/180.png. TODO(owner): the raw
+  full banner (with baked wordmark) is at scratchpad if a version WITH text
+  is ever wanted; can also swap header SVG emblem for the real leaf later.
 - REBRAND (2026-07-15): THCMed Solutions → **Lake Erie Cannabis** (owner's
   owned brand, lakeeriecannabis.com). Grower-first premium positioning;
   medical is a support layer only. All wordmarks/footers/metadata updated,
