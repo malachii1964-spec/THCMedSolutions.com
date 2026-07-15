@@ -99,6 +99,10 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- v7 (2026-07-15): strain index gets sort (Featured/THC↓/Fastest/A–Z, via
+  pure non-mutating sortStrains() + thcCeiling()/flowerWeeksMin() range
+  parsers) + a terpene filter (all 7 profiled terpenes). 23 tests (added
+  range parsing, sort-order invariants, no-mutation). Gates green; pushed.
 - v6 (2026-07-15): closed the cross-linking loop — guide pages now show a
   "Strains this applies to" section (reverse of the strain→guide links).
   Refactored relevance into ONE source of truth (GUIDE_RULES in strains.ts)
