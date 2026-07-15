@@ -8,7 +8,7 @@ const NAV = [
   { label: "Knowledge OS", href: "/guides" },
   { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
-  { label: "Wellness", href: "/guides?stage=troubleshooting" },
+  { label: "Gear Index", href: "/gear" },
 ];
 
 function Emblem() {

@@ -294,3 +294,115 @@ export const SOIL_SCIENCE = [
     body: "Salts grow fast but demand pH/EC discipline and can mute subtle flavors. Living soil is slower to steer but self-regulating — and most flavor-chasers land there.",
   },
 ];
+
+/* ── Frosty-Soil Calculator rates ──
+   Per-gallon-of-mix rates for each style, derived from the recipes above
+   (SubCool expressed per gallon of the HOT bottom layer, which fills the
+   bottom third of the pot — an approximate home-scale conversion of the
+   classic batch). Volumes in % of pot volume; amendments in Tbsp/gal. */
+
+export type MixIngredient = {
+  name: string;
+  /** "pct" = percent of pot volume; "tbsp" = tablespoons per gallon */
+  unit: "pct" | "tbsp";
+  rate: number;
+  note?: string;
+};
+
+export type MixSpec = {
+  styleId: string;
+  /** portion of the pot this mix fills (1 = whole pot) */
+  fillFraction: number;
+  fillLabel: string;
+  ingredients: MixIngredient[];
+  extras?: string[];
+};
+
+export const MIX_SPECS: MixSpec[] = [
+  {
+    styleId: "canucks-living",
+    fillFraction: 1,
+    fillLabel: "whole pot",
+    ingredients: [
+      { name: "Promix HP (or similar peat base)", unit: "pct", rate: 75 },
+      { name: "Earthworm castings", unit: "pct", rate: 25 },
+      { name: "Gaia Green 4-4-4", unit: "tbsp", rate: 1.05 },
+      { name: "Gaia Green 2-8-4", unit: "tbsp", rate: 1.05 },
+    ],
+    extras: [
+      "Mykos: coat the root ball + planting hole at every transplant",
+      "Bloom top-dress (~day 30 of flower): 4 Tbsp castings + 1 Tbsp 2-8-4 per gallon of pot size",
+    ],
+  },
+  {
+    styleId: "canucks-coco",
+    fillFraction: 1,
+    fillLabel: "whole pot",
+    ingredients: [
+      { name: "Buffered coco coir", unit: "pct", rate: 70 },
+      { name: "Perlite", unit: "pct", rate: 30 },
+      { name: "Gaia Green 4-4-4", unit: "tbsp", rate: 1 },
+      { name: "Gaia Green 2-8-4", unit: "tbsp", rate: 1 },
+    ],
+    extras: [
+      "Mykos dusted where the seed/seedling sits",
+      "Optional light 2-8-4 top-dress in early flower (~0.5 Tbsp/gal)",
+    ],
+  },
+  {
+    styleId: "kushman-veganic",
+    fillFraction: 1,
+    fillLabel: "whole pot",
+    ingredients: [
+      { name: "Plant-compost potting soil (no manure)", unit: "pct", rate: 75 },
+      { name: "Perlite or pumice", unit: "pct", rate: 25 },
+      { name: "Alfalfa meal", unit: "tbsp", rate: 1.07 },
+      { name: "Kelp meal", unit: "tbsp", rate: 1.07 },
+      { name: "Neem or karanja meal", unit: "tbsp", rate: 1.07 },
+      { name: "Soft rock phosphate", unit: "tbsp", rate: 1.07 },
+      { name: "Basalt or azomite rock dust", unit: "tbsp", rate: 2.14 },
+      { name: "Gypsum", unit: "tbsp", rate: 0.53 },
+      { name: "Dolomite lime", unit: "tbsp", rate: 0.53 },
+    ],
+    extras: [
+      "Aerated compost teas every 1–2 weeks through the run",
+      "Kelp/alfalfa top-dress at the flip",
+    ],
+  },
+  {
+    styleId: "subcool-super",
+    fillFraction: 1 / 3,
+    fillLabel: "bottom ⅓ of the pot (hot layer) — fill the rest with plain base soil",
+    ingredients: [
+      { name: "Quality base soil", unit: "pct", rate: 85 },
+      { name: "Earthworm castings", unit: "pct", rate: 15 },
+      { name: "Bone meal", unit: "tbsp", rate: 1.5 },
+      { name: "Bat guano (bloom)", unit: "tbsp", rate: 1.5 },
+      { name: "Blood meal", unit: "tbsp", rate: 1.5 },
+      { name: "Rock phosphate", unit: "tbsp", rate: 1 },
+      { name: "Epsom salt", unit: "tbsp", rate: 0.17 },
+      { name: "Dolomite lime", unit: "tbsp", rate: 0.33 },
+      { name: "Azomite", unit: "tbsp", rate: 0.17 },
+    ],
+    extras: [
+      "Mix, moisten, and 'cook' covered for 30–60 days before use",
+      "Never plant directly into the hot layer — roots grow down into it",
+    ],
+  },
+  {
+    styleId: "dte-guano",
+    fillFraction: 1,
+    fillLabel: "whole pot",
+    ingredients: [
+      { name: "Quality organic base soil", unit: "pct", rate: 100 },
+      { name: "Bat guano (high N for veg)", unit: "tbsp", rate: 1.2 },
+      { name: "Crab meal 6-4.5-0", unit: "tbsp", rate: 1.2 },
+      { name: "Fish bone meal 6-18-0", unit: "tbsp", rate: 1.2 },
+      { name: "Kelp meal", unit: "tbsp", rate: 0.3 },
+    ],
+    extras: [
+      "Re-amend the same stack (bloom-leaning) as a top-dress at the flip",
+      "Wear a mask when handling guano dust",
+    ],
+  },
+];

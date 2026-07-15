@@ -9,6 +9,7 @@ import {
   MiniSprout,
   LotusFigure,
   SoilStrata,
+  GemCluster,
   NYMap,
 } from "@/components/os-visuals";
 import { getAllGuides } from "@/lib/guides";
@@ -48,6 +49,13 @@ const MODULES = [
     cta: "Build your soil",
     href: "/frostybuds-soil",
     visual: SoilStrata,
+  },
+  {
+    name: "The Gear Index",
+    body: "The staple products of home growing — indoor and outdoor, budget to premium, filterable to your setup.",
+    cta: "Shop the setup",
+    href: "/gear",
+    visual: GemCluster,
   },
   {
     name: "Local NY Hub",
@@ -248,7 +256,7 @@ export default function HomePage() {
         {/* ──────────────────── MODULE CARDS ──────────────────── */}
         <section className="relative border-t border-white/5">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {MODULES.map((m) => {
                 const V = m.visual;
                 return (
