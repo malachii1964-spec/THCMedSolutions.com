@@ -99,6 +99,10 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- MILESTONE (2026-07-15): Plant Doctor is LIVE in production — owner added
+  ANTHROPIC_API_KEY in Vercel (Production+Preview), redeployed, and confirmed
+  the members-only streaming chat answers. TODO(owner): rotate that key soon
+  (it was exposed in-session when a README was pasted).
 - v7 (2026-07-15): strain index gets sort (Featured/THC↓/Fastest/A–Z, via
   pure non-mutating sortStrains() + thcCeiling()/flowerWeeksMin() range
   parsers) + a terpene filter (all 7 profiled terpenes). 23 tests (added
