@@ -99,6 +99,21 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- REBRAND (2026-07-15): THCMed Solutions → **Lake Erie Cannabis** (owner's
+  owned brand, lakeeriecannabis.com). Grower-first premium positioning;
+  medical is a support layer only. All wordmarks/footers/metadata updated,
+  Malachi Syndicate dropped from public chrome, SEO title = "Grow Frosty
+  Buds the Easy Way", package renamed lake-erie-cannabis. Gates green (88
+  pages). TODO(owner): rename GitHub repo + Vercel project + point domain;
+  add the diamond-leaf logo PNG to /public for me to wire into header/OG/
+  favicon. Vision doc locked: grower-first Cannabis OS, GrowWeedEasy floor,
+  "Grow Like the Greats" under /grow-guides, Simple Mode First, tools + gear
+  affiliate (AC Infinity/Mars Hydro/VIVOSUN/Spider Farmer) as later rings.
+- MEDICAL (2026-07-15): Medical Card page live with real provider Dr. Troy
+  Sasse / Lakeside Medical Care (Angola NY, 716-549-4999) + patient intake
+  form → emails office via Resend (graceful offline: falls back to phone).
+  TODO(owner): provide Dr. Sasse's destination email + RESEND_API_KEY +
+  MEDICAL_INTAKE_TO in Vercel to activate sending.
 - MILESTONE (2026-07-15): Plant Doctor is LIVE in production — owner added
   ANTHROPIC_API_KEY in Vercel (Production+Preview), redeployed, and confirmed
   the members-only streaming chat answers. TODO(owner): rotate that key soon
