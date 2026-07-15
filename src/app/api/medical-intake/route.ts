@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     const { error } = await resend.emails.send({
       from:
         process.env.MEDICAL_INTAKE_FROM ??
-        "THCMed Solutions <onboarding@resend.dev>",
+        "Lake Erie Cannabis <onboarding@resend.dev>",
       to: process.env.MEDICAL_INTAKE_TO!,
       replyTo,
       subject,

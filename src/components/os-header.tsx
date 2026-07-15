@@ -42,10 +42,10 @@ function Emblem() {
       </svg>
       <span className="leading-tight">
         <span className="block font-display text-lg font-semibold tracking-tight text-frost">
-          THCMed<span className="iris-text">Solutions</span>
+          Lake Erie <span className="iris-text">Cannabis</span>
         </span>
         <span className="block font-mono text-[8px] uppercase tracking-[0.22em] text-frost-dim">
-          Cannabis knowledge · Wellness intelligence
+          Premium quality · Rooted in excellence
         </span>
       </span>
     </Link>

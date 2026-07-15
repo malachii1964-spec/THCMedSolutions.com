@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 export const metadata: Metadata = {
   title: "Legal Notice",
   description:
-    "Legal and medical disclaimer for THCMed Solutions educational content.",
+    "Legal and medical disclaimer for Lake Erie Cannabis educational content.",
 };
 
 export default function LegalPage() {
@@ -22,7 +22,7 @@ export default function LegalPage() {
         <div className="prose-guide mt-8">
           <h2>Educational purpose</h2>
           <p>
-            THCMed Solutions publishes educational content about cannabis
+            Lake Erie Cannabis publishes educational content about cannabis
             cultivation. Nothing on this site is an encouragement to break
             the law, and nothing here is legal advice or medical advice.
           </p>

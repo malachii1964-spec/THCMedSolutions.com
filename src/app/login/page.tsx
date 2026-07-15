@@ -9,7 +9,7 @@ import { getSessionUser } from "@/lib/session";
 
 export const metadata: Metadata = {
   title: "Log In",
-  description: "Log in to your THCMed Solutions account.",
+  description: "Log in to your Lake Erie Cannabis account.",
 };
 
 export default async function LoginPage() {

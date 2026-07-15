@@ -229,7 +229,7 @@ export default function LocalNYPage() {
             Built for education. Designed for wellness. Powered by intelligence.
           </p>
           <p className="mt-3 text-[11px] text-frost-dim">
-            © THCMed Solutions / Malachi Syndicate ·{" "}
+            © Lake Erie Cannabis ·{" "}
             <Link href="/legal" className="underline underline-offset-2">
               Legal notice
             </Link>

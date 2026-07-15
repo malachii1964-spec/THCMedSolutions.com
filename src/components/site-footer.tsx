@@ -9,14 +9,14 @@ export function SiteFooter() {
         <div className="mt-8 flex flex-col justify-between gap-6 sm:flex-row">
           <div>
             <p className="font-display text-lg font-semibold">
-              THCMed{" "}
+              Lake Erie{" "}
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-leaf">
-                Solutions
+                Cannabis
               </span>
             </p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-frost-dim">
-              The grower&apos;s almanac for medical cannabis cultivation.
-              Educational content only.
+              The grower&apos;s almanac for home cannabis cultivation — indoor
+              and outdoor. Educational content only.
             </p>
           </div>
           <nav className="flex flex-col gap-2 text-sm text-frost-dim">

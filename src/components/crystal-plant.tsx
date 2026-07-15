@@ -112,7 +112,7 @@ export function CrystalPlant({ className = "" }: { className?: string }) {
       viewBox="0 0 600 720"
       className={className}
       role="img"
-      aria-label="Crystalline cannabis plant glowing on a holographic dais — the THCMed Solutions emblem"
+      aria-label="Crystalline cannabis plant glowing on a holographic dais — the Lake Erie Cannabis emblem"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>

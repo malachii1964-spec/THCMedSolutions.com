@@ -381,16 +381,16 @@ export default function HomePage() {
             intelligence.
           </p>
           <p className="mt-3 text-center text-[12px] text-frost-dim">
-            THCMedSolutions.com is an educational platform and resource hub. We
+            Lake Erie Cannabis is an educational platform and resource hub. We
             do not sell cannabis or provide medical advice.
           </p>
           <div className="mt-10 flex flex-col items-center justify-between gap-6 border-t border-white/5 pt-8 sm:flex-row">
             <div>
               <p className="font-display text-lg font-semibold">
-                THCMed<span className="iris-text">Solutions</span>
+                Lake Erie <span className="iris-text">Cannabis</span>
               </p>
               <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-frost-dim">
-                A Malachi Syndicate platform · Buffalo → Niagara
+                Rooted in excellence · Buffalo → Niagara
               </p>
             </div>
             <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-frost-dim">
@@ -416,8 +416,8 @@ export default function HomePage() {
           </div>
           <p className="mt-8 text-center text-[10px] leading-relaxed text-frost-dim sm:text-left">
             Educational content only — not legal or medical advice. Cannabis
-            laws vary; know your local regulations. 21+ only. © THCMed
-            Solutions / Malachi Syndicate.
+            laws vary; know your local regulations. 21+ only. © Lake Erie
+            Cannabis.
           </p>
         </div>
       </footer>

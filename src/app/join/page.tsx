@@ -10,7 +10,7 @@ import { getSessionUser } from "@/lib/session";
 export const metadata: Metadata = {
   title: "Join Free",
   description:
-    "Create a free THCMed Solutions account and unlock the full grow-guide library.",
+    "Create a free Lake Erie Cannabis account and unlock the full grow-guide library.",
 };
 
 export default async function JoinPage() {

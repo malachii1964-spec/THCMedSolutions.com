@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ── THCMed Solutions — "grower's almanac under bloom light" ──
+/* ── Lake Erie Cannabis — "grower's almanac under bloom light" ──
    Palette is law (see design plan): canopy dark base, bloom-LED
    magenta/violet glow reserved for the signature, muted leaf for
    stage data, trichome amber for ripeness/member cues. */
@@ -15,7 +15,7 @@
   --frost: #f2eff7;
   --frost-dim: #a8a4b3;
 
-  /* ── Cyberdelic Bio-Tech layer (Malachi Syndicate) ──
+  /* ── Cyberdelic Bio-Tech layer (Lake Erie Cannabis) ──
      Deep void base + bioluminescent spectrum. Used by the landing hero
      and Knowledge-OS surfaces; the almanac palette above still drives the
      guide library. */
@@ -204,7 +204,7 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   CYBERDELIC BIO-TECH — Malachi Syndicate landing surfaces
+   CYBERDELIC BIO-TECH — Lake Erie Cannabis landing surfaces
    ══════════════════════════════════════════════════════════════════ */
 
 .os-scope {

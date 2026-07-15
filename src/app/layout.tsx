@@ -22,11 +22,11 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "THCMed Solutions — Grow Guides That Actually Work",
-    template: "%s · THCMed Solutions",
+    default: "Lake Erie Cannabis — Grow Frosty Buds the Easy Way",
+    template: "%s · Lake Erie Cannabis",
   },
   description:
-    "The grower's almanac for medical cannabis cultivation. Free, stage-by-stage guides from germination to cure — join free to unlock the full library.",
+    "Premium grower-first cannabis knowledge for indoor and outdoor home growers. Simple, stage-by-stage guides from seed to cure, plant diagnosis, strains, and trusted gear — rooted in Western New York.",
 };
 
 export default function RootLayout({

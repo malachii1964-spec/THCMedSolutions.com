@@ -30,10 +30,10 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="flex items-baseline gap-2">
           <span className="font-display text-xl font-semibold tracking-tight">
-            THCMed
+            Lake Erie
           </span>
           <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-leaf">
-            Solutions
+            Cannabis
           </span>
         </Link>
         <nav className="flex items-center gap-2 sm:gap-4">

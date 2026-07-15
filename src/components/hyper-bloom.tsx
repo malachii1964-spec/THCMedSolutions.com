@@ -76,7 +76,7 @@ export function HyperBloom({ className = "" }: { className?: string }) {
       viewBox="0 0 600 600"
       className={className}
       role="img"
-      aria-label="Crystalline cannabis hyperbloom — the Malachi Syndicate emblem"
+      aria-label="Crystalline cannabis hyperbloom — the Lake Erie Cannabis emblem"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>

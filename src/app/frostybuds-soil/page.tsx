@@ -105,7 +105,7 @@ export default function FrostyBudsSoilPage() {
           </p>
           <p className="mt-3 text-[11px] leading-relaxed text-frost-dim">
             Educational content only — not legal or medical advice. 21+ only. ©
-            THCMed Solutions / Malachi Syndicate.{" "}
+            Lake Erie Cannabis.{" "}
             <Link href="/legal" className="underline underline-offset-2">
               Legal notice
             </Link>

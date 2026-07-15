@@ -166,7 +166,7 @@ export default function StartPage() {
           </p>
           <p className="mt-3 text-[11px] text-frost-dim">
             Educational content only. 21+ only. ©
-            THCMed Solutions / Malachi Syndicate ·{" "}
+            Lake Erie Cannabis ·{" "}
             <Link href="/legal" className="underline underline-offset-2">
               Legal notice
             </Link>

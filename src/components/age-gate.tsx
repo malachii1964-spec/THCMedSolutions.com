@@ -57,7 +57,7 @@ export function AgeGate() {
           Are you 21 or older?
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-frost-dim">
-          THCMed Solutions publishes cannabis cultivation education. You must
+          Lake Erie Cannabis publishes cannabis cultivation education. You must
           be of legal age in your jurisdiction to enter.
         </p>
         {refused ? (

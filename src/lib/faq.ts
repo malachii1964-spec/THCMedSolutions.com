@@ -58,11 +58,11 @@ export const FAQ: FaqGroup[] = [
       },
       {
         q: "Do you sell seeds, products, or cannabis?",
-        a: "No. THCMedSolutions is an education and resource platform. The Gear Index points to the equipment growers rely on, but we don't sell cannabis, seeds, or products, and nothing here is a solicitation to buy them.",
+        a: "No. Lake Erie Cannabis is an education and resource platform. The Gear Index points to the equipment growers rely on, but we don't sell cannabis, seeds, or products, and nothing here is a solicitation to buy them.",
       },
       {
         q: "Who's behind this?",
-        a: "It's a Malachi Syndicate platform, built for Western New York's growing community — Buffalo down to Niagara — and anyone who wants straight, source-grounded cultivation knowledge without the forum noise.",
+        a: "Lake Erie Cannabis is built for Western New York's growing community — Buffalo down to Niagara — and anyone who wants straight, source-grounded cultivation knowledge without the forum noise.",
       },
     ],
   },

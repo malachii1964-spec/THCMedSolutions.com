@@ -35,7 +35,7 @@ export function buildIntakeEmail(data: IntakeInput) {
     "Message:",
     data.message ? data.message : "(none)",
     "",
-    "— Sent via THCMed Solutions. Reply directly to reach the patient.",
+    "— Sent via Lake Erie Cannabis. Reply directly to reach the patient.",
   ];
   const text = lines.join("\n");
   const esc = (s: string) =>
@@ -43,7 +43,7 @@ export function buildIntakeEmail(data: IntakeInput) {
   const html = `
     <div style="font-family:system-ui,sans-serif;line-height:1.6;color:#111">
       <h2 style="margin:0 0 12px">New certification request</h2>
-      <p style="margin:0 0 16px">From the ${esc(MEDICAL_PROVIDER.practice)} referral page on THCMed Solutions.</p>
+      <p style="margin:0 0 16px">From the ${esc(MEDICAL_PROVIDER.practice)} referral page on Lake Erie Cannabis.</p>
       <table style="border-collapse:collapse">
         <tr><td style="padding:2px 12px 2px 0"><strong>Name</strong></td><td>${esc(data.name)}</td></tr>
         <tr><td style="padding:2px 12px 2px 0"><strong>Email</strong></td><td><a href="mailto:${esc(data.email)}">${esc(data.email)}</a></td></tr>
@@ -51,7 +51,7 @@ export function buildIntakeEmail(data: IntakeInput) {
         <tr><td style="padding:2px 12px 2px 0"><strong>Prefers</strong></td><td>${esc(data.preferredContact)}</td></tr>
       </table>
       ${data.message ? `<p style="margin:16px 0 4px"><strong>Message</strong></p><p style="margin:0;white-space:pre-wrap">${esc(data.message)}</p>` : ""}
-      <p style="margin:20px 0 0;color:#666;font-size:13px">Sent via THCMed Solutions. Reply directly to reach the patient.</p>
+      <p style="margin:20px 0 0;color:#666;font-size:13px">Sent via Lake Erie Cannabis. Reply directly to reach the patient.</p>
     </div>`;
   return { subject, text, html, replyTo: data.email };
 }

@@ -84,7 +84,7 @@ export default function GearPage() {
           </p>
           <p className="mt-3 text-[11px] leading-relaxed text-frost-dim">
             Educational reference only — not sponsored, not medical or legal
-            advice. 21+ only. © THCMed Solutions / Malachi Syndicate ·{" "}
+            advice. 21+ only. © Lake Erie Cannabis ·{" "}
             <Link href="/legal" className="underline underline-offset-2">
               Legal notice
             </Link>
