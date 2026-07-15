@@ -464,3 +464,43 @@ body {
     transition: none;
   }
 }
+
+/* ── Lake Erie hero: chrome wordmark + drifting smoke ─────────────────── */
+.chrome-text {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #d7e0ef 26%,
+    #93a8c8 48%,
+    #f2f6ff 66%,
+    #b4c3da 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 1px 34px rgba(120, 160, 255, 0.22);
+}
+
+.smoke {
+  background:
+    radial-gradient(42% 32% at 18% 62%, rgba(64, 112, 200, 0.12), transparent 70%),
+    radial-gradient(46% 36% at 82% 40%, rgba(96, 132, 224, 0.1), transparent 72%),
+    radial-gradient(38% 30% at 55% 78%, rgba(40, 80, 160, 0.1), transparent 74%);
+  filter: blur(26px);
+  opacity: 0.85;
+}
+@keyframes smokeDrift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(3%, -2.5%, 0) scale(1.09); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.smoke-a { animation: smokeDrift 28s ease-in-out infinite; }
+.smoke-b {
+  animation: smokeDrift 38s ease-in-out infinite reverse;
+  opacity: 0.5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .smoke-a,
+  .smoke-b { animation: none; }
+}

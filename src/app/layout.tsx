@@ -27,6 +27,22 @@ export const metadata: Metadata = {
   },
   description:
     "Premium grower-first cannabis knowledge for indoor and outdoor home growers. Simple, stage-by-stage guides from seed to cure, plant diagnosis, strains, and trusted gear — rooted in Western New York.",
+  icons: {
+    icon: "/icon-32.png",
+    apple: "/icon-180.png",
+  },
+  openGraph: {
+    title: "Lake Erie Cannabis — Grow Frosty Buds the Easy Way",
+    description:
+      "Premium grower-first cannabis knowledge for indoor and outdoor home growers — rooted in Western New York.",
+    type: "website",
+    images: [{ url: "/og-image.webp", width: 1200, height: 675 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lake Erie Cannabis — Grow Frosty Buds the Easy Way",
+    images: ["/og-image.webp"],
+  },
 };
 
 export default function RootLayout({

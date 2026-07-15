@@ -1,7 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { OsHeader } from "@/components/os-header";
-import { CrystalPlant } from "@/components/crystal-plant";
-import { NiagaraScene } from "@/components/niagara-scene";
 import { Atmosphere } from "@/components/atmosphere";
 import { Reveal } from "@/components/reveal";
 import { GuideCard } from "@/components/guide-card";
@@ -16,13 +15,6 @@ import {
   NYMap,
 } from "@/components/os-visuals";
 import { getAllGuides } from "@/lib/guides";
-
-const TRUST_CHIPS = [
-  "Science-informed education",
-  "Privacy respected",
-  "Local NY resource hub",
-  "Evidence-aware guidance",
-];
 
 const MODULES = [
   {
@@ -142,20 +134,21 @@ export default function HomePage() {
       <main>
         {/* ─────────────────────────── HERO ─────────────────────────── */}
         <section className="grain relative overflow-hidden">
-          {/* Niagara Falls at night — full-bleed backdrop */}
-          <NiagaraScene className="pointer-events-none absolute inset-0 h-full w-full opacity-90" />
-          {/* Phase-2: volumetric light beams + drifting spores */}
-          <div className="god-rays pointer-events-none absolute inset-x-0 top-0 h-[42rem]" aria-hidden />
-          <Atmosphere className="absolute inset-0 h-full w-full" />
-          {/* legibility scrims: darken left (for copy) and top (for nav) */}
+          {/* Lake Erie — deep water base + blue glow */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "linear-gradient(90deg, rgba(5,7,12,0.92) 0%, rgba(5,7,12,0.55) 42%, rgba(5,7,12,0.15) 70%, rgba(5,7,12,0.55) 100%)",
+                "radial-gradient(120% 85% at 50% 26%, rgba(24,52,104,0.42) 0%, rgba(5,7,12,0) 56%), linear-gradient(180deg, #05070c 0%, #060b16 52%, #04060b 100%)",
             }}
           />
+          {/* drifting smoke */}
+          <div className="smoke smoke-a pointer-events-none absolute inset-0" aria-hidden />
+          <div className="smoke smoke-b pointer-events-none absolute inset-0" aria-hidden />
+          {/* drifting spores */}
+          <Atmosphere className="absolute inset-0 h-full w-full" />
+          {/* top scrim for nav legibility */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-0 top-0 h-40"
@@ -164,97 +157,87 @@ export default function HomePage() {
                 "linear-gradient(180deg, rgba(5,7,12,0.85), transparent)",
             }}
           />
-          <div
-            aria-hidden
-            className="aurora pointer-events-none absolute left-1/2 top-24 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full blur-3xl"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, var(--violet) 0%, var(--magenta) 42%, transparent 68%)",
-              opacity: 0.32,
-            }}
-          />
-          <div
-            aria-hidden
-            className="aurora pointer-events-none absolute right-[-12%] top-40 h-[30rem] w-[30rem] rounded-full blur-3xl"
-            style={{
-              background:
-                "radial-gradient(circle at center, var(--lime) 0%, transparent 62%)",
-              opacity: 0.22,
-              animationDelay: "4s",
-            }}
-          />
 
-          <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-24 sm:px-6 lg:pt-28">
-            {/* eyebrow badge + weather row */}
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-frost-dim">
-                <i className="h-1.5 w-1.5 rounded-full bg-lime shadow-[0_0_8px_var(--lime)]" />
-                Western New York&apos;s cannabis knowledge platform
-              </p>
-              <WeatherChip className="hidden sm:flex" />
+          <div className="relative mx-auto max-w-4xl px-4 pb-16 pt-24 text-center sm:px-6 lg:pt-28">
+            {/* emblem + water reflection */}
+            <div className="rise relative mx-auto w-full max-w-[30rem]">
+              <Image
+                src="/lake-erie-emblem.webp"
+                alt="Lake Erie Cannabis — a diamond cannabis leaf in a silver ring rising from the water"
+                width={785}
+                height={640}
+                priority
+                sizes="(max-width: 640px) 88vw, 30rem"
+                className="mx-auto h-auto w-full drop-shadow-[0_0_90px_rgba(70,130,230,0.4)]"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none mx-auto -mt-3 w-full max-w-[30rem] blur-[2px]"
+                style={{
+                  transform: "scaleY(-1)",
+                  opacity: 0.22,
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black, transparent 52%)",
+                  maskImage: "linear-gradient(to bottom, black, transparent 52%)",
+                }}
+              >
+                <Image
+                  src="/lake-erie-emblem.webp"
+                  alt=""
+                  width={785}
+                  height={640}
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
 
-            {/* 3-zone hero */}
-            <div className="mt-6 grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.05fr_1.2fr_0.85fr] lg:gap-4">
-              {/* copy — left */}
-              <div className="rise order-2 text-center lg:order-1 lg:text-left">
-                <h1 className="display-xl">
-                  Enter the Cannabis
-                  <br />
-                  <span className="iris-text">Knowledge Sanctuary.</span>
-                </h1>
-                <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-frost-dim sm:text-lg lg:mx-0">
-                  Grow intelligence, wellness guidance, and source-backed
-                  education — one living, intelligent platform built for
-                  Buffalo, Niagara, and all of Western New York.
-                </p>
-                <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
-                  <Link
-                    href="/join"
-                    className="btn-iris w-full rounded-full px-7 py-3.5 text-center font-mono text-[12px] font-semibold uppercase tracking-[0.14em] transition hover:brightness-110 sm:w-auto"
-                  >
-                    Enter the Sanctuary →
-                  </Link>
-                  <Link
-                    href="/start"
-                    className="glass-hi w-full rounded-full px-7 py-3.5 text-center font-mono text-[12px] uppercase tracking-[0.14em] text-frost transition hover:brightness-125 sm:w-auto"
-                  >
-                    Start your first grow
-                  </Link>
-                </div>
-                {/* trust chips */}
-                <ul className="mt-7 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  {TRUST_CHIPS.map((c) => (
-                    <li
-                      key={c}
-                      className="glass flex items-center gap-2 rounded-xl px-3.5 py-2.5 text-left font-mono text-[10px] uppercase tracking-[0.12em] text-frost-dim"
-                    >
-                      <svg viewBox="0 0 12 12" className="h-3 w-3 shrink-0" aria-hidden>
-                        <path
-                          d="M2 6.5 L5 9 L10 3"
-                          fill="none"
-                          stroke="var(--lime)"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                      {c}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* chrome wordmark + tagline */}
+            <h1 className="chrome-text rise mt-1 font-display text-[2.7rem] font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+              Lake Erie Cannabis
+            </h1>
+            <p className="rise mt-3 font-mono text-[10px] uppercase tracking-[0.38em] text-[#9fc0ff] sm:text-[11px]">
+              Premium Quality · Rooted in Excellence
+            </p>
 
-              {/* crystal plant — center */}
-              <div className="rise order-1 mx-auto w-full max-w-[26rem] lg:order-2 lg:max-w-none">
-                <CrystalPlant className="h-auto w-full drop-shadow-[0_0_70px_rgba(53,240,208,0.25)]" />
-              </div>
+            {/* grower-first hook */}
+            <p className="rise mx-auto mt-8 max-w-xl text-base leading-relaxed text-frost-dim sm:text-lg">
+              Grow frosty, high-quality buds the easy way — indoor or outdoor.
+              Simple, step-by-step cannabis growing for real people, backed by an
+              AI plant doctor and rooted in Western New York.
+            </p>
 
-              {/* HUD — right */}
-              <div className="rise order-3 mx-auto flex w-full max-w-sm flex-col gap-4 lg:max-w-none">
-                <WeatherChip className="flex sm:hidden" />
-                <SystemStatus doctorOnline={doctorOnline} />
-                <PlantDoctorCard online={doctorOnline} />
-              </div>
+            {/* three-button front door */}
+            <div className="rise mx-auto mt-8 flex max-w-2xl flex-col items-stretch justify-center gap-3 sm:flex-row">
+              <Link
+                href="/start"
+                className="btn-iris rounded-full px-6 py-3.5 text-center font-mono text-[12px] font-semibold uppercase tracking-[0.14em] transition hover:brightness-110"
+              >
+                Start My First Grow →
+              </Link>
+              <Link
+                href="/plant-doctor"
+                className="glass-hi rounded-full px-6 py-3.5 text-center font-mono text-[12px] uppercase tracking-[0.14em] text-frost transition hover:brightness-125"
+              >
+                Fix My Plant
+              </Link>
+              <Link
+                href="/strains"
+                className="glass-hi rounded-full px-6 py-3.5 text-center font-mono text-[12px] uppercase tracking-[0.14em] text-frost transition hover:brightness-125"
+              >
+                Find Better Genetics
+              </Link>
+            </div>
+
+            <div className="rise mt-7 flex justify-center">
+              <WeatherChip />
+            </div>
+          </div>
+
+          {/* live status HUD */}
+          <div className="relative mx-auto max-w-4xl px-4 pb-4 sm:px-6">
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
+              <SystemStatus doctorOnline={doctorOnline} />
+              <PlantDoctorCard online={doctorOnline} />
             </div>
           </div>
 
