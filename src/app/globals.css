@@ -424,3 +424,43 @@ body {
     to { transform: translateX(10px); opacity: 0.32; }
   }
 }
+
+/* Phase-2: volumetric light beams (god rays) — cheap CSS, no JS.
+   Cost-controlled per the Token Bible: a single blurred conic sweep. */
+.god-rays {
+  background: conic-gradient(
+    from 200deg at 50% -10%,
+    transparent 0deg,
+    color-mix(in srgb, var(--violet) 22%, transparent) 8deg,
+    transparent 16deg,
+    color-mix(in srgb, var(--cyan) 16%, transparent) 26deg,
+    transparent 34deg,
+    color-mix(in srgb, var(--magenta) 18%, transparent) 44deg,
+    transparent 52deg
+  );
+  filter: blur(12px);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 75%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 75%);
+}
+
+/* Scroll reveal — sections rise into view once. Reduced-motion shows
+   them immediately (handled in the component by skipping the observer). */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s var(--ease-premium),
+    transform 0.7s var(--ease-premium);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

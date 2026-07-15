@@ -2,6 +2,8 @@ import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
 import { CrystalPlant } from "@/components/crystal-plant";
 import { NiagaraScene } from "@/components/niagara-scene";
+import { Atmosphere } from "@/components/atmosphere";
+import { Reveal } from "@/components/reveal";
 import { GuideCard } from "@/components/guide-card";
 import { WeatherChip, SystemStatus, PlantDoctorCard } from "@/components/hud";
 import {
@@ -134,6 +136,9 @@ export default function HomePage() {
         <section className="grain relative overflow-hidden">
           {/* Niagara Falls at night — full-bleed backdrop */}
           <NiagaraScene className="pointer-events-none absolute inset-0 h-full w-full opacity-90" />
+          {/* Phase-2: volumetric light beams + drifting spores */}
+          <div className="god-rays pointer-events-none absolute inset-x-0 top-0 h-[42rem]" aria-hidden />
+          <Atmosphere className="absolute inset-0 h-full w-full" />
           {/* legibility scrims: darken left (for copy) and top (for nav) */}
           <div
             aria-hidden
@@ -272,7 +277,7 @@ export default function HomePage() {
         {/* ──────────────────── MODULE CARDS ──────────────────── */}
         <section className="relative border-t border-white/5">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {MODULES.map((m) => {
                 const V = m.visual;
                 return (
@@ -294,7 +299,7 @@ export default function HomePage() {
                   </Link>
                 );
               })}
-            </div>
+            </Reveal>
           </div>
         </section>
 
