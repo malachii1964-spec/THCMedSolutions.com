@@ -99,6 +99,13 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- v4 (2026-07-15): added /local-ny (Local NY Hub — plain-English WNY law
+  summary, licensed-dispensary safety flow, official OCM links; module +
+  footer + header now point here instead of /legal). New guide
+  pressing-rosin-at-home.mdx (solventless concentrate; 27 guides total).
+  Strain DB 14 → 22 (Runtz, Zkittlez, Purple Punch, Bruce Banner, Pineapple
+  Express, Bubba Kush, Chemdawg, AK-47). Gates green (tsc/lint/11 tests/
+  build); pushed to origin + site main → Vercel.
 - v3 (2026-07-12): rebranded Malachi Syndicate "Cannabis Knowledge OS" per
   owner's reference mockups. Landing: generative crystal-plant SVG on glowing
   dais + HUD panels (SystemStatus, PlantDoctorCard) + live Buffalo weather
