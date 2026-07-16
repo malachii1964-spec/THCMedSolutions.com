@@ -12,6 +12,7 @@ import {
   SoilStrata,
   GemCluster,
   GearGlyph,
+  LaurelGlyph,
   NYMap,
 } from "@/components/os-visuals";
 import { getAllGuides } from "@/lib/guides";
@@ -37,6 +38,13 @@ const MODULES = [
     cta: "Explore strains",
     href: "/strains",
     visual: GemCluster,
+  },
+  {
+    name: "Grow Like the Greats",
+    body: "How the legends grow — Canucks, Kushman, Rosenthal, Bugbee and more, turned into simple grow paths you can follow.",
+    cta: "Meet the greats",
+    href: "/grow-like-the-greats",
+    visual: LaurelGlyph,
   },
   {
     name: "Wellness Guidance",

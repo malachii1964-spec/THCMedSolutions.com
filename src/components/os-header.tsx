@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const NAV = [
   { label: "Start Here", href: "/start" },
   { label: "Knowledge OS", href: "/guides" },
+  { label: "Grow Like the Greats", href: "/grow-like-the-greats" },
   { label: "Strains", href: "/strains" },
   { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
@@ -17,29 +19,14 @@ const NAV = [
 function Emblem() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
-      <svg width="36" height="36" viewBox="0 0 40 40" aria-hidden>
-        <defs>
-          <linearGradient id="hdrHex" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--lime)" />
-            <stop offset="55%" stopColor="var(--cyan)" />
-            <stop offset="100%" stopColor="var(--violet)" />
-          </linearGradient>
-        </defs>
-        <polygon
-          points="20,3 35,11.5 35,28.5 20,37 5,28.5 5,11.5"
-          fill="none"
-          stroke="url(#hdrHex)"
-          strokeWidth="1.6"
-        />
-        {/* leaf glyph */}
-        <g fill="url(#hdrHex)">
-          <path d="M20 29 C19 22 19 16 20 9 C21 16 21 22 20 29 Z" />
-          <path d="M20 26 C15 24 12 20 11 15 C16 17 19 21 20 26 Z" />
-          <path d="M20 26 C25 24 28 20 29 15 C24 17 21 21 20 26 Z" />
-          <path d="M20 22 C16.5 19.5 15 16 15 12 C18.5 14.5 20 18 20 22 Z" opacity="0.8" />
-          <path d="M20 22 C23.5 19.5 25 16 25 12 C21.5 14.5 20 18 20 22 Z" opacity="0.8" />
-        </g>
-      </svg>
+      <Image
+        src="/icon-180.png"
+        alt="Lake Erie Cannabis"
+        width={38}
+        height={38}
+        priority
+        className="rounded-lg ring-1 ring-white/10"
+      />
       <span className="leading-tight">
         <span className="block font-display text-lg font-semibold tracking-tight text-frost">
           Lake Erie <span className="iris-text">Cannabis</span>

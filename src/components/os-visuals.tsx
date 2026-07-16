@@ -164,6 +164,46 @@ export function SoilStrata({ className = "" }: { className?: string }) {
   );
 }
 
+/** Laurel wreath around a star — for the Grow Like the Greats card. */
+export function LaurelGlyph({ className = "" }: { className?: string }) {
+  const leaf = (x: number, y: number, rot: number, side: number) => (
+    <path
+      d={`M0 0 C${6 * side} -3 ${9 * side} -9 ${9 * side} -15 C${3 * side} -12 ${1 * side} -6 0 0 Z`}
+      fill="url(#laurelG)"
+      opacity="0.85"
+      transform={`translate(${x} ${y}) rotate(${rot})`}
+    />
+  );
+  return (
+    <svg viewBox="0 0 120 100" className={className} aria-hidden>
+      <defs>
+        <linearGradient id="laurelG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="var(--gold)" />
+          <stop offset="100%" stopColor="var(--lime)" />
+        </linearGradient>
+        <radialGradient id="laurelStar" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fff" stopOpacity="0.95" />
+          <stop offset="60%" stopColor="var(--gold)" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      {/* laurel branches */}
+      <g>
+        {[0, 1, 2, 3].map((i) => leaf(40 - i * 2, 74 - i * 15, -30 - i * 8, 1))}
+        {[0, 1, 2, 3].map((i) => leaf(80 + i * 2, 74 - i * 15, 30 + i * 8, -1))}
+      </g>
+      {/* star */}
+      <path
+        d="M60 30 L64 46 L80 46 L67 56 L72 72 L60 62 L48 72 L53 56 L40 46 L56 46 Z"
+        fill="url(#laurelStar)"
+        stroke="var(--gold)"
+        strokeWidth="1"
+      />
+      <circle cx="60" cy="52" r="26" fill="none" stroke="var(--gold)" strokeWidth="0.6" opacity="0.4" />
+    </svg>
+  );
+}
+
 /** LED grow-light panel with light beams — for the Gear Index card. */
 export function GearGlyph({ className = "" }: { className?: string }) {
   return (

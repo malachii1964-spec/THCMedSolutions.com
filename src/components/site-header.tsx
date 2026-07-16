@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 /**
@@ -28,12 +29,21 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-panel-edge/60 bg-canopy/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-display text-xl font-semibold tracking-tight">
-            Lake Erie
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-leaf">
-            Cannabis
+        <Link href="/" className="flex items-center gap-2.5">
+          <Image
+            src="/icon-180.png"
+            alt="Lake Erie Cannabis"
+            width={34}
+            height={34}
+            className="rounded-lg ring-1 ring-white/10"
+          />
+          <span className="flex items-baseline gap-2">
+            <span className="font-display text-xl font-semibold tracking-tight">
+              Lake Erie
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-leaf">
+              Cannabis
+            </span>
           </span>
         </Link>
         <nav className="flex items-center gap-2 sm:gap-4">
