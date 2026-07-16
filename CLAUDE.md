@@ -99,6 +99,17 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- STRAINS+DIRECTORY (2026-07-16): Ring A complete + strain scale-up. Curated
+  grow-profiles 42 → 88 (modern exotics, classics, landraces, autos, CBD).
+  NEW two-tier Strain Directory (/strain-directory, strain-directory.ts):
+  ONE searchable page merging 88 curated (badged ★, link to full profile) +
+  ~146 well-known "lite" entries = 234 total; deliberately NOT per-strain
+  pages (avoids thin-content SEO penalty) — build cost +1 page. Also this
+  session: Strain Finder quiz (/strain-finder, strain-finder.ts scoring),
+  Grow Tools (/tools), Visual Plant Doctor (/diagnose), Build My Grow. 58
+  tests, build 145 pages. Owner decision logged: curated depth + lite
+  directory beats a 40k empty-shell dump. NEXT: keep deepening curated toward
+  ~150; Ring B (terpene hub, recipes, breeder/affiliate).
 - RING-A (2026-07-16): competitive gap analysis saved to
   docs/competitive-roadmap.md. Built Ring A #1+#2: Visual Plant Doctor
   (/diagnose — 16 symptoms, click→diagnosis, guide cross-links, funnels to AI
