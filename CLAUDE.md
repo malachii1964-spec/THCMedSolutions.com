@@ -99,6 +99,17 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- GREATS+EMBLEM (2026-07-16): real diamond-leaf emblem (icon-180.png) now in
+  os-header + site-header (replaced generated SVG). NEW /grow-like-the-greats
+  (spec's authority layer): growers.ts 6 starter profiles (Mr. Canucks Grow,
+  Basementganja, Ed Rosenthal, Kyle Kushman, BuildASoil, Dr. Bruce Bugbee) —
+  factual, non-affiliated, each with a "grow like them" path + guide
+  cross-links; index + 6 static profile pages, disclaimer on each; homepage
+  module (LaurelGlyph) + nav link. 32 tests. Gates green (94 pages). Pending
+  owner action: (a) medical form env vars in Vercel [RESEND_API_KEY,
+  MEDICAL_INTAKE_TO=Dr. Sasse's email, optional MEDICAL_INTAKE_FROM]; (b) DNS
+  for lakeeriecannabis.com → Vercel (A @ 76.76.21.21, CNAME www
+  cname.vercel-dns.com) + add domain in Vercel.
 - HERO (2026-07-15): homepage rebuilt around the owner's REAL diamond-leaf
   logo — extracted from the brand PDF via pymupdf, optimized 2.3MB→136KB
   webp, cropped the emblem (leaf-in-ring, blends on dark) for the hero
