@@ -13,6 +13,7 @@ import {
   GemCluster,
   GearGlyph,
   LaurelGlyph,
+  BlueprintGlyph,
   NYMap,
 } from "@/components/os-visuals";
 import { getAllGuides } from "@/lib/guides";
@@ -31,6 +32,13 @@ const MODULES = [
     cta: "Optimize your grow",
     href: "/guides?stage=vegetative",
     visual: MiniSprout,
+  },
+  {
+    name: "Build My Grow",
+    body: "Answer six quick questions and get a personalized plan — setup, roadmap, gear, and exactly what to do next.",
+    cta: "Build my plan",
+    href: "/build-my-grow",
+    visual: BlueprintGlyph,
   },
   {
     name: "Strain & Terpene Database",

@@ -164,6 +164,46 @@ export function SoilStrata({ className = "" }: { className?: string }) {
   );
 }
 
+/** Blueprint grid with a sprout + checkmarks — for the Build My Grow card. */
+export function BlueprintGlyph({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 100" className={className} aria-hidden>
+      <defs>
+        <linearGradient id="bpG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="var(--cyan)" />
+          <stop offset="100%" stopColor="var(--lime)" />
+        </linearGradient>
+      </defs>
+      {/* blueprint frame */}
+      <rect x="18" y="14" width="84" height="72" rx="6" fill="none" stroke="url(#bpG)" strokeWidth="1.4" opacity="0.8" />
+      {/* grid */}
+      <g stroke="var(--cyan)" strokeWidth="0.5" opacity="0.25">
+        {[32, 46, 60, 74, 88].map((x) => (
+          <line key={x} x1={x} y1="14" x2={x} y2="86" />
+        ))}
+        {[28, 42, 56, 70].map((y) => (
+          <line key={y} x1="18" y1={y} x2="102" y2={y} />
+        ))}
+      </g>
+      {/* checklist ticks */}
+      <g stroke="var(--lime)" strokeWidth="1.6" strokeLinecap="round" fill="none">
+        <path d="M26 34 L29 37 L35 30" />
+        <path d="M26 48 L29 51 L35 44" />
+        <path d="M26 62 L29 65 L35 58" />
+      </g>
+      <g stroke="var(--frost)" strokeWidth="1.2" opacity="0.5">
+        <line x1="42" y1="34" x2="70" y2="34" />
+        <line x1="42" y1="48" x2="66" y2="48" />
+        <line x1="42" y1="62" x2="72" y2="62" />
+      </g>
+      {/* sprout marker */}
+      <path d="M84 74 L84 64" stroke="var(--lime)" strokeWidth="2" strokeLinecap="round" />
+      <path d="M84 68 C79 67 76 63 75 58 C80 59 83 63 84 68 Z" fill="url(#bpG)" />
+      <path d="M84 68 C89 67 92 63 93 58 C88 59 85 63 84 68 Z" fill="var(--cyan)" opacity="0.85" />
+    </svg>
+  );
+}
+
 /** Laurel wreath around a star — for the Grow Like the Greats card. */
 export function LaurelGlyph({ className = "" }: { className?: string }) {
   const leaf = (x: number, y: number, rot: number, side: number) => (

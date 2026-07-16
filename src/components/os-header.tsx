@@ -8,6 +8,7 @@ const NAV = [
   { label: "Start Here", href: "/start" },
   { label: "Knowledge OS", href: "/guides" },
   { label: "Grow Like the Greats", href: "/grow-like-the-greats" },
+  { label: "Build My Grow", href: "/build-my-grow" },
   { label: "Strains", href: "/strains" },
   { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
