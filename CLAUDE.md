@@ -99,6 +99,17 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- RING-A (2026-07-16): competitive gap analysis saved to
+  docs/competitive-roadmap.md. Built Ring A #1+#2: Visual Plant Doctor
+  (/diagnose — 16 symptoms, click→diagnosis, guide cross-links, funnels to AI
+  chat; symptoms.ts) + Grow Tools (/tools — VPD/DLI/yield calculators, pure
+  math in grow-tools.ts, live per-stage verdicts). Also Build My Grow
+  (/build-my-grow, build-my-grow.ts planner) + living full-screen logo hero
+  (lake-erie-hero.webp bg, .hero-drift + .water-shimmer CSS, GPU-only, JS
+  particle canvas removed for perf). Nav split: desktop PRIMARY_NAV (8, fits
+  one line) + full drawer. 49 tests, build 97 pages, gates green. NEXT (Ring
+  A #3/#4): Strain Finder quiz + strains → 100+. Then Ring B (terpene hub,
+  recipes, breeder/affiliate).
 - GREATS+EMBLEM (2026-07-16): real diamond-leaf emblem (icon-180.png) now in
   os-header + site-header (replaced generated SVG). NEW /grow-like-the-greats
   (spec's authority layer): growers.ts 6 starter profiles (Mr. Canucks Grow,
