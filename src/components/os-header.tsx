@@ -4,18 +4,35 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+// Full menu — shown in the mobile drawer.
 const NAV = [
   { label: "Start Here", href: "/start" },
   { label: "Knowledge OS", href: "/guides" },
   { label: "Grow Like the Greats", href: "/grow-like-the-greats" },
   { label: "Build My Grow", href: "/build-my-grow" },
+  { label: "Grow Tools", href: "/tools" },
   { label: "Strains", href: "/strains" },
+  { label: "Diagnose", href: "/diagnose" },
   { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
   { label: "Gear Index", href: "/gear" },
   { label: "Local NY", href: "/local-ny" },
   { label: "Medical Card", href: "/medical-card" },
 ];
+
+// Curated primary set — shown in the desktop bar (the rest live in the drawer,
+// the homepage modules, and the footer).
+const PRIMARY_HREFS = [
+  "/start",
+  "/guides",
+  "/grow-like-the-greats",
+  "/build-my-grow",
+  "/tools",
+  "/strains",
+  "/diagnose",
+  "/plant-doctor",
+];
+const PRIMARY_NAV = NAV.filter((n) => PRIMARY_HREFS.includes(n.href));
 
 function Emblem() {
   return (
@@ -67,13 +84,13 @@ export function OsHeader() {
       <div className="glass mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full px-4 py-2 sm:px-6">
         <Emblem />
 
-        {/* desktop nav */}
-        <nav className="hidden items-center gap-6 xl:flex">
-          {NAV.map((n) => (
+        {/* desktop nav — curated primary set */}
+        <nav className="hidden items-center gap-5 xl:flex">
+          {PRIMARY_NAV.map((n) => (
             <Link
               key={n.label}
               href={n.href}
-              className="font-mono text-[11px] uppercase tracking-[0.12em] text-frost-dim transition hover:text-frost"
+              className="whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.1em] text-frost-dim transition hover:text-frost"
             >
               {n.label}
             </Link>
