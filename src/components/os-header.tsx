@@ -12,6 +12,8 @@ const NAV = [
   { label: "Build My Grow", href: "/build-my-grow" },
   { label: "Grow Tools", href: "/tools" },
   { label: "Strains", href: "/strains" },
+  { label: "Strain Directory", href: "/strain-directory" },
+  { label: "Strain Finder", href: "/strain-finder" },
   { label: "Diagnose", href: "/diagnose" },
   { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
