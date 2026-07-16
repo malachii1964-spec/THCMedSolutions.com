@@ -39,6 +39,12 @@ export default function StrainsPage() {
               difficulty, terpenes, and effects. Filter by what you want to
               grow and how you want to feel.
             </p>
+            <Link
+              href="/strain-finder"
+              className="btn-iris mt-6 inline-block rounded-full px-6 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] transition hover:brightness-110"
+            >
+              Not sure? Take the Strain Finder quiz →
+            </Link>
           </div>
         </section>
 
