@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { OsHeader } from "@/components/os-header";
-import { Atmosphere } from "@/components/atmosphere";
 import { Reveal } from "@/components/reveal";
 import { GuideCard } from "@/components/guide-card";
 import { WeatherChip, SystemStatus, PlantDoctorCard } from "@/components/hud";
@@ -149,77 +148,46 @@ export default function HomePage() {
 
       <main>
         {/* ─────────────────────────── HERO ─────────────────────────── */}
-        <section className="grain relative overflow-hidden">
-          {/* Lake Erie — deep water base + blue glow */}
+        <section className="relative min-h-[92vh] overflow-hidden bg-void">
+          {/* living banner — the real Lake Erie Cannabis art, slowly drifting */}
+          <div className="hero-drift pointer-events-none absolute inset-0" aria-hidden>
+            <Image
+              src="/lake-erie-hero.webp"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </div>
+          {/* drifting smoke over the water */}
+          <div className="smoke smoke-a pointer-events-none absolute inset-0" aria-hidden />
+          <div className="smoke smoke-b pointer-events-none absolute inset-0" aria-hidden />
+          {/* rippling shimmer along the water line */}
+          <div className="water-shimmer pointer-events-none absolute inset-x-0 bottom-0 h-2/5" aria-hidden />
+          {/* legibility scrims (top nav + bottom CTAs) */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "radial-gradient(120% 85% at 50% 26%, rgba(24,52,104,0.42) 0%, rgba(5,7,12,0) 56%), linear-gradient(180deg, #05070c 0%, #060b16 52%, #04060b 100%)",
-            }}
-          />
-          {/* drifting smoke */}
-          <div className="smoke smoke-a pointer-events-none absolute inset-0" aria-hidden />
-          <div className="smoke smoke-b pointer-events-none absolute inset-0" aria-hidden />
-          {/* drifting spores */}
-          <Atmosphere className="absolute inset-0 h-full w-full" />
-          {/* top scrim for nav legibility */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-40"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(5,7,12,0.85), transparent)",
+                "linear-gradient(180deg, rgba(5,7,12,0.72) 0%, transparent 18%, transparent 50%, rgba(5,7,12,0.88) 100%)",
             }}
           />
 
-          <div className="relative mx-auto max-w-4xl px-4 pb-16 pt-24 text-center sm:px-6 lg:pt-28">
-            {/* emblem + water reflection */}
-            <div className="rise relative mx-auto w-full max-w-[30rem]">
-              <Image
-                src="/lake-erie-emblem.webp"
-                alt="Lake Erie Cannabis — a diamond cannabis leaf in a silver ring rising from the water"
-                width={785}
-                height={640}
-                priority
-                sizes="(max-width: 640px) 88vw, 30rem"
-                className="mx-auto h-auto w-full drop-shadow-[0_0_90px_rgba(70,130,230,0.4)]"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none mx-auto -mt-3 w-full max-w-[30rem] blur-[2px]"
-                style={{
-                  transform: "scaleY(-1)",
-                  opacity: 0.22,
-                  WebkitMaskImage:
-                    "linear-gradient(to bottom, black, transparent 52%)",
-                  maskImage: "linear-gradient(to bottom, black, transparent 52%)",
-                }}
-              >
-                <Image
-                  src="/lake-erie-emblem.webp"
-                  alt=""
-                  width={785}
-                  height={640}
-                  className="h-auto w-full"
-                />
-              </div>
-            </div>
-
-            {/* chrome wordmark + tagline */}
-            <h1 className="chrome-text rise mt-1 font-display text-[2.7rem] font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-              Lake Erie Cannabis
+          <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-3xl flex-col items-center justify-end px-4 pb-14 pt-24 text-center sm:px-6">
+            <h1 className="sr-only">
+              Lake Erie Cannabis — Grow Frosty Buds the Easy Way
             </h1>
-            <p className="rise mt-3 font-mono text-[10px] uppercase tracking-[0.38em] text-[#9fc0ff] sm:text-[11px]">
-              Premium Quality · Rooted in Excellence
-            </p>
 
             {/* grower-first hook */}
-            <p className="rise mx-auto mt-8 max-w-xl text-base leading-relaxed text-frost-dim sm:text-lg">
+            <p
+              className="rise mx-auto max-w-xl text-base font-medium leading-relaxed text-frost sm:text-lg"
+              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.9)" }}
+            >
               Grow frosty, high-quality buds the easy way — indoor or outdoor.
-              Simple, step-by-step cannabis growing for real people, backed by an
-              AI plant doctor and rooted in Western New York.
+              Simple, step-by-step cannabis growing, backed by an AI plant
+              doctor and rooted in Western New York.
             </p>
 
             {/* three-button front door */}
@@ -248,9 +216,12 @@ export default function HomePage() {
               <WeatherChip />
             </div>
           </div>
+        </section>
 
+        {/* live status HUD + stats — on the void, below the hero */}
+        <section className="relative bg-void">
           {/* live status HUD */}
-          <div className="relative mx-auto max-w-4xl px-4 pb-4 sm:px-6">
+          <div className="relative mx-auto max-w-4xl px-4 pb-4 pt-12 sm:px-6">
             <div className="mx-auto grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
               <SystemStatus doctorOnline={doctorOnline} />
               <PlantDoctorCard online={doctorOnline} />
@@ -258,7 +229,7 @@ export default function HomePage() {
           </div>
 
           {/* stats bar */}
-          <div className="relative mx-auto max-w-7xl px-4 pb-28 sm:px-6">
+          <div className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6">
             <dl className="glass iris-border grid grid-cols-2 divide-white/5 overflow-hidden rounded-2xl lg:grid-cols-4 lg:divide-x">
               {stats.map((s) => (
                 <div key={s.l} className="flex items-center gap-4 px-5 py-5">

@@ -504,3 +504,43 @@ body {
   .smoke-a,
   .smoke-b { animation: none; }
 }
+
+/* ── Living hero: slow banner drift + water shimmer (compositor-only) ──── */
+@keyframes heroDrift {
+  0% { transform: scale(1.03) translate3d(0, 0, 0); }
+  50% { transform: scale(1.08) translate3d(-1.4%, -1%, 0); }
+  100% { transform: scale(1.03) translate3d(0, 0, 0); }
+}
+.hero-drift {
+  animation: heroDrift 46s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* a soft light sweeping across the water line — GPU transform only */
+.water-shimmer {
+  overflow: hidden;
+}
+.water-shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0 -50%;
+  background: linear-gradient(
+    100deg,
+    transparent 38%,
+    rgba(150, 195, 255, 0.09) 50%,
+    transparent 62%
+  );
+  -webkit-mask-image: linear-gradient(to top, #000, transparent 88%);
+  mask-image: linear-gradient(to top, #000, transparent 88%);
+  animation: waterSweep 9s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes waterSweep {
+  0% { transform: translate3d(-16%, 0, 0); }
+  50% { transform: translate3d(16%, 0, 0); }
+  100% { transform: translate3d(-16%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift,
+  .water-shimmer::before { animation: none; }
+}
