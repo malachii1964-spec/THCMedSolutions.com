@@ -99,6 +99,19 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- RING-B+DEPTH (2026-07-17): Massive content scale-up. Curated strains
+  117 → 150 (33 new: White Truffle, Sundae Driver, Kosher Kush, G13,
+  Death Star, Fire OG, Mango Haze, Critical+, Dolato, WiFi OG, etc. —
+  mix of classics, modern exotics, autos). Guides 35 → 42 (transplanting,
+  flushing science, companion planting, nutrient feeding schedules, IPM,
+  perpetual harvest, organic vs synthetic). 6 new GUIDE_RULES for richer
+  strain↔guide cross-linking (SCROG, defoliation, transplanting, autoflower,
+  companion planting, living soil). Homepage updated with Ring B modules
+  (Terpene Hub, Seeds & Breeders, Recipes) — 12 module cards, live strain
+  count in stats bar, expanded footer nav. Social auth (Google/GitHub/
+  Facebook) conditionally wired via env vars. Lite directory cleaned up
+  (22 promoted entries removed). 69 tests, build 222 pages. All gates
+  green. NEXT: more guides, polish, quality audit.
 - STRAINS+DIRECTORY (2026-07-16): Ring A complete + strain scale-up. Curated
   grow-profiles 42 → 88 (modern exotics, classics, landraces, autos, CBD).
   NEW two-tier Strain Directory (/strain-directory, strain-directory.ts):
