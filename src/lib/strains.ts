@@ -3106,6 +3106,8 @@ const GUIDE_RULES: { slug: string; suits: (s: Strain) => boolean }[] = [
   { slug: "autoflower-growing-guide", suits: (s) => s.slug.includes("-auto") || s.name.toLowerCase().includes("auto") },
   { slug: "companion-planting-cannabis", suits: (s) => s.climate === "Outdoor" || s.climate === "Both" },
   { slug: "living-soil-no-till", suits: (s) => s.difficulty !== "Advanced" && s.climate !== "Outdoor" },
+  { slug: "maximizing-bud-quality", suits: (s) => s.yield === "High" || s.type === "Indica" },
+  { slug: "watering-in-flower", suits: (s) => s.climate === "Indoor" || s.climate === "Both" },
 ];
 
 /**

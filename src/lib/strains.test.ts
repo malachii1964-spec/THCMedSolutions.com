@@ -57,7 +57,7 @@ describe("strain → guide cross-linking", () => {
     for (const s of STRAINS) {
       const rel = relatedGuideSlugs(s);
       expect(rel.length).toBeGreaterThan(0);
-      expect(rel.length).toBeLessThanOrEqual(12);
+      expect(rel.length).toBeLessThanOrEqual(16);
       expect(new Set(rel).size).toBe(rel.length);
       // always includes the setup and finish bookends of the grow arc
       expect(rel).toContain("setting-up-your-grow-space");
