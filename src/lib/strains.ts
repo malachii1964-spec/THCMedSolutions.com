@@ -3111,6 +3111,13 @@ const GUIDE_RULES: { slug: string; suits: (s: Strain) => boolean }[] = [
   { slug: "led-grow-light-mastery", suits: (s) => s.climate === "Indoor" || s.climate === "Both" },
   { slug: "late-flower-and-ripening", suits: (s) => s.yield === "High" || s.difficulty !== "Beginner" },
   { slug: "bubble-hash-dry-sift", suits: (s) => s.yield === "High" },
+  { slug: "mainlining-manifold", suits: (s) => s.height === "Tall" && !s.slug.includes("-auto") },
+  { slug: "supercropping-advanced", suits: (s) => s.height === "Tall" || s.height === "Medium" },
+  { slug: "flower-feeding-strategy", suits: (s) => s.difficulty !== "Beginner" },
+  { slug: "environmental-controllers", suits: (s) => s.climate === "Indoor" && s.difficulty !== "Beginner" },
+  { slug: "canopy-management-advanced", suits: (s) => s.height === "Tall" || s.yield === "High" },
+  { slug: "cold-climate-growing", suits: (s) => s.climate === "Outdoor" || s.climate === "Both" },
+  { slug: "micro-growing", suits: (s) => s.height === "Short" || s.height === "Medium" },
 ];
 
 /**
