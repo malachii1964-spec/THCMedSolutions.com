@@ -17,7 +17,7 @@ export function SignOutButton() {
         })
       }
       disabled={pending}
-      className="rounded border border-panel-edge px-4 py-2 text-sm text-frost-dim transition hover:border-frost-dim hover:text-frost disabled:opacity-60"
+      className="glass-hi rounded-full px-5 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-frost-dim transition hover:text-frost disabled:opacity-60"
     >
       {pending ? "Logging out…" : "Log out"}
     </button>

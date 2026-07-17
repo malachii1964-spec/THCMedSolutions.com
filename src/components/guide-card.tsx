@@ -7,20 +7,20 @@ export function GuideCard({ guide }: { guide: GuideMeta }) {
   return (
     <Link
       href={`/guides/${guide.slug}`}
-      className="group flex flex-col rounded-lg border border-panel-edge bg-panel p-5 transition hover:border-leaf/60"
+      className="glass group flex flex-col rounded-2xl p-5 transition hover:brightness-125"
     >
       <div className="flex items-center justify-between gap-2 font-mono text-[11px] uppercase tracking-[0.14em]">
-        <span className="text-leaf">
+        <span className="text-lime">
           {guide.week} · {stage?.shortName}
           {stage?.cycleLabel ? ` · ${stage.cycleLabel}` : ""}
         </span>
         {guide.membersOnly ? (
-          <span className="rounded border border-amber/50 px-1.5 py-0.5 text-[10px] text-amber">
+          <span className="rounded border border-gold/50 px-1.5 py-0.5 text-[10px] text-gold">
             Members
           </span>
         ) : null}
       </div>
-      <h3 className="mt-3 font-display text-lg font-semibold leading-snug transition group-hover:text-bloom">
+      <h3 className="mt-3 font-display text-lg font-semibold leading-snug text-frost transition group-hover:iris-text">
         {guide.title}
       </h3>
       <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-frost-dim">

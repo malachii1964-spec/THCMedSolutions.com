@@ -8,18 +8,12 @@ function hasConsent() {
   return document.cookie.split("; ").some((c) => c === `${COOKIE}=1`);
 }
 
-/**
- * 21+ interstitial. Renders nothing on the server and until mounted, so
- * content stays crawlable; the overlay covers the page for unverified
- * visitors and persists consent in a cookie for one year.
- */
 export function AgeGate() {
   const [open, setOpen] = useState(false);
   const [refused, setRefused] = useState(false);
 
   useEffect(() => {
     if (hasConsent()) return;
-    // Deferred a tick: avoids a synchronous setState cascade on mount.
     const id = window.setTimeout(() => setOpen(true), 0);
     return () => window.clearTimeout(id);
   }, []);
@@ -44,10 +38,10 @@ export function AgeGate() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="age-gate-title"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-canopy/95 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-void/95 p-4 backdrop-blur-sm"
     >
-      <div className="w-full max-w-md rounded-lg border border-panel-edge bg-panel p-8 text-center">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-leaf">
+      <div className="glass iris-border w-full max-w-md rounded-2xl p-8 text-center">
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan">
           Age verification
         </p>
         <h2
@@ -61,20 +55,20 @@ export function AgeGate() {
           be of legal age in your jurisdiction to enter.
         </p>
         {refused ? (
-          <p className="mt-4 rounded border border-amber/40 bg-amber/10 p-3 text-sm text-amber">
+          <p className="mt-4 rounded-xl border border-gold/40 bg-gold/10 p-3 text-sm text-gold">
             You must be 21+ to use this site. Come back when you are.
           </p>
         ) : null}
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <button
             onClick={confirm}
-            className="rounded bg-bloom px-6 py-3 text-sm font-semibold text-canopy transition hover:brightness-110"
+            className="btn-iris rounded-full px-6 py-3 font-mono text-[12px] font-semibold uppercase tracking-[0.14em] transition hover:brightness-110"
           >
             Yes, I&apos;m 21 or older
           </button>
           <button
             onClick={() => setRefused(true)}
-            className="rounded border border-panel-edge px-6 py-3 text-sm text-frost-dim transition hover:border-frost-dim"
+            className="glass-hi rounded-full px-6 py-3 font-mono text-[12px] uppercase tracking-[0.14em] text-frost-dim transition hover:text-frost"
           >
             No, I&apos;m not
           </button>

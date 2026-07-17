@@ -16,10 +16,10 @@ export function BookmarkButton({
       onClick={() => startTransition(() => toggleBookmark(slug))}
       disabled={pending}
       aria-pressed={saved}
-      className={`rounded border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] transition disabled:opacity-60 ${
+      className={`rounded-full border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] transition disabled:opacity-60 ${
         saved
-          ? "border-amber/60 bg-amber/10 text-amber"
-          : "border-panel-edge text-frost-dim hover:border-amber/60 hover:text-amber"
+          ? "border-gold/60 bg-gold/10 text-gold"
+          : "glass text-frost-dim hover:border-gold/60 hover:text-gold"
       }`}
     >
       {pending ? "Saving…" : saved ? "★ Saved" : "☆ Save to my almanac"}
