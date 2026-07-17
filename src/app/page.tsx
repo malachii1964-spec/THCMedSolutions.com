@@ -14,7 +14,11 @@ import {
   LaurelGlyph,
   BlueprintGlyph,
   NYMap,
+  TerpeneGlyph,
+  SeedGlyph,
+  RecipeGlyph,
 } from "@/components/os-visuals";
+import { STRAINS } from "@/lib/strains";
 import { getAllGuides } from "@/lib/guides";
 
 const MODULES = [
@@ -66,6 +70,27 @@ const MODULES = [
     cta: "Build your soil",
     href: "/frostybuds-soil",
     visual: SoilStrata,
+  },
+  {
+    name: "Terpene Hub",
+    body: "The 7 dominant cannabis terpenes — what they smell like, how they feel, and which strains feature each.",
+    cta: "Explore terpenes",
+    href: "/terpenes",
+    visual: TerpeneGlyph,
+  },
+  {
+    name: "Seeds & Breeders",
+    body: "Where to buy seeds you can trust — community-vetted seed banks, top breeders, and red flags to avoid.",
+    cta: "Find seeds",
+    href: "/seeds",
+    visual: SeedGlyph,
+  },
+  {
+    name: "Recipes & Preparations",
+    body: "Turn your harvest into edibles, tinctures, topicals, and concentrates — with real dosing math.",
+    cta: "View recipes",
+    href: "/recipes",
+    visual: RecipeGlyph,
   },
   {
     name: "The Gear Index",
@@ -137,8 +162,8 @@ export default function HomePage() {
 
   const stats = [
     { icon: "leaf" as const, n: `${guides.length}`, l: "Field guides", s: "Growing weekly" },
-    { icon: "path" as const, n: "6", l: "Knowledge pathways", s: "Seed to cure" },
-    { icon: "gem" as const, n: `${memberCount}`, l: "Member deep-dives", s: "Free to unlock" },
+    { icon: "gem" as const, n: `${STRAINS.length}`, l: "Strain profiles", s: "Deep grow data" },
+    { icon: "path" as const, n: `${memberCount}`, l: "Member deep-dives", s: "Free to unlock" },
     { icon: "ny" as const, n: "WNY", l: "Focused", s: "Buffalo → Niagara" },
   ];
 
@@ -367,17 +392,29 @@ export default function HomePage() {
               <Link href="/guides" className="transition hover:text-frost">
                 Knowledge OS
               </Link>
+              <Link href="/strains" className="transition hover:text-frost">
+                Strains
+              </Link>
+              <Link href="/terpenes" className="transition hover:text-frost">
+                Terpenes
+              </Link>
+              <Link href="/seeds" className="transition hover:text-frost">
+                Seeds & Breeders
+              </Link>
+              <Link href="/recipes" className="transition hover:text-frost">
+                Recipes
+              </Link>
+              <Link href="/gear" className="transition hover:text-frost">
+                Gear
+              </Link>
               <Link href="/medical-card" className="transition hover:text-frost">
                 Medical Card
               </Link>
-              <Link href="/faq" className="transition hover:text-frost">
-                FAQ
+              <Link href="/local-ny" className="transition hover:text-frost">
+                Local NY
               </Link>
               <Link href="/join" className="transition hover:text-frost">
                 Join free
-              </Link>
-              <Link href="/local-ny" className="transition hover:text-frost">
-                Local NY Hub
               </Link>
               <Link href="/legal" className="transition hover:text-frost">
                 Legal

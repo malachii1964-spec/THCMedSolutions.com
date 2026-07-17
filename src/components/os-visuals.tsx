@@ -274,3 +274,71 @@ export function GearGlyph({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
+export function TerpeneGlyph({ className = "" }: { className?: string }) {
+  const nodes = [
+    { cx: 60, cy: 30, r: 8, color: "var(--cyan)" },
+    { cx: 35, cy: 50, r: 6, color: "var(--violet)" },
+    { cx: 85, cy: 50, r: 6, color: "var(--lime)" },
+    { cx: 42, cy: 75, r: 5, color: "var(--gold)" },
+    { cx: 78, cy: 75, r: 5, color: "var(--magenta)" },
+  ];
+  return (
+    <svg viewBox="0 0 120 100" className={className} aria-hidden>
+      <g stroke="var(--frost)" strokeWidth="0.8" opacity="0.25">
+        <path d="M60 30 L35 50 M60 30 L85 50 M35 50 L42 75 M85 50 L78 75 M42 75 L78 75" />
+      </g>
+      {nodes.map((n, i) => (
+        <g key={i}>
+          <circle cx={n.cx} cy={n.cy} r={n.r * 1.8} fill={n.color} opacity="0.15" />
+          <circle cx={n.cx} cy={n.cy} r={n.r} fill={n.color} opacity="0.7" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+export function SeedGlyph({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 100" className={className} aria-hidden>
+      <defs>
+        <linearGradient id="seedG" x1="0" y1="0" x2="0.4" y2="1">
+          <stop offset="0%" stopColor="var(--lime)" />
+          <stop offset="100%" stopColor="var(--gold)" />
+        </linearGradient>
+      </defs>
+      <ellipse cx="60" cy="52" rx="16" ry="22" fill="url(#seedG)" opacity="0.7" />
+      <path d="M60 30 L60 74" stroke="var(--gold)" strokeWidth="1" opacity="0.5" />
+      <path d="M60 40 C52 36 48 28 50 20 C55 24 58 32 60 40 Z" fill="var(--lime)" opacity="0.6" />
+      <path d="M60 40 C68 36 72 28 70 20 C65 24 62 32 60 40 Z" fill="var(--lime)" opacity="0.6" />
+      <ellipse cx="60" cy="88" rx="30" ry="4" fill="var(--gold)" opacity="0.15" />
+    </svg>
+  );
+}
+
+export function RecipeGlyph({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 100" className={className} aria-hidden>
+      <defs>
+        <linearGradient id="recG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="var(--gold)" />
+          <stop offset="100%" stopColor="var(--violet)" />
+        </linearGradient>
+      </defs>
+      <rect x="38" y="20" width="44" height="56" rx="6" fill="none" stroke="url(#recG)" strokeWidth="1.6" />
+      <path d="M48 16 L48 24" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" />
+      <path d="M60 16 L60 24" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" />
+      <path d="M72 16 L72 24" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" />
+      <g opacity="0.4">
+        <circle cx="50" cy="40" r="1.5" fill="var(--lime)" />
+        <circle cx="60" cy="44" r="2" fill="var(--magenta)" />
+        <circle cx="70" cy="38" r="1.5" fill="var(--cyan)" />
+        <circle cx="55" cy="52" r="1.8" fill="var(--gold)" />
+        <circle cx="65" cy="56" r="1.5" fill="var(--violet)" />
+      </g>
+      <g stroke="var(--gold)" strokeWidth="1.2" strokeLinecap="round" opacity="0.5">
+        <path d="M50 66 C52 60 58 58 60 62 C62 58 68 60 70 66" />
+      </g>
+    </svg>
+  );
+}
