@@ -3108,6 +3108,9 @@ const GUIDE_RULES: { slug: string; suits: (s: Strain) => boolean }[] = [
   { slug: "living-soil-no-till", suits: (s) => s.difficulty !== "Advanced" && s.climate !== "Outdoor" },
   { slug: "maximizing-bud-quality", suits: (s) => s.yield === "High" || s.type === "Indica" },
   { slug: "watering-in-flower", suits: (s) => s.climate === "Indoor" || s.climate === "Both" },
+  { slug: "led-grow-light-mastery", suits: (s) => s.climate === "Indoor" || s.climate === "Both" },
+  { slug: "late-flower-and-ripening", suits: (s) => s.yield === "High" || s.difficulty !== "Beginner" },
+  { slug: "bubble-hash-dry-sift", suits: (s) => s.yield === "High" },
 ];
 
 /**
