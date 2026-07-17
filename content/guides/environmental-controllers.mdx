@@ -1,0 +1,280 @@
+---
+title: "Environmental Controllers: Automating Temperature, Humidity, and CO₂"
+summary: "How to wire temperature, humidity, and CO₂ control into a single automated system — from basic timer combos to smart controllers that hold your environment within 2°F and 5% RH all day."
+slug: environmental-controllers
+stage: vegetative
+week: "WK 1+"
+difficulty: advanced
+readMinutes: 9
+membersOnly: true
+updated: "2026-07-17"
+order: 52
+---
+
+A grow light on a timer is automation level one. Most growers stop
+there and spend the rest of the cycle babysitting temperature and
+humidity manually — turning the exhaust fan up when it's hot, plugging
+in the humidifier when it's dry, unplugging the humidifier when the
+tent fogs up. That's not growing — that's being a thermostat with
+legs.
+
+Environmental controllers replace the babysitting. They read
+temperature, humidity, and CO₂ in real time and activate equipment
+automatically to hold your targets. The difference between a manually
+managed tent and a controller-managed tent is the difference between
+a car with cruise control and one where you hold the gas pedal with
+your hand.
+
+## What controllers actually control
+
+### The four variables
+
+| Variable | Equipment that adjusts it | Target range (flower) |
+|----------|--------------------------|----------------------|
+| Temperature | Exhaust fan, AC, heater | 75–82°F lights on, 65–72°F lights off |
+| Humidity | Humidifier, dehumidifier, exhaust fan | 40–50% RH in flower |
+| CO₂ | CO₂ tank + regulator, exhaust fan timing | 800–1200 PPM (supplemented) or ambient 400 PPM |
+| Airflow | Oscillating fans, intake fan | Constant — not typically controller-managed |
+
+A basic controller manages temperature and humidity. An advanced
+controller adds CO₂ management, light integration, and data logging.
+
+### The control loop
+
+Every controller runs the same logic:
+
+1. **Read** the sensor (temp, RH, CO₂ PPM)
+2. **Compare** the reading to your set point
+3. **Activate** equipment if the reading is outside the dead band
+4. **Wait** (the cycle delay — typically 30–120 seconds)
+5. **Repeat**
+
+The dead band is the range around your set point where the controller
+does nothing. If your target temperature is 78°F with a 2°F dead band,
+the controller ignores readings between 76°F and 80°F. Without a dead
+band, equipment cycles on and off constantly (short cycling), which
+wears out compressors and relays.
+
+## Controller tiers
+
+### Tier 1: Smart outlet controllers ($30–80)
+
+**What they are:** a single device with a built-in sensor and one or
+two controllable outlets. You plug equipment into the outlet, set a
+target, and the controller switches the outlet on/off based on the
+sensor reading.
+
+**Examples:**
+- **Inkbird ITC-308** — temperature only. Two outlets: one for
+  heating, one for cooling. Plug a heater into the heating outlet and
+  an exhaust fan (or AC) into the cooling outlet. Set high and low
+  limits. The Inkbird turns on the appropriate device when the temp
+  drifts outside range
+- **Inkbird IHC-200** — humidity only. Same concept: one outlet for
+  humidifier, one for dehumidifier
+
+**Limitations:** each unit controls one variable. You need two units
+(one for temp, one for humidity) to manage both. No coordination
+between them — the temp controller doesn't know the humidity
+controller just turned on the humidifier, which affects temperature.
+No data logging.
+
+**Best for:** growers on a budget who want basic automation without
+babysitting.
+
+### Tier 2: Integrated fan controllers ($150–250)
+
+**What they are:** controllers built into (or designed for) inline
+exhaust fans. They read temperature and humidity and adjust fan speed
+dynamically.
+
+**Examples:**
+- **AC Infinity Controller 69 / Controller 80** — the brain behind
+  the Cloudline T-series fans. Built-in temp/RH sensor with
+  programmable triggers: "if temp exceeds 82°F, run fan at speed 8."
+  "If humidity exceeds 55%, run fan at speed 6." Multiple trigger
+  programs can stack. Bluetooth app for monitoring and adjustment
+- **TerraBloom ECMF series** — similar concept, EC motor fan with a
+  speed controller that responds to temperature
+
+**Limitations:** they only control the exhaust fan — they can't
+trigger a heater, humidifier, dehumidifier, or CO₂ system. They
+manage temperature and humidity indirectly by pulling more or less
+air through the tent.
+
+**Best for:** most home growers running a single tent. The AC Infinity
+controller alone handles 80% of environmental management if your
+ambient room conditions are reasonable.
+
+### Tier 3: Multi-zone smart controllers ($250–600)
+
+**What they are:** dedicated environmental controllers with multiple
+sensor inputs and multiple controllable outlets. They manage
+temperature, humidity, and optionally CO₂ as a coordinated system.
+
+**Examples:**
+- **TrolMaster Hydro-X (HCS-2)** — the commercial standard. Main
+  controller + expansion modules for temperature (heating/cooling),
+  humidity (humidifier/dehumidifier), CO₂, light control, and
+  irrigation. Each module adds 1–2 controllable outlets. Touchscreen +
+  app + data logging
+- **Pulse Hub** — sensor hub with cloud monitoring and basic relay
+  control. Excellent data logging and alerts; fewer direct control
+  outlets than TrolMaster
+- **Niwa Grow Hub** — similar to Pulse, with app-based monitoring
+  and control
+
+**Capabilities:**
+- Coordinate multiple pieces of equipment — the controller knows
+  that running the dehumidifier raises temperature, so it can
+  preemptively adjust the exhaust fan
+- Day/night programs — different targets for lights-on vs. lights-off
+- CO₂ management — inject CO₂ when the exhaust fan is off, disable
+  injection when the fan runs (CO₂ is wasted if the fan blows it
+  out immediately)
+- Data logging — historical graphs of every variable, so you can
+  see trends and diagnose problems
+
+**Best for:** serious home growers, multi-tent operations, anyone
+supplementing CO₂ (CO₂ without a controller is money in the exhaust
+duct).
+
+## Wiring a basic two-controller setup
+
+The most cost-effective automated setup for a single tent:
+
+### Equipment list
+
+| Item | Cost | Purpose |
+|------|------|---------|
+| AC Infinity Cloudline T6 with Controller 69 | $160 | Exhaust + temp/RH triggered fan speed |
+| Inkbird ITC-308 | $35 | Heating control (winter) |
+| Small ceramic heater (1500W) | $25 | Heat source plugged into Inkbird |
+| Inkbird IHC-200 | $35 | Humidity control |
+| Small humidifier or dehumidifier | $40–80 | Humidity adjustment plugged into Inkbird |
+
+### Wiring logic
+
+**AC Infinity fan controller (primary):**
+- Trigger 1: temp above 82°F → fan speed 8
+- Trigger 2: temp above 78°F → fan speed 5
+- Trigger 3: humidity above 55% → fan speed 7
+- Base speed: 3 (always running for air exchange)
+
+**Inkbird ITC-308 (heater backup):**
+- Heating outlet: ceramic heater
+- Set point: 68°F
+- Dead band: 2°F
+- The heater turns on only when the tent drops below 66°F (lights
+  off in winter)
+
+**Inkbird IHC-200 (humidity fine-tuning):**
+- Humidifier outlet: small cool-mist humidifier
+- Dehumidifier outlet: small dehumidifier
+- Set point: 50% RH
+- Dead band: 5% RH
+
+**How they interact:** the AC Infinity handles most temp/humidity
+swings by adjusting fan speed. The Inkbirds catch extremes the fan
+can't fix — a cold night that needs heat, or a humid day that needs
+active dehumidification.
+
+## CO₂ integration
+
+CO₂ supplementation only works in a sealed (or semi-sealed)
+environment. If the exhaust fan runs continuously, it exhausts your
+CO₂ as fast as you inject it.
+
+### The controller's role
+
+A CO₂ controller (or the CO₂ module on a TrolMaster) does three things:
+
+1. **Reads CO₂ PPM** from a sensor inside the tent
+2. **Opens the solenoid valve** on the CO₂ tank when PPM drops below
+   the set point (e.g., 1000 PPM)
+3. **Closes the solenoid** when PPM reaches the target
+4. **Coordinates with the exhaust fan** — disables CO₂ injection
+   while the fan is running (no point injecting if it's being
+   exhausted immediately)
+
+### The exhaust timing problem
+
+In a CO₂-supplemented room, the exhaust fan can't run continuously.
+Instead, the controller runs the fan on timed intervals — 15 minutes
+on, 45 minutes off — and only injects CO₂ during the off periods.
+This creates a tension between CO₂ retention and heat/humidity
+management.
+
+**The solution:** most serious CO₂ setups use a mini-split AC and a
+dehumidifier instead of exhaust ventilation for temperature and
+humidity control. The room stays sealed, CO₂ stays in, and the AC
+handles heat. This is expensive ($500+ for the AC alone) but it's
+the only way to efficiently run CO₂ above 1000 PPM.
+
+See our [CO₂ guide](/guides/co2-supplementation) for dosing and
+safety details.
+
+## Data logging and remote monitoring
+
+### Why logging matters
+
+A temperature spike at 3 AM that lasts 20 minutes won't show up
+on your next visit to the tent — the reading will be normal by
+morning. But it happened, and it stressed the plants. Without data
+logging, you'd never know why the top colas are foxtailing.
+
+**What to log:**
+- Temperature (1-minute intervals minimum)
+- Humidity (1-minute intervals)
+- CO₂ PPM (if supplementing)
+- VPD (calculated from temp + RH)
+- Equipment run time (how often is the heater/dehumidifier cycling?)
+
+### Monitoring options
+
+| Solution | Cost | Features |
+|----------|------|----------|
+| AC Infinity app | Free (with Cloudline fan) | Temp/RH history, alerts, remote fan control |
+| Pulse Pro | $250+ | Best-in-class sensors, cloud logging, VPD, dew point, alerts |
+| SensorPush | $50/sensor | Temp/RH logging, phone alerts, no equipment control |
+| TrolMaster app | Free (with HCS-2) | Full data logging + equipment control |
+| DIY (ESP32 + sensors) | $15–30 | Custom logging to any dashboard. Requires programming |
+
+### Alert thresholds
+
+Set alerts for conditions that need immediate attention:
+
+| Condition | Alert threshold | Risk |
+|-----------|----------------|------|
+| High temperature | Above 88°F | Heat stress, foxtailing, terpene evaporation |
+| Low temperature | Below 60°F | Slowed growth, purple stems (not genetics) |
+| High humidity | Above 65% RH in flower | Bud rot, powdery mildew |
+| Low humidity | Below 30% RH | Leaf curl, stunted growth |
+| CO₂ too high | Above 1500 PPM | Wasted CO₂, possible plant stress |
+| Equipment failure | No fan speed change in 2+ hours | Fan died, controller lost power |
+
+## Common mistakes
+
+1. **No dead band** — setting exact targets with zero tolerance causes
+   equipment to short-cycle (on/off every 30 seconds). Always set a
+   dead band of at least 2°F / 5% RH
+2. **Conflicting controllers** — an Inkbird turning on a heater while
+   the AC Infinity cranks the exhaust fan to cool down. Map out your
+   control logic before plugging in — each piece of equipment should
+   be controlled by ONE controller
+3. **Sensor placement** — hanging the sensor next to the light reads
+   radiant heat, not air temperature. Hang sensors at canopy height,
+   shielded from direct light, with airflow across the sensor
+4. **Ignoring lights-off** — most environmental problems happen during
+   lights-off: temperature drops, humidity spikes, condensation forms.
+   Set separate night programs or add a heater on an Inkbird
+5. **Over-investing for a single tent** — a $500 TrolMaster system
+   makes sense for a multi-room operation. For a single 4×4 tent, an
+   AC Infinity controller + one Inkbird handles 90% of cases
+
+For basic ventilation setup, see our
+[ventilation guide](/guides/ventilation-odor-control). For VPD
+targets by growth stage, see
+[temperature, humidity & VPD](/guides/temperature-humidity-vpd).
+For grow room automation beyond environmental control, see our
+[automation guide](/guides/grow-room-automation).
