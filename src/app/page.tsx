@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { Reveal } from "@/components/reveal";
 import { GuideCard } from "@/components/guide-card";
 import { WeatherChip, SystemStatus, PlantDoctorCard } from "@/components/hud";
@@ -368,66 +369,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* ──────────────────── FOOTER ──────────────────── */}
-      <footer className="border-t border-white/5">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-          <p className="text-center font-mono text-[11px] uppercase tracking-[0.3em] leading-relaxed text-lime">
-            Built for education. Designed for wellness. Powered by
-            intelligence.
-          </p>
-          <p className="mt-3 text-center text-[12px] text-frost-dim">
-            Lake Erie Cannabis is an educational platform and resource hub. We
-            do not sell cannabis or provide medical advice.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-between gap-6 border-t border-white/5 pt-8 sm:flex-row">
-            <div>
-              <p className="font-display text-lg font-semibold">
-                Lake Erie <span className="iris-text">Cannabis</span>
-              </p>
-              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-frost-dim">
-                Rooted in excellence · Buffalo → Niagara
-              </p>
-            </div>
-            <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-frost-dim">
-              <Link href="/guides" className="transition hover:text-frost">
-                Knowledge OS
-              </Link>
-              <Link href="/strains" className="transition hover:text-frost">
-                Strains
-              </Link>
-              <Link href="/terpenes" className="transition hover:text-frost">
-                Terpenes
-              </Link>
-              <Link href="/seeds" className="transition hover:text-frost">
-                Seeds & Breeders
-              </Link>
-              <Link href="/recipes" className="transition hover:text-frost">
-                Recipes
-              </Link>
-              <Link href="/gear" className="transition hover:text-frost">
-                Gear
-              </Link>
-              <Link href="/medical-card" className="transition hover:text-frost">
-                Medical Card
-              </Link>
-              <Link href="/local-ny" className="transition hover:text-frost">
-                Local NY
-              </Link>
-              <Link href="/join" className="transition hover:text-frost">
-                Join free
-              </Link>
-              <Link href="/legal" className="transition hover:text-frost">
-                Legal
-              </Link>
-            </nav>
-          </div>
-          <p className="mt-8 text-center text-[10px] leading-relaxed text-frost-dim sm:text-left">
-            Educational content only — not legal or medical advice. Cannabis
-            laws vary; know your local regulations. 21+ only. © Lake Erie
-            Cannabis.
-          </p>
-        </div>
-      </footer>
+      <OsFooter />
     </div>
   );
 }

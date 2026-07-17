@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { GuideCard } from "@/components/guide-card";
 import { getAllGuides } from "@/lib/guides";
 import { STAGES, type StageId } from "@/lib/stages";
@@ -34,10 +34,10 @@ export default async function GuidesPage({
   }
 
   return (
-    <>
-      <SiteHeader />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-12 sm:px-6">
-        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-leaf">
+    <div className="os-scope min-h-screen bg-void text-frost">
+      <OsHeader />
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
+        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan">
           The almanac
         </p>
         <h1 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
@@ -57,11 +57,11 @@ export default async function GuidesPage({
             name="q"
             defaultValue={q ?? ""}
             placeholder="Search: trichomes, mites, pH…"
-            className="w-full rounded border border-panel-edge bg-panel px-4 py-2.5 text-sm placeholder:text-frost-dim/60"
+            className="glass w-full rounded-full px-4 py-2.5 text-sm text-frost placeholder:text-frost-dim/60"
           />
           <button
             type="submit"
-            className="rounded border border-panel-edge px-4 py-2.5 text-sm text-frost-dim transition hover:border-leaf/60 hover:text-frost"
+            className="glass-hi rounded-full px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.12em] text-frost-dim transition hover:text-frost"
           >
             Search
           </button>
@@ -75,8 +75,8 @@ export default async function GuidesPage({
             href="/guides"
             className={`rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] transition ${
               !activeStage
-                ? "border-bloom bg-bloom/15 text-bloom"
-                : "border-panel-edge text-frost-dim hover:border-leaf/60 hover:text-frost"
+                ? "border-cyan bg-cyan/15 text-cyan"
+                : "border-white/10 text-frost-dim hover:border-white/25 hover:text-frost"
             }`}
           >
             All
@@ -87,8 +87,8 @@ export default async function GuidesPage({
               href={`/guides?stage=${s.id}`}
               className={`rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] transition ${
                 activeStage === s.id
-                  ? "border-bloom bg-bloom/15 text-bloom"
-                  : "border-panel-edge text-frost-dim hover:border-leaf/60 hover:text-frost"
+                  ? "border-cyan bg-cyan/15 text-cyan"
+                  : "border-white/10 text-frost-dim hover:border-white/25 hover:text-frost"
               }`}
             >
               {s.shortName}
@@ -97,13 +97,13 @@ export default async function GuidesPage({
         </nav>
 
         {guides.length === 0 ? (
-          <div className="mt-12 rounded-lg border border-panel-edge bg-panel p-10 text-center">
+          <div className="glass iris-border mt-12 rounded-2xl p-10 text-center">
             <p className="font-display text-xl font-semibold">
               Nothing matches that search.
             </p>
             <p className="mt-2 text-sm text-frost-dim">
               Try a broader term — or{" "}
-              <Link href="/guides" className="text-bloom underline underline-offset-2">
+              <Link href="/guides" className="text-cyan underline underline-offset-2">
                 browse everything
               </Link>
               .
@@ -117,7 +117,7 @@ export default async function GuidesPage({
           </div>
         )}
       </main>
-      <SiteFooter />
-    </>
+      <OsFooter />
+    </div>
   );
 }

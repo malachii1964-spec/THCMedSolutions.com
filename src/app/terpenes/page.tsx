@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import {
   TERP_ORDER,
   TERP_DETAIL,
@@ -216,20 +217,7 @@ export default function TerpenesPage() {
         </section>
       </main>
 
-      <footer className="border-t border-white/5">
-        <div className="mx-auto max-w-6xl px-4 py-10 text-center sm:px-6">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-lime">
-            Built for education. Designed for wellness. Powered by
-            intelligence.
-          </p>
-          <p className="mt-3 text-[11px] text-frost-dim">
-            © Lake Erie Cannabis ·{" "}
-            <Link href="/legal" className="underline underline-offset-2">
-              Legal notice
-            </Link>
-          </p>
-        </div>
-      </footer>
+      <OsFooter />
     </div>
   );
 }

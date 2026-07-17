@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 
 export const metadata: Metadata = {
   title: "Legal Notice",
@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function LegalPage() {
   return (
-    <>
-      <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-12 sm:px-6">
-        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-leaf">
+    <div className="os-scope min-h-screen bg-void text-frost">
+      <OsHeader />
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
+        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-gold">
           The fine print
         </p>
         <h1 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
@@ -24,7 +24,7 @@ export default function LegalPage() {
           <p>
             Lake Erie Cannabis publishes educational content about cannabis
             cultivation. Nothing on this site is an encouragement to break
-            the law, and nothing here is legal advice or medical advice.
+            the law, and nothing here is legal or medical advice.
           </p>
           <h2>Know your local laws</h2>
           <p>
@@ -55,7 +55,7 @@ export default function LegalPage() {
           </p>
         </div>
       </main>
-      <SiteFooter />
-    </>
+      <OsFooter />
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { SEED_BANKS, seedBanksByType } from "@/lib/seed-banks";
 
 export const metadata: Metadata = {
@@ -261,22 +262,7 @@ export default function SeedsPage() {
         </section>
       </main>
 
-      <footer className="border-t border-white/5">
-        <div className="mx-auto max-w-6xl px-4 py-10 text-center sm:px-6">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-lime">
-            Built for education. Designed for wellness. Powered by
-            intelligence.
-          </p>
-          <p className="mt-3 text-[11px] leading-relaxed text-frost-dim">
-            Educational reference only — verify legality in your state before
-            ordering. Not affiliated, not medical advice. 21+ only. © Lake
-            Erie Cannabis ·{" "}
-            <Link href="/legal" className="underline underline-offset-2">
-              Legal notice
-            </Link>
-          </p>
-        </div>
-      </footer>
+      <OsFooter />
     </div>
   );
 }

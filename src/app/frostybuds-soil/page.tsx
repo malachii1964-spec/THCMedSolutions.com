@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { SoilLab } from "@/components/soil-lab";
 import { MiniSprout } from "@/components/os-visuals";
 import { SOIL_SCIENCE } from "@/lib/soil-styles";
@@ -98,20 +99,7 @@ export default function FrostyBudsSoilPage() {
         </section>
       </main>
 
-      <footer className="border-t border-white/5">
-        <div className="mx-auto max-w-7xl px-4 py-10 text-center sm:px-6">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-lime">
-            Built for education. Designed for wellness. Powered by intelligence.
-          </p>
-          <p className="mt-3 text-[11px] leading-relaxed text-frost-dim">
-            Educational content only — not legal or medical advice. 21+ only. ©
-            Lake Erie Cannabis.{" "}
-            <Link href="/legal" className="underline underline-offset-2">
-              Legal notice
-            </Link>
-          </p>
-        </div>
-      </footer>
+      <OsFooter />
     </div>
   );
 }
