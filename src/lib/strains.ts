@@ -3100,10 +3100,10 @@ const GUIDE_RULES: { slug: string; suits: (s: Strain) => boolean }[] = [
   { slug: "scrog-screen-of-green", suits: (s) => s.height === "Tall" || s.yield === "High" },
   { slug: "defoliation-guide", suits: (s) => s.type === "Indica" || s.type === "Hybrid" },
   { slug: "pests-mites-gnats-mildew", suits: (s) => s.difficulty === "Advanced" },
-  { slug: "temp-humidity-vpd", suits: (s) => s.difficulty === "Intermediate" },
+  { slug: "temperature-humidity-vpd", suits: (s) => s.difficulty === "Intermediate" },
   { slug: "first-grow-equipment", suits: (s) => s.difficulty === "Beginner" },
   { slug: "transplanting-cannabis", suits: (s) => !s.slug.includes("-auto") },
-  { slug: "autoflower-growing-guide", suits: (s) => s.slug.includes("-auto") || s.name.toLowerCase().includes("auto") },
+  { slug: "autoflower-complete-guide", suits: (s) => s.slug.includes("-auto") || s.name.toLowerCase().includes("auto") },
   { slug: "companion-planting-cannabis", suits: (s) => s.climate === "Outdoor" || s.climate === "Both" },
   { slug: "living-soil-no-till", suits: (s) => s.difficulty !== "Advanced" && s.climate !== "Outdoor" },
   { slug: "maximizing-bud-quality", suits: (s) => s.yield === "High" || s.type === "Indica" },
@@ -3118,6 +3118,14 @@ const GUIDE_RULES: { slug: string; suits: (s: Strain) => boolean }[] = [
   { slug: "canopy-management-advanced", suits: (s) => s.height === "Tall" || s.yield === "High" },
   { slug: "cold-climate-growing", suits: (s) => s.climate === "Outdoor" || s.climate === "Both" },
   { slug: "micro-growing", suits: (s) => s.height === "Short" || s.height === "Medium" },
+  { slug: "pest-identification-guide", suits: (s) => s.climate === "Outdoor" || s.climate === "Both" },
+  { slug: "hermaphrodite-prevention", suits: (s) => s.difficulty === "Beginner" || s.climate === "Outdoor" },
+  { slug: "yield-optimization", suits: (s) => s.yield === "High" && s.difficulty !== "Beginner" },
+  { slug: "bud-rot-botrytis", suits: (s) => s.type === "Indica" || (s.climate === "Outdoor" || s.climate === "Both") },
+  { slug: "cal-mag-complete-guide", suits: (s) => s.climate === "Indoor" },
+  { slug: "ec-ppm-measuring", suits: (s) => s.difficulty !== "Beginner" && s.climate === "Indoor" },
+  { slug: "nitrogen-toxicity-excess", suits: (s) => s.difficulty === "Beginner" },
+  { slug: "pk-boosters-bloom-supplements", suits: (s) => s.yield === "High" && s.difficulty !== "Beginner" },
 ];
 
 /**
