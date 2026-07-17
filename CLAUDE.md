@@ -99,6 +99,20 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- 50-GUIDE MILESTONE (2026-07-17): Design system fully unified across all
+  26 page routes. Shared OsFooter (4-column nav grid: Grow, Genetics,
+  Tools, More) deployed site-wide — replaces all inline mini-footers and
+  old SiteFooter. Old SiteHeader/SiteFooter components deleted (zero
+  imports remain). All interactive components migrated to OS tokens (glass,
+  iris-border, btn-iris): GuideCard, BookmarkButton, SignOutButton, AgeGate.
+  Guides 42 → 50 (maximizing bud quality, seedling troubleshooting,
+  watering in flower, pH lockout, training techniques compared, drying
+  room setup, reading your plant). 8 new GUIDE_RULES (bud quality,
+  watering in flower added to cross-linking). Grouped mobile nav
+  (4 sections with cyan headings). Account page: stats dashboard + quick
+  links. 404 page: OS design. 150 strains, 50 guides, 69 tests, 230
+  pages. All gates green. NEXT: keep writing guides, SEO metadata, more
+  quality polish.
 - RING-B+DEPTH (2026-07-17): Massive content scale-up. Curated strains
   117 → 150 (33 new: White Truffle, Sundae Driver, Kosher Kush, G13,
   Death Star, Fire OG, Mango Haze, Critical+, Dolato, WiFi OG, etc. —
@@ -111,7 +125,7 @@ At the end of every working session:
   count in stats bar, expanded footer nav. Social auth (Google/GitHub/
   Facebook) conditionally wired via env vars. Lite directory cleaned up
   (22 promoted entries removed). 69 tests, build 222 pages. All gates
-  green. NEXT: more guides, polish, quality audit.
+  green.
 - STRAINS+DIRECTORY (2026-07-16): Ring A complete + strain scale-up. Curated
   grow-profiles 42 → 88 (modern exotics, classics, landraces, autos, CBD).
   NEW two-tier Strain Directory (/strain-directory, strain-directory.ts):
