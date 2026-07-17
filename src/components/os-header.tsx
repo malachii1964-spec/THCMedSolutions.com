@@ -18,6 +18,7 @@ const NAV = [
   { label: "Seeds & Breeders", href: "/seeds" },
   { label: "Diagnose", href: "/diagnose" },
   { label: "Plant Doctor", href: "/plant-doctor" },
+  { label: "Recipes", href: "/recipes" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
   { label: "Gear Index", href: "/gear" },
   { label: "Local NY", href: "/local-ny" },
