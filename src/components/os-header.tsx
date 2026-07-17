@@ -15,6 +15,7 @@ const NAV = [
   { label: "Terpenes", href: "/terpenes" },
   { label: "Strain Directory", href: "/strain-directory" },
   { label: "Strain Finder", href: "/strain-finder" },
+  { label: "Seeds & Breeders", href: "/seeds" },
   { label: "Diagnose", href: "/diagnose" },
   { label: "Plant Doctor", href: "/plant-doctor" },
   { label: "Soil Lab", href: "/frostybuds-soil" },
