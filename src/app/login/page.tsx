@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AuthForm } from "@/components/auth-form";
 import { getSessionUser } from "@/lib/session";
+import { availableSocialProviders } from "@/lib/social-providers";
 
 export const metadata: Metadata = {
   title: "Log In",
@@ -14,20 +15,21 @@ export const metadata: Metadata = {
 
 export default async function LoginPage() {
   if (await getSessionUser()) redirect("/account");
+  const socials = availableSocialProviders();
   return (
     <>
       <SiteHeader />
       <main className="mx-auto w-full max-w-md flex-1 px-4 py-16 sm:px-6">
-        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-leaf">
+        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-lime">
           Welcome back
         </p>
         <h1 className="mt-3 font-display text-3xl font-semibold">Log in.</h1>
         <Suspense>
-          <AuthForm mode="login" />
+          <AuthForm mode="login" socialProviders={socials} />
         </Suspense>
         <p className="mt-6 text-sm text-frost-dim">
           New here?{" "}
-          <Link href="/join" className="text-bloom underline underline-offset-2">
+          <Link href="/join" className="text-cyan underline underline-offset-2">
             Join free
           </Link>
         </p>
