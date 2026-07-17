@@ -4,26 +4,48 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-// Full menu — shown in the mobile drawer.
-const NAV = [
-  { label: "Start Here", href: "/start" },
-  { label: "Knowledge OS", href: "/guides" },
-  { label: "Grow Like the Greats", href: "/grow-like-the-greats" },
-  { label: "Build My Grow", href: "/build-my-grow" },
-  { label: "Grow Tools", href: "/tools" },
-  { label: "Strains", href: "/strains" },
-  { label: "Terpenes", href: "/terpenes" },
-  { label: "Strain Directory", href: "/strain-directory" },
-  { label: "Strain Finder", href: "/strain-finder" },
-  { label: "Seeds & Breeders", href: "/seeds" },
-  { label: "Diagnose", href: "/diagnose" },
-  { label: "Plant Doctor", href: "/plant-doctor" },
-  { label: "Recipes", href: "/recipes" },
-  { label: "Soil Lab", href: "/frostybuds-soil" },
-  { label: "Gear Index", href: "/gear" },
-  { label: "Local NY", href: "/local-ny" },
-  { label: "Medical Card", href: "/medical-card" },
+// Full menu — shown in the mobile drawer, grouped by function.
+type NavGroup = { heading: string; links: { label: string; href: string }[] };
+const NAV_GROUPS: NavGroup[] = [
+  {
+    heading: "Get Growing",
+    links: [
+      { label: "Start Here", href: "/start" },
+      { label: "Knowledge OS", href: "/guides" },
+      { label: "Grow Like the Greats", href: "/grow-like-the-greats" },
+      { label: "Build My Grow", href: "/build-my-grow" },
+    ],
+  },
+  {
+    heading: "Explore Genetics",
+    links: [
+      { label: "Strains", href: "/strains" },
+      { label: "Strain Finder Quiz", href: "/strain-finder" },
+      { label: "Strain Directory", href: "/strain-directory" },
+      { label: "Terpenes", href: "/terpenes" },
+      { label: "Seeds & Breeders", href: "/seeds" },
+    ],
+  },
+  {
+    heading: "Tools & Help",
+    links: [
+      { label: "Grow Tools", href: "/tools" },
+      { label: "Visual Diagnose", href: "/diagnose" },
+      { label: "AI Plant Doctor", href: "/plant-doctor" },
+      { label: "Soil Lab", href: "/frostybuds-soil" },
+    ],
+  },
+  {
+    heading: "More",
+    links: [
+      { label: "Recipes & Preparations", href: "/recipes" },
+      { label: "Gear Index", href: "/gear" },
+      { label: "Local NY Hub", href: "/local-ny" },
+      { label: "Medical Card", href: "/medical-card" },
+    ],
+  },
 ];
+const NAV = NAV_GROUPS.flatMap((g) => g.links);
 
 // Curated primary set — shown in the desktop bar (the rest live in the drawer,
 // the homepage modules, and the footer).
@@ -152,16 +174,25 @@ export function OsHeader() {
       {/* mobile drawer */}
       {open ? (
         <div className="glass mx-auto mt-2 max-w-7xl rounded-2xl p-4 xl:hidden">
-          <nav className="flex flex-col">
-            {NAV.map((n) => (
-              <Link
-                key={n.label}
-                href={n.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-white/5 py-3 font-mono text-[12px] uppercase tracking-[0.12em] text-frost-dim transition hover:text-frost"
-              >
-                {n.label}
-              </Link>
+          <nav className="flex flex-col gap-5">
+            {NAV_GROUPS.map((group) => (
+              <div key={group.heading}>
+                <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-cyan">
+                  {group.heading}
+                </p>
+                <div className="mt-2 flex flex-col">
+                  {group.links.map((n) => (
+                    <Link
+                      key={n.label}
+                      href={n.href}
+                      onClick={() => setOpen(false)}
+                      className="border-b border-white/5 py-2.5 font-mono text-[12px] uppercase tracking-[0.12em] text-frost-dim transition hover:text-frost"
+                    >
+                      {n.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
           </nav>
           <div className="mt-4 flex flex-col gap-3">
