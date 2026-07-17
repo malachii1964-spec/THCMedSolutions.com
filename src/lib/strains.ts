@@ -3097,9 +3097,15 @@ const GUIDE_RULES: { slug: string; suits: (s: Strain) => boolean }[] = [
   { slug: "indoor-vs-outdoor", suits: (s) => s.climate === "Both" },
   { slug: "topping-fim-mainlining", suits: (s) => s.height === "Tall" },
   { slug: "low-stress-training-lst", suits: (s) => s.height !== "Tall" },
+  { slug: "scrog-screen-of-green", suits: (s) => s.height === "Tall" || s.yield === "High" },
+  { slug: "defoliation-guide", suits: (s) => s.type === "Indica" || s.type === "Hybrid" },
   { slug: "pests-mites-gnats-mildew", suits: (s) => s.difficulty === "Advanced" },
   { slug: "temp-humidity-vpd", suits: (s) => s.difficulty === "Intermediate" },
   { slug: "first-grow-equipment", suits: (s) => s.difficulty === "Beginner" },
+  { slug: "transplanting-cannabis", suits: (s) => !s.slug.includes("-auto") },
+  { slug: "autoflower-growing-guide", suits: (s) => s.slug.includes("-auto") || s.name.toLowerCase().includes("auto") },
+  { slug: "companion-planting-cannabis", suits: (s) => s.climate === "Outdoor" || s.climate === "Both" },
+  { slug: "living-soil-no-till", suits: (s) => s.difficulty !== "Advanced" && s.climate !== "Outdoor" },
 ];
 
 /**
