@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { GROWERS } from "@/lib/growers";
 
 export const metadata: Metadata = {
@@ -85,6 +86,7 @@ export default function GrowLikeTheGreatsPage() {
           </div>
         </section>
       </main>
+      <OsFooter />
     </div>
   );
 }

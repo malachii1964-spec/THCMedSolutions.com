@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { GROWERS, getGrower } from "@/lib/growers";
 import { getAllGuides } from "@/lib/guides";
 
@@ -160,6 +161,7 @@ export default async function GrowerPage({
           </Link>
         </p>
       </main>
+      <OsFooter />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { GrowTools } from "@/components/grow-tools";
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default function ToolsPage() {
           </div>
         </section>
       </main>
+      <OsFooter />
     </div>
   );
 }

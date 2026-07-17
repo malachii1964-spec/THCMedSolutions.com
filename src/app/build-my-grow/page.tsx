@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { BuildMyGrow } from "@/components/build-my-grow";
 import { getAllGuides } from "@/lib/guides";
 import { GROWERS } from "@/lib/growers";
@@ -54,6 +55,7 @@ export default function BuildMyGrowPage() {
           </div>
         </section>
       </main>
+      <OsFooter />
     </div>
   );
 }

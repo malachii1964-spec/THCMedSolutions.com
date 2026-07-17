@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { StrainFinder } from "@/components/strain-finder";
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function StrainFinderPage() {
           </div>
         </section>
       </main>
+      <OsFooter />
     </div>
   );
 }

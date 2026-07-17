@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { StrainDirectory } from "@/components/strain-directory";
 import { getDirectory } from "@/lib/strain-directory";
 
@@ -73,6 +74,7 @@ export default function StrainDirectoryPage() {
           </div>
         </section>
       </main>
+      <OsFooter />
     </div>
   );
 }

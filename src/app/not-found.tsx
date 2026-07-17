@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { LightCycle } from "@/components/light-cycle";
 
 export default function NotFound() {
@@ -33,6 +34,7 @@ export default function NotFound() {
           </Link>
         </div>
       </main>
+      <OsFooter />
     </div>
   );
 }

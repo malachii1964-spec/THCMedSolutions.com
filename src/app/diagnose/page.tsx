@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { SymptomChecker } from "@/components/symptom-checker";
 import { SYMPTOMS } from "@/lib/symptoms";
 import { getAllGuides } from "@/lib/guides";
@@ -61,6 +62,7 @@ export default function DiagnosePage() {
           </div>
         </section>
       </main>
+      <OsFooter />
     </div>
   );
 }

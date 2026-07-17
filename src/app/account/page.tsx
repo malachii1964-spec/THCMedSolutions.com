@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { OsHeader } from "@/components/os-header";
+import { OsFooter } from "@/components/os-footer";
 import { GuideCard } from "@/components/guide-card";
 import { SignOutButton } from "@/components/sign-out-button";
 import { getSessionUser } from "@/lib/session";
@@ -140,6 +141,7 @@ export default async function AccountPage() {
           </Link>
         </div>
       </main>
+      <OsFooter />
     </div>
   );
 }
