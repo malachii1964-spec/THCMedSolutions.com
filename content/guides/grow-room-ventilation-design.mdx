@@ -1,0 +1,304 @@
+---
+title: "Grow Room Ventilation Design: CFM, Negative Pressure, and Duct Planning"
+summary: "How to calculate the right fan size for your grow room (with the actual CFM formula), why negative pressure matters, how duct length and bends reduce effective airflow, carbon filter sizing, and when you need intake fans vs. passive intakes."
+slug: grow-room-ventilation-design
+stage: germination
+week: "ANY"
+difficulty: intermediate
+readMinutes: 8
+membersOnly: true
+updated: "2026-07-18"
+order: 113
+---
+
+Ventilation does four things in a grow room: exchanges CO2,
+removes heat, controls humidity, and scrubs odor. Get it wrong
+and everything else suffers — even a perfect light, perfect
+nutrients, and perfect genetics can't overcome stale, hot, humid
+air. Most growers buy an inline fan based on tent size and call
+it done, but understanding the airflow engineering helps you
+avoid the two most common problems: undersized fans that can't
+keep up with heat, and oversized fans that waste electricity and
+create too much negative pressure.
+
+## The CFM formula
+
+**CFM (Cubic Feet per Minute)** is the volume of air your fan
+moves. The baseline calculation:
+
+```
+Base CFM = room volume (cubic feet) × air exchanges per minute
+```
+
+Cannabis needs the entire room air replaced every 1–3 minutes:
+
+| Room volume | Exchanges/min | Base CFM |
+|-------------|---------------|----------|
+| 4×4×6.5 (104 cu ft) | 1 | 104 CFM |
+| 4×8×6.5 (208 cu ft) | 1 | 208 CFM |
+| 5×5×6.5 (163 cu ft) | 1 | 163 CFM |
+| 10×10×8 (800 cu ft) | 1 | 800 CFM |
+
+### Derating for real-world conditions
+
+Base CFM assumes zero resistance. Real installations have
+resistance from carbon filters, ducting, bends, and altitude.
+Apply these multipliers:
+
+| Factor | Multiplier |
+|--------|-----------|
+| Carbon filter | ×1.25 |
+| Each 90° duct bend | ×1.05 |
+| Each extra 10 ft of duct length beyond 10 ft | ×1.05 |
+| HPS lighting (vs. LED) | ×1.25 (more heat to remove) |
+| Hot climate (ambient >80°F) | ×1.15 |
+| High altitude (>5000 ft) | ×1.10 |
+
+**Example:** 4×4 tent (104 CFM base) with a carbon filter (×1.25)
+and two 90° bends (×1.05 × 1.05):
+
+```
+104 × 1.25 × 1.05 × 1.05 = 143 CFM needed
+```
+
+A 4-inch inline fan rated at 205 CFM (like the AC Infinity
+Cloudline T4) handles this comfortably with headroom for speed
+reduction.
+
+### Fan sizing by tent size
+
+| Tent size | Volume | Recommended fan | Rated CFM |
+|-----------|--------|----------------|-----------|
+| 2×2 | 26 cu ft | 4" inline | 190–205 CFM |
+| 2×4 | 52 cu ft | 4" inline | 190–205 CFM |
+| 3×3 | 59 cu ft | 4" inline | 190–205 CFM |
+| 4×4 | 104 cu ft | 4" inline (adequate) or 6" (comfortable) | 205 / 400 CFM |
+| 4×8 | 208 cu ft | 6" inline | 390–420 CFM |
+| 5×5 | 163 cu ft | 6" inline | 390–420 CFM |
+| 5×10 | 325 cu ft | 8" inline | 700–800 CFM |
+| 10×10 | 800 cu ft | 8" inline or dual 6" | 800+ CFM |
+
+**When in doubt, go one size up.** You can always turn a fan down
+(most have speed controllers), but you can't make a small fan
+move more air than its maximum rating.
+
+## Negative pressure
+
+### What it is
+
+Negative pressure means the exhaust fan pulls air out faster than
+it enters. This creates a slight vacuum inside the tent or room:
+
+- The tent walls pull inward slightly (the "suck-in" you see on
+  flexible tent walls)
+- ALL air exits through the carbon filter (the only designed
+  exhaust path)
+- No unfiltered air leaks OUT — it only leaks IN through gaps
+  and intakes
+
+### Why it matters
+
+Negative pressure ensures that **all odor passes through the
+carbon filter** before leaving the tent. Without it, smell leaks
+through every gap, zipper, and port — the carbon filter becomes
+pointless.
+
+### How to achieve it
+
+The exhaust fan must move more air than enters through intake
+ports:
+
+- **Passive intake** (no intake fan): simply leave one or two
+  intake ports open at the bottom of the tent. The exhaust fan's
+  suction pulls fresh air in through these ports. The ports should
+  be smaller than the exhaust to maintain negative pressure
+- **Active intake** (with intake fan): use a smaller fan or run
+  the intake fan at a lower speed than the exhaust. A common
+  ratio: exhaust at 100%, intake at 60–70%
+
+**Too much negative pressure:** tent walls collapse inward,
+restricting the growing space and potentially crushing plants.
+If walls are pulling in dramatically, open another intake port
+or reduce exhaust speed slightly.
+
+**Signs of correct negative pressure:**
+- Tent walls pull in very slightly when zipped up
+- No cannabis odor outside the tent when the exhaust is running
+- Fresh air enters through intake ports (you can feel airflow
+  with your hand)
+
+## Duct planning
+
+### Duct diameter
+
+Match duct diameter to fan diameter. A 6-inch fan needs 6-inch
+ducting. Reducing the duct size (6" fan into 4" duct) creates a
+bottleneck that drastically reduces effective CFM.
+
+### Duct length
+
+Shorter is better. Every foot of duct adds friction resistance.
+Flexible aluminum ducting (the standard for tent grows) has
+significantly more resistance than rigid ducting because the
+corrugated inner surface creates turbulence.
+
+**Practical limit:** keep total duct length under 25 feet. If you
+need more, upgrade to the next fan size.
+
+### Bends
+
+Each 90° bend reduces effective CFM by about 5%. Two tight 90°
+bends in a 4-foot run can cost you 10% of your airflow.
+
+**Best practice:**
+- Use gradual curves instead of sharp 90° turns
+- Stretch flexible duct fully straight (don't leave it compressed
+  — the accordion folds add resistance)
+- One straight exhaust run to the vent point is ideal
+
+### Insulated ducting
+
+If ducting runs through a cold attic or uninsulated space,
+insulated ducting prevents condensation. Warm, humid exhaust air
+hitting cold duct walls creates water droplets that drip back into
+the tent or pool in low points. Insulated ducting maintains
+temperature and prevents this.
+
+## Carbon filter
+
+### How it works
+
+Activated carbon adsorbs odor molecules as air passes through the
+filter bed. The air exits odor-free. Carbon filters are the
+standard for indoor cannabis odor control — they're effective
+enough that a properly installed filter eliminates virtually all
+detectable cannabis odor.
+
+### Sizing
+
+The carbon filter's CFM rating must match or exceed the exhaust
+fan's CFM at operating speed:
+
+| Fan | Minimum carbon filter rating |
+|-----|------------------------------|
+| 4" at full speed (~200 CFM) | 200+ CFM |
+| 6" at full speed (~400 CFM) | 400+ CFM |
+| 8" at full speed (~800 CFM) | 800+ CFM |
+
+**Under-sizing the filter** forces air through faster than the
+carbon can adsorb odor — smell leaks through.
+
+### Installation
+
+Two options:
+
+**Inside the tent (most common):** hang the filter inside the
+tent connected directly to the inline fan. Air path: tent air →
+through carbon filter → through fan → out the ducting → outside.
+This keeps the filter in the growing environment where the odor
+is highest.
+
+**Outside the tent:** mount the filter at the end of the exhaust
+ducting, outside the tent. Works but is less common and less
+effective (odor molecules may deposit on duct walls before reaching
+the filter).
+
+### Lifespan
+
+Carbon filters last 12–24 months depending on humidity and use.
+Replace when you start smelling cannabis odor from the exhaust.
+Humidity above 70% degrades carbon faster — keep humidity in the
+50s or below for maximum filter life.
+
+**Prefilter:** most carbon filters come with a sock-style
+prefilter that catches dust and pollen before they clog the carbon
+bed. Wash or replace the prefilter every 2–3 months to maintain
+airflow.
+
+## Sealed room vs. vented room
+
+### Vented (exhaust + intake)
+
+The standard for tent grows. Exhaust fan pulls tent air out, fresh
+room or outdoor air enters through intake ports.
+
+**Pros:**
+- Simple, cheap, effective
+- Naturally supplies fresh CO2 (ambient air is ~420 ppm CO2)
+- Controls temperature passively (pulling cooler room air in)
+
+**Cons:**
+- Relies on room/outdoor air quality and temperature
+- Can't supplement CO2 effectively (it just gets exhausted)
+- Humidity dependent on outside air humidity
+
+### Sealed (no air exchange with outside)
+
+For dedicated grow rooms (not tents). No intake or exhaust to
+the outside — all air is recirculated within the sealed space.
+
+**Pros:**
+- Total environmental control (temp, humidity, CO2 are all managed
+  independently)
+- CO2 supplementation is efficient (1200–1500 ppm)
+- No pest entry from outside air
+- No odor leaks (no exhaust path to outside)
+
+**Cons:**
+- Requires AC (mini-split or portable) for cooling
+- Requires dehumidifier
+- Requires CO2 tank or generator
+- Significantly more expensive
+- More complex to design and maintain
+
+**When to go sealed:** when you need CO2 supplementation (pushing
+DLI above 40 mol/m²/d with high-powered lights) or when outside
+air quality is a problem (extreme heat, extreme humidity, pest
+pressure).
+
+For most home growers, vented is simpler, cheaper, and adequate.
+
+## Oscillating fans
+
+Inline exhaust handles air exchange. Oscillating clip fans handle
+air circulation WITHIN the growing space — they're different jobs:
+
+- **One fan per 4×4 area** at canopy height
+- Point across the canopy, not directly at plants (constant direct
+  wind causes wind burn — stem thickening and curled leaves)
+- Oscillating is better than fixed — it distributes air more
+  evenly
+- Run 24/7 including during lights off
+
+Oscillating fans:
+- Strengthen stems (mechanical stress promotes thicker stems)
+- Prevent humidity pockets inside the canopy
+- Distribute CO2 evenly
+- Deter flying pests (fungus gnats, whiteflies)
+
+## Common mistakes
+
+1. **Buying a fan based only on tent size without derating** — the
+   rated CFM is max theoretical. Carbon filters, bends, and duct
+   length reduce it by 25–35%. Size for the derated output
+2. **Compressing flexible ducting** — a 10-foot run of compressed
+   flex duct acts like a 20-foot run of straight duct. Stretch it
+   fully or use rigid ducting for long runs
+3. **Running the exhaust at 100% constantly** — most grows don't
+   need maximum extraction all the time. Use a speed controller to
+   match exhaust to conditions — save electricity and fan life
+4. **No oscillating fan at canopy level** — the exhaust fan
+   exchanges air, but stagnant pockets still form inside dense
+   canopies. You need internal circulation
+5. **Turning off ventilation during lights-off** — humidity spikes
+   during the dark period are the prime mold window. Keep exhaust
+   running 24/7
+6. **Exhausting into the same room** — if the exhaust dumps into
+   the same room the tent intakes from, you're recirculating hot,
+   humid air. Exhaust to a different room, a window, or ducted
+   outside
+
+For odor control strategies, see our
+[ventilation guide](/guides/ventilation-odor-control). For
+environmental automation, see our
+[controller guide](/guides/environmental-controllers).
