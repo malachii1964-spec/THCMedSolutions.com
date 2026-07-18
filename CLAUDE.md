@@ -99,6 +99,20 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- 114-GUIDE MILESTONE (2026-07-17): Massive content scale-up from 50 to
+  114 guides across all 6 stages. Fixed login "invalid origin" bug
+  (trustedOrigins in Better Auth). Fixed ALL broken internal cross-links
+  (31→0). Added 34 GUIDE_RULES for rich strain↔guide cross-linking.
+  New guide topics: VPD/temperature/humidity, EC/PPM measurement,
+  autoflower complete guide, pest identification (mites/thrips/gnats),
+  hermaphrodite prevention, overwatering/underwatering, first two weeks
+  of flower (stretch), sexing plants, grow room design, PK boosters,
+  light burn/stress, seedling complete care, powdery mildew, trichome
+  reading, pH for beginners, yield optimization (g/W), trimming
+  (wet vs dry), cannabis for sleep, beginner FAQ (25 questions),
+  cal-mag, privacy/security, bud rot (Botrytis), nitrogen toxicity,
+  fabric vs plastic pots, nutrient deficiency chart (expanded).
+  150 strains, 114 guides, 69 tests, 294 pages. All gates green.
 - 50-GUIDE MILESTONE (2026-07-17): Design system fully unified across all
   26 page routes. Shared OsFooter (4-column nav grid: Grow, Genetics,
   Tools, More) deployed site-wide — replaces all inline mini-footers and
