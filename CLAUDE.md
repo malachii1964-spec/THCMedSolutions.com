@@ -99,6 +99,25 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- 135-GUIDE MILESTONE (2026-07-18): Continued content scale-up from 114
+  to 135 guides. New deep-dive topics: root rot & Pythium (hydro/soil
+  diagnosis + treatment), cannabis plant anatomy (roots to trichomes),
+  soil food web (trophic levels, mycorrhizae, KNF inputs), cannabis
+  color expression (anthocyanins, genetic vs cold triggers), watering
+  science (transpiration, osmosis, field capacity), DLI optimization
+  (per-stage targets, CO2 saturation), progressive training schedule
+  (week-by-week with node-count decision points), pre-harvest flush
+  debate (RX Green + Guelph research), troubleshooting flowchart
+  (7-symptom decision tree), tissue culture at home (4-stage TC,
+  HpLVd cleanup), space bucket build guide (parts + grow timeline),
+  water-only living soil recipe (amendments, cook, no-till recycling),
+  nutrient lockout recovery (flush-and-reset protocol), first grow
+  walkthrough (16-week seed-to-jar linear guide), advanced breeding
+  (backcrossing, selfing, F2 pheno hunting), humidity deep dive
+  (per-stage targets, lights-off spikes, WNY climate), ventilation
+  design (CFM formula with derating), growing from clones, harvest
+  timing by effect (4 windows from energetic to sedating).
+  150 strains, 135 guides, 69 tests, 315 pages. All gates green.
 - 114-GUIDE MILESTONE (2026-07-17): Massive content scale-up from 50 to
   114 guides across all 6 stages. Fixed login "invalid origin" bug
   (trustedOrigins in Better Auth). Fixed ALL broken internal cross-links
