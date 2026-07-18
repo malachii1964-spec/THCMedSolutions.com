@@ -1,0 +1,279 @@
+---
+title: "DLI for Cannabis: Optimizing Daily Light Integral by Growth Stage"
+summary: "DLI (Daily Light Integral) is the total photons your plant receives per day — the single number that determines whether your light is too weak, too strong, or dialed in. How to calculate it, what each growth stage needs, and how to adjust for your specific setup."
+slug: dli-light-optimization
+stage: seedling
+week: "ANY"
+difficulty: advanced
+readMinutes: 7
+membersOnly: true
+updated: "2026-07-18"
+order: 102
+---
+
+PPFD tells you how much light is hitting your canopy at any given
+moment. DLI tells you how much total light the plant receives over
+the entire day — and that's the number that actually matters for
+growth, yield, and quality. A plant under 400 PPFD for 18 hours
+gets a very different DLI than the same light for 12 hours, and
+that difference affects everything from node spacing to bud
+density.
+
+## What DLI is
+
+**DLI (Daily Light Integral)** is the total number of
+photosynthetically active photons (PAR) delivered to a square
+meter of canopy per day. It's measured in **mol/m²/d** (moles of
+photons per square meter per day).
+
+Think of PPFD as the speed of a car and DLI as the total distance
+traveled. PPFD is instantaneous intensity. DLI is the accumulated
+total over the full photoperiod.
+
+### The formula
+
+```
+DLI = PPFD × hours × 3600 / 1,000,000
+```
+
+Where:
+- PPFD is in µmol/m²/s
+- Hours is the photoperiod length
+- 3600 converts hours to seconds
+- 1,000,000 converts µmol to mol
+
+**Quick shortcut:** PPFD × hours × 0.0036 = DLI
+
+### Example calculations
+
+| PPFD (µmol/m²/s) | Photoperiod | DLI (mol/m²/d) |
+|-------------------|-------------|-----------------|
+| 200 | 18 hours | 12.96 |
+| 400 | 18 hours | 25.92 |
+| 600 | 18 hours | 38.88 |
+| 800 | 18 hours | 51.84 |
+| 600 | 12 hours | 25.92 |
+| 800 | 12 hours | 34.56 |
+| 1000 | 12 hours | 43.20 |
+| 1200 | 12 hours | 51.84 |
+
+Note that 800 PPFD × 18h and 1200 PPFD × 12h produce the same
+DLI (51.84). The plant receives the same total light — but the
+higher instantaneous intensity in the 12h scenario has different
+implications for heat stress, water use, and CO2 demand.
+
+## DLI targets by growth stage
+
+| Stage | DLI target | PPFD range | Photoperiod |
+|-------|-----------|------------|-------------|
+| Clones/seedlings | 12–18 mol/m²/d | 100–300 µmol/m²/s | 18–24h |
+| Early veg | 20–30 mol/m²/d | 300–500 µmol/m²/s | 18h |
+| Late veg | 30–45 mol/m²/d | 500–700 µmol/m²/s | 18h |
+| Flower (no CO2) | 35–45 mol/m²/d | 600–800 µmol/m²/s | 12h |
+| Flower (with CO2) | 45–65 mol/m²/d | 800–1200 µmol/m²/s | 12h |
+| Autoflower | 40–55 mol/m²/d | 600–800 µmol/m²/s | 18–20h |
+
+### Why these numbers
+
+**Below 15 DLI:** the plant stretches (long internodes), produces
+thin stems, and grows slowly. Seedlings under insufficient light
+become leggy and weak. This is the "not enough light" zone.
+
+**15–30 DLI:** adequate for vegetative growth. The plant develops
+normal structure and moderate growth rate. This is the typical
+range for hobby growers with budget lights.
+
+**30–45 DLI:** the sweet spot for most cannabis grows. Tight node
+spacing, thick stems, rapid growth in veg, and dense bud
+production in flower. This is where well-equipped home grows
+operate.
+
+**45–65 DLI:** maximum production zone, but requires CO2
+supplementation (1200–1500 ppm). Without supplemental CO2, plants
+above ~45 DLI can't photosynthesize fast enough to use the light
+— they hit a CO2 bottleneck. The excess light energy causes heat
+stress and light burn. See our
+[CO2 guide](/guides/co2-supplementation).
+
+**Above 65 DLI:** diminishing returns even with CO2.
+Photoprotective mechanisms (heat dissipation, chlorophyll
+bleaching) kick in. Light burn becomes increasingly likely. Few
+home growers should aim here.
+
+## Measuring DLI
+
+### With a PAR meter
+
+A dedicated PAR meter (Apogee MQ-500, ~$500) or budget option
+(Photone app for smartphones, free to $10) gives you PPFD
+readings. Take readings at multiple points across the canopy,
+average them, and apply the formula.
+
+**Mapping your light footprint:**
+1. Set up a grid across your canopy (every 6–12 inches)
+2. Record PPFD at each point at canopy height
+3. Note the variation — most LEDs are hottest in the center and
+   drop off at the edges
+4. The average PPFD across the canopy (not the peak) determines
+   your effective DLI
+
+### Without a PAR meter
+
+If you know your light's rated PPFD at a specific height (from
+the manufacturer's data sheet), you can estimate DLI directly.
+Most quality LED manufacturers publish a PPFD map showing
+intensity at different heights and positions.
+
+**Warning:** manufacturer PPFD maps measure in an empty, white
+reflective space with no plants. Real-world PPFD at the canopy
+with plants is typically 70–85% of the rated map value due to
+light absorption by leaves, less-than-perfect reflectivity, and
+distance variations as plants grow.
+
+## The flower DLI challenge
+
+When you flip to 12/12, you lose 33% of your photoperiod compared
+to 18/6. To maintain the same DLI, you need to increase PPFD by
+50%:
+
+| Veg DLI target | Veg PPFD (18h) | Same DLI in flower (12h) |
+|----------------|----------------|--------------------------|
+| 30 mol/m²/d | 463 PPFD | 694 PPFD needed |
+| 40 mol/m²/d | 617 PPFD | 926 PPFD needed |
+| 45 mol/m²/d | 694 PPFD | 1042 PPFD needed |
+
+Many growers can't increase PPFD by 50% because their light is
+already running at maximum output. Options:
+- Accept a lower DLI in flower (30–35 is still productive)
+- Raise light intensity gradually over the first 2 weeks of flower
+  as the plant acclimates
+- Add a supplemental bar light to boost edge and lower-canopy
+  light
+- Run autoflowers at 18–20h to maintain higher DLI without needing
+  extreme PPFD
+
+This is why autoflowers can out-produce photoperiod plants in
+small grows: 18–20 hours of moderate PPFD (600) delivers more
+total DLI (38.9–43.2) than 12 hours of high PPFD (800, DLI 34.6).
+
+## DLI and CO2
+
+Photosynthesis requires both light AND CO2. At ambient CO2 levels
+(~420 ppm), the photosynthetic rate plateaus around 800 PPFD —
+pushing higher doesn't help because CO2 becomes the limiting
+factor.
+
+**With CO2 supplementation:**
+
+| CO2 level | PPFD saturation | Max practical DLI (12h) |
+|-----------|----------------|------------------------|
+| 420 ppm (ambient) | ~800 µmol/m²/s | ~35 mol/m²/d |
+| 800 ppm | ~1000 µmol/m²/s | ~43 mol/m²/d |
+| 1200 ppm | ~1200 µmol/m²/s | ~52 mol/m²/d |
+| 1500 ppm | ~1500 µmol/m²/s | ~65 mol/m²/d |
+
+**Without CO2 supplementation, don't push DLI above 40.**
+The additional light energy without the CO2 to use it causes:
+- Leaf bleaching (light burn) — see our
+  [light burn guide](/guides/light-burn-light-stress)
+- Chlorophyll degradation
+- Reduced terpene production (heat damage to volatile compounds)
+- Higher water and nutrient demand without proportional yield gain
+
+## DLI uniformity
+
+Average DLI across the canopy matters less if the distribution is
+wildly uneven. A center reading of 900 PPFD dropping to 300 at
+the edges gives an average of 600 — but the center is light-
+burned while the edges are stretching.
+
+### Improving uniformity
+
+**Light height:** higher light position improves uniformity but
+reduces peak intensity. Find the balance where edge PPFD is no
+less than 70% of center PPFD.
+
+**Multiple lights:** two 240W lights spread across a 4×4 tent
+produce better uniformity than one 480W light centered.
+
+**Reflective walls:** good quality mylar or white paint on tent
+walls bounces edge light back toward the canopy, improving
+uniformity by 10–20%.
+
+**SCROG or LST:** training the canopy flat at a uniform height
+ensures every bud site receives similar DLI. A level canopy
+matters more than a level light footprint. See our
+[SCROG guide](/guides/scrog-screen-of-green).
+
+## Stage transitions
+
+### Seedling → veg
+
+Seedlings are sensitive to high light intensity. Start at 12–15
+DLI and increase by 3–5 mol/m²/d per week as the plant develops
+more leaf area. By late veg, the plant should be receiving full
+intensity.
+
+**Rapid DLI increases cause:**
+- Leaf curl (taco-ing)
+- Bleaching of new growth
+- Stunted growth (the plant is protecting itself, not growing)
+
+### Veg → flower
+
+When flipping to 12/12:
+1. Don't increase PPFD immediately — the sudden loss of 6 hours
+   of light is already a stress signal
+2. Keep PPFD the same for the first 3–5 days
+3. Increase PPFD by 10–15% per week over weeks 1–3 of flower
+4. Reach target flower PPFD by week 3–4, which coincides with
+   the end of the stretch
+
+### Late flower
+
+Some growers reduce light intensity by 10–15% during the final
+week before harvest. The theory: less light stress preserves
+volatile terpenes and reduces the "hay" smell in dried flower.
+Evidence is anecdotal but widely reported.
+
+## DLI for autoflowers
+
+Autoflowers don't need a 12/12 flip, which means you can optimize
+DLI more freely:
+
+| Schedule | PPFD needed for 40 DLI | Pros | Cons |
+|----------|----------------------|------|------|
+| 24/0 | 463 µmol/m²/s | Lowest PPFD needed | No dark period (some research suggests plants benefit from rest) |
+| 20/4 | 556 µmol/m²/s | Good balance | Moderate PPFD needed |
+| 18/6 | 617 µmol/m²/s | Most common | Higher PPFD needed for same DLI |
+
+**Recommendation:** 20/4 for autoflowers delivers excellent DLI
+at moderate PPFD, gives the plant a rest period, and reduces
+electricity cost compared to 24/0. The 4-hour dark period also
+allows for temperature and humidity cycling, which some growers
+believe improves terpene development.
+
+## Common mistakes
+
+1. **Chasing high PPFD without considering photoperiod** — 1200
+   PPFD for 12 hours is the same DLI as 800 PPFD for 18 hours,
+   but the 1200 scenario is harder to manage (more heat, more
+   water demand, CO2 requirement)
+2. **Measuring PPFD only at the center** — your plant doesn't
+   only grow at the center. Edge and lower-canopy light matters.
+   Average across the growing area
+3. **Ignoring the CO2 ceiling** — above ~800 PPFD at ambient CO2,
+   you're wasting electricity and stressing the plant. Either add
+   CO2 or accept the DLI limit
+4. **Same intensity for all stages** — seedlings can't handle the
+   DLI that flowering plants thrive at. Ramp up gradually
+5. **Not accounting for canopy height changes** — as plants grow
+   toward the light, PPFD at the canopy increases. Raise the light
+   or dim it to maintain target DLI, especially during the flower
+   stretch
+
+For PPFD fundamentals, see our
+[lighting guide](/guides/lighting-basics-ppfd). For light
+technology and selection, see our
+[LED guide](/guides/led-grow-light-mastery). For the Grow Tools
+DLI calculator, visit [/tools](/tools).
