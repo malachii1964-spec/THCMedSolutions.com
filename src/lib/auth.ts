@@ -11,7 +11,11 @@ function trustedOrigins(): string[] {
     origins.push(`https://${process.env.VERCEL_URL}`);
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL)
     origins.push(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
-  return origins;
+  if (process.env.VERCEL_BRANCH_URL)
+    origins.push(`https://${process.env.VERCEL_BRANCH_URL}`);
+  origins.push("https://lakeeriecannabis.com");
+  origins.push("https://www.lakeeriecannabis.com");
+  return [...new Set(origins)];
 }
 
 export const auth = betterAuth({
