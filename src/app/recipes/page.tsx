@@ -4,10 +4,22 @@ import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { getAllGuides } from "@/lib/guides";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Recipes & Preparations — Edibles, Tinctures, Topicals & Concentrates",
   description:
     "Turn your harvest into edibles, tinctures, topicals, and concentrates. Step-by-step cannabis recipes with dosing math, safety, and storage.",
+  openGraph: {
+    title: "Recipes & Preparations — Edibles, Tinctures, Topicals & Concentrates",
+    description:
+      "Turn your harvest into edibles, tinctures, topicals, and concentrates. Step-by-step cannabis recipes with dosing math, safety, and storage.",
+    url: `${SITE}/recipes`,
+  },
+  alternates: { canonical: `${SITE}/recipes` },
 };
 
 const RECIPE_SLUGS = [

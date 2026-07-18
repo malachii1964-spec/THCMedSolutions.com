@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { OsHeader } from "@/components/os-header";
@@ -21,6 +22,22 @@ import {
 } from "@/components/os-visuals";
 import { STRAINS } from "@/lib/strains";
 import { getAllGuides } from "@/lib/guides";
+
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
+export const metadata: Metadata = {
+  openGraph: {
+    title: "Lake Erie Cannabis — Grow Frosty Buds the Easy Way",
+    description:
+      "Premium grower-first cannabis knowledge for indoor and outdoor home growers — rooted in Western New York.",
+    url: SITE,
+    type: "website",
+  },
+  alternates: { canonical: SITE },
+};
 
 const MODULES = [
   {
@@ -168,8 +185,31 @@ export default function HomePage() {
     { icon: "ny" as const, n: "WNY", l: "Focused", s: "Buffalo → Niagara" },
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Lake Erie Cannabis",
+    url: SITE,
+    description:
+      "Premium grower-first cannabis knowledge for indoor and outdoor home growers — rooted in Western New York.",
+    publisher: {
+      "@type": "Organization",
+      name: "Lake Erie Cannabis",
+      url: SITE,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE}/guides?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <div className="os-scope min-h-screen bg-void text-frost">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <OsHeader />
 
       <main>

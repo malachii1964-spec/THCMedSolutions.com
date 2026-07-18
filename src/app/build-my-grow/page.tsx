@@ -5,10 +5,22 @@ import { BuildMyGrow } from "@/components/build-my-grow";
 import { getAllGuides } from "@/lib/guides";
 import { GROWERS } from "@/lib/growers";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Build My Grow — Your Personalized Grow Plan",
   description:
     "Answer six quick questions and get a personalized cannabis grow plan: setup, plant count, strain direction, a step-by-step guide roadmap, and the gear to line up.",
+  openGraph: {
+    title: "Build My Grow — Your Personalized Grow Plan",
+    description:
+      "Answer six quick questions and get a personalized cannabis grow plan: setup, plant count, strain direction, a step-by-step guide roadmap, and the gear to line up.",
+    url: `${SITE}/build-my-grow`,
+  },
+  alternates: { canonical: `${SITE}/build-my-grow` },
 };
 
 export default function BuildMyGrowPage() {

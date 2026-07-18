@@ -10,6 +10,11 @@ export function generateStaticParams() {
   return STRAINS.map((s) => ({ slug: s.slug }));
 }
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export async function generateMetadata({
   params,
 }: {
@@ -18,9 +23,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const s = getStrain(slug);
   if (!s) return {};
+  const url = `${SITE}/strains/${s.slug}`;
   return {
     title: `${s.name} — Grow Profile, Terpenes & Effects`,
     description: s.summary,
+    openGraph: {
+      title: `${s.name} — Cannabis Grow Profile`,
+      description: s.summary,
+      url,
+      type: "article",
+      tags: [s.type, s.difficulty, ...s.terpenes, "cannabis strain"],
+    },
+    twitter: {
+      card: "summary",
+      title: `${s.name} — Cannabis Grow Profile`,
+      description: s.summary,
+    },
+    alternates: { canonical: url },
   };
 }
 
@@ -56,8 +75,23 @@ export default async function StrainPage({
     { l: "Climate", v: s.climate },
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${s.name} — Cannabis Grow Profile`,
+    description: s.summary,
+    author: { "@type": "Organization", name: "Lake Erie Cannabis", url: SITE },
+    publisher: { "@type": "Organization", name: "Lake Erie Cannabis", url: SITE },
+    mainEntityOfPage: `${SITE}/strains/${s.slug}`,
+    keywords: [s.name, s.type, s.difficulty, ...s.effects, ...s.flavors],
+  };
+
   return (
     <div className="os-scope min-h-screen bg-void text-frost">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <OsHeader />
       <main className="mx-auto w-full max-w-3xl px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
         <nav className="font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">

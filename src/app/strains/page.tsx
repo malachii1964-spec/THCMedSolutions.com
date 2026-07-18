@@ -5,10 +5,22 @@ import { OsFooter } from "@/components/os-footer";
 import { StrainIndex } from "@/components/strain-index";
 import { TERPENES, STRAINS } from "@/lib/strains";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Strain & Terpene Database — Grow-Focused Profiles",
   description:
     "Searchable cannabis strain profiles with grow specs, terpenes, and effects — filter by type, effect, and grow difficulty. Plus a terpene reference.",
+  openGraph: {
+    title: "Strain & Terpene Database — Grow-Focused Profiles",
+    description:
+      "Searchable cannabis strain profiles with grow specs, terpenes, and effects — filter by type, effect, and grow difficulty. Plus a terpene reference.",
+    url: `${SITE}/strains`,
+  },
+  alternates: { canonical: `${SITE}/strains` },
 };
 
 export default function StrainsPage() {

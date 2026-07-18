@@ -4,10 +4,22 @@ import { OsFooter } from "@/components/os-footer";
 import { MedicalIntakeForm } from "@/components/medical-intake-form";
 import { MEDICAL_PROVIDER } from "@/lib/site";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Get Your NY Medical Card — Connect With a Local Doctor",
   description:
     "How New York's medical cannabis program works and how to get certified — connect with a trusted Western New York provider.",
+  openGraph: {
+    title: "Get Your NY Medical Card — Connect With a Local Doctor",
+    description:
+      "How New York's medical cannabis program works and how to get certified — connect with a trusted Western New York provider.",
+    url: `${SITE}/medical-card`,
+  },
+  alternates: { canonical: `${SITE}/medical-card` },
 };
 
 const STEPS = [

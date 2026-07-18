@@ -6,10 +6,22 @@ import { GuideCard } from "@/components/guide-card";
 import { getAllGuides } from "@/lib/guides";
 import { STAGES, type StageId } from "@/lib/stages";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Grow Guides",
   description:
     "Stage-by-stage cannabis cultivation guides — germination, veg, flower, harvest, cure, and troubleshooting.",
+  openGraph: {
+    title: "Grow Guides",
+    description:
+      "Stage-by-stage cannabis cultivation guides — germination, veg, flower, harvest, cure, and troubleshooting.",
+    url: `${SITE}/guides`,
+  },
+  alternates: { canonical: `${SITE}/guides` },
 };
 
 export default async function GuidesPage({

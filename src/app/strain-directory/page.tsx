@@ -5,12 +5,24 @@ import { OsFooter } from "@/components/os-footer";
 import { StrainDirectory } from "@/components/strain-directory";
 import { getDirectory } from "@/lib/strain-directory";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 const entries = getDirectory();
 
 export const metadata: Metadata = {
   title: `Strain Directory — ${entries.length}+ Cannabis Strains`,
   description:
     "Search the Lake Erie Cannabis strain directory — hundreds of cultivars by name, type, and lineage, with full grow profiles for the ones you'll actually grow.",
+  openGraph: {
+    title: `Strain Directory — ${entries.length}+ Cannabis Strains`,
+    description:
+      "Search the Lake Erie Cannabis strain directory — hundreds of cultivars by name, type, and lineage, with full grow profiles for the ones you'll actually grow.",
+    url: `${SITE}/strain-directory`,
+  },
+  alternates: { canonical: `${SITE}/strain-directory` },
 };
 
 export default function StrainDirectoryPage() {

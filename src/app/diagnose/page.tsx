@@ -6,10 +6,22 @@ import { SymptomChecker } from "@/components/symptom-checker";
 import { SYMPTOMS } from "@/lib/symptoms";
 import { getAllGuides } from "@/lib/guides";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Visual Plant Doctor — Diagnose Your Cannabis Plant",
   description:
     "Click your plant's symptom — yellowing leaves, burnt tips, spots, bugs, bud rot — and get the likely cause, the quick fix, what NOT to do, and how to prevent it.",
+  openGraph: {
+    title: "Visual Plant Doctor — Diagnose Your Cannabis Plant",
+    description:
+      "Click your plant's symptom — yellowing leaves, burnt tips, spots, bugs, bud rot — and get the likely cause, the quick fix, what NOT to do, and how to prevent it.",
+    url: `${SITE}/diagnose`,
+  },
+  alternates: { canonical: `${SITE}/diagnose` },
 };
 
 export default function DiagnosePage() {

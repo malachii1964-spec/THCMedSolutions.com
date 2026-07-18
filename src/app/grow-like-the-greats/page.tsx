@@ -4,10 +4,22 @@ import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { GROWERS } from "@/lib/growers";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Grow Like the Greats — Methods of Legendary Cultivators",
   description:
     "Learn how iconic growers, YouTube creators, breeders, and cannabis scientists actually grow — turned into simple, step-by-step Lake Erie Cannabis grow paths.",
+  openGraph: {
+    title: "Grow Like the Greats — Methods of Legendary Cultivators",
+    description:
+      "Learn how iconic growers, YouTube creators, breeders, and cannabis scientists actually grow — turned into simple, step-by-step Lake Erie Cannabis grow paths.",
+    url: `${SITE}/grow-like-the-greats`,
+  },
+  alternates: { canonical: `${SITE}/grow-like-the-greats` },
 };
 
 export default function GrowLikeTheGreatsPage() {

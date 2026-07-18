@@ -3,10 +3,22 @@ import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { StrainFinder } from "@/components/strain-finder";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Strain Finder — Find Your Perfect Cannabis Strain",
   description:
     "Answer five quick questions — how you want to feel, where you'll grow, your experience, and your flavor — and get your best-matched strains with the reasons why.",
+  openGraph: {
+    title: "Strain Finder — Find Your Perfect Cannabis Strain",
+    description:
+      "Answer five quick questions — how you want to feel, where you'll grow, your experience, and your flavor — and get your best-matched strains with the reasons why.",
+    url: `${SITE}/strain-finder`,
+  },
+  alternates: { canonical: `${SITE}/strain-finder` },
 };
 
 export default function StrainFinderPage() {

@@ -5,10 +5,22 @@ import { OsFooter } from "@/components/os-footer";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { FAQ } from "@/lib/faq";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "FAQ — Answers for New Growers",
   description:
     "Straight answers about growing cannabis and using the platform: getting started, costs, yellow leaves, harvest timing, legality, and more.",
+  openGraph: {
+    title: "FAQ — Answers for New Growers",
+    description:
+      "Straight answers about growing cannabis and using the platform: getting started, costs, yellow leaves, harvest timing, legality, and more.",
+    url: `${SITE}/faq`,
+  },
+  alternates: { canonical: `${SITE}/faq` },
 };
 
 // FAQ structured data for search engines

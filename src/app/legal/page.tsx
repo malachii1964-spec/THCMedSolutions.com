@@ -2,10 +2,22 @@ import type { Metadata } from "next";
 import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Legal Notice",
   description:
     "Legal and medical disclaimer for Lake Erie Cannabis educational content.",
+  openGraph: {
+    title: "Legal Notice",
+    description:
+      "Legal and medical disclaimer for Lake Erie Cannabis educational content.",
+    url: `${SITE}/legal`,
+  },
+  alternates: { canonical: `${SITE}/legal` },
 };
 
 export default function LegalPage() {

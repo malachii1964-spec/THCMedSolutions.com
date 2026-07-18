@@ -6,10 +6,22 @@ import { SoilLab } from "@/components/soil-lab";
 import { MiniSprout } from "@/components/os-visuals";
 import { SOIL_SCIENCE } from "@/lib/soil-styles";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "FrostyBuds Soil Lab — Grow Like Your Favorite Grower",
   description:
     "Pick a grower style — Mr. Canucks living soil, coco autos, veganic, super soil, guano blends — and get the exact base mix, recipe, and feeding rhythm.",
+  openGraph: {
+    title: "FrostyBuds Soil Lab — Grow Like Your Favorite Grower",
+    description:
+      "Pick a grower style — Mr. Canucks living soil, coco autos, veganic, super soil, guano blends — and get the exact base mix, recipe, and feeding rhythm.",
+    url: `${SITE}/frostybuds-soil`,
+  },
+  alternates: { canonical: `${SITE}/frostybuds-soil` },
 };
 
 export default function FrostyBudsSoilPage() {

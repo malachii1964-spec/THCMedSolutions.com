@@ -10,10 +10,22 @@ import {
   terpeneCounts,
 } from "@/lib/terpenes";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Terpene Hub — Aromas, Effects & Strain Cross-Reference",
   description:
     "The 7 dominant cannabis terpenes explained — what they smell like, how they feel, and which strains feature each. A grower's aroma guide.",
+  openGraph: {
+    title: "Terpene Hub — Aromas, Effects & Strain Cross-Reference",
+    description:
+      "The 7 dominant cannabis terpenes explained — what they smell like, how they feel, and which strains feature each. A grower's aroma guide.",
+    url: `${SITE}/terpenes`,
+  },
+  alternates: { canonical: `${SITE}/terpenes` },
 };
 
 const TYPE_COLOR: Record<string, string> = {

@@ -17,6 +17,11 @@ export function generateStaticParams() {
   return getAllGuides().map((g) => ({ slug: g.slug }));
 }
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export async function generateMetadata({
   params,
 }: {
@@ -25,7 +30,26 @@ export async function generateMetadata({
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) return {};
-  return { title: guide.title, description: guide.summary };
+  const url = `${SITE}/guides/${guide.slug}`;
+  return {
+    title: guide.title,
+    description: guide.summary,
+    openGraph: {
+      title: guide.title,
+      description: guide.summary,
+      url,
+      type: "article",
+      publishedTime: guide.updated,
+      authors: ["Lake Erie Cannabis"],
+      tags: [guide.stage, guide.difficulty, "cannabis", "growing"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: guide.title,
+      description: guide.summary,
+    },
+    alternates: { canonical: url },
+  };
 }
 
 export default async function GuidePage({
@@ -47,8 +71,28 @@ export default async function GuidePage({
   const shownStrains = suitedStrains.slice(0, 8);
   const moreStrains = suitedStrains.length - shownStrains.length;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.summary,
+    dateModified: guide.updated,
+    datePublished: guide.updated,
+    author: { "@type": "Organization", name: "Lake Erie Cannabis", url: SITE },
+    publisher: { "@type": "Organization", name: "Lake Erie Cannabis", url: SITE },
+    mainEntityOfPage: `${SITE}/guides/${guide.slug}`,
+    articleSection: stage?.name ?? guide.stage,
+    keywords: [guide.stage, guide.difficulty, "cannabis", "growing guide"],
+    wordCount: guide.content.split(/\s+/).length,
+    timeRequired: `PT${guide.readMinutes}M`,
+  };
+
   return (
     <div className="os-scope min-h-screen bg-void text-frost">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <OsHeader />
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
         <nav className="font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">

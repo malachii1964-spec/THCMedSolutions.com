@@ -20,7 +20,13 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400"],
 });
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE),
   title: {
     default: "Lake Erie Cannabis — Grow Frosty Buds the Easy Way",
     template: "%s · Lake Erie Cannabis",
@@ -28,20 +34,28 @@ export const metadata: Metadata = {
   description:
     "Premium grower-first cannabis knowledge for indoor and outdoor home growers. Simple, stage-by-stage guides from seed to cure, plant diagnosis, strains, and trusted gear — rooted in Western New York.",
   icons: {
-    icon: "/icon-32.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: "/icon-180.png",
   },
   openGraph: {
+    siteName: "Lake Erie Cannabis",
     title: "Lake Erie Cannabis — Grow Frosty Buds the Easy Way",
     description:
       "Premium grower-first cannabis knowledge for indoor and outdoor home growers — rooted in Western New York.",
     type: "website",
-    images: [{ url: "/og-image.webp", width: 1200, height: 675 }],
+    locale: "en_US",
+    images: [{ url: "/og-image.webp", width: 1200, height: 675, alt: "Lake Erie Cannabis" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lake Erie Cannabis — Grow Frosty Buds the Easy Way",
-    images: ["/og-image.webp"],
+    images: [{ url: "/og-image.webp", alt: "Lake Erie Cannabis" }],
+  },
+  alternates: {
+    canonical: SITE,
   },
 };
 

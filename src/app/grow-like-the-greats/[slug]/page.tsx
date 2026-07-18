@@ -6,6 +6,11 @@ import { OsFooter } from "@/components/os-footer";
 import { GROWERS, getGrower } from "@/lib/growers";
 import { getAllGuides } from "@/lib/guides";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export function generateStaticParams() {
   return GROWERS.map((g) => ({ slug: g.slug }));
 }
@@ -21,6 +26,12 @@ export async function generateMetadata({
   return {
     title: `Grow Like ${g.name} — ${g.role}`,
     description: g.tagline,
+    openGraph: {
+      title: `Grow Like ${g.name} — ${g.role}`,
+      description: g.tagline,
+      url: `${SITE}/grow-like-the-greats/${slug}`,
+    },
+    alternates: { canonical: `${SITE}/grow-like-the-greats/${slug}` },
   };
 }
 

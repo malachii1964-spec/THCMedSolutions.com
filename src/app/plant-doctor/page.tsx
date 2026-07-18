@@ -5,10 +5,22 @@ import { OsFooter } from "@/components/os-footer";
 import { DoctorChat } from "@/components/doctor-chat";
 import { getSessionUser } from "@/lib/session";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "AI Plant Doctor — Diagnose Your Grow",
   description:
     "Describe your plant's symptoms and get master-grower diagnosis: deficiencies, pests, watering, light stress — free for members.",
+  openGraph: {
+    title: "AI Plant Doctor — Diagnose Your Grow",
+    description:
+      "Describe your plant's symptoms and get master-grower diagnosis: deficiencies, pests, watering, light stress — free for members.",
+    url: `${SITE}/plant-doctor`,
+  },
+  alternates: { canonical: `${SITE}/plant-doctor` },
 };
 
 export default async function PlantDoctorPage() {

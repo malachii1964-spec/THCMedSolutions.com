@@ -6,10 +6,22 @@ import { LightCycle } from "@/components/light-cycle";
 import { getAllGuides } from "@/lib/guides";
 import { STAGES } from "@/lib/stages";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Start Here — Your First Grow, Mapped",
   description:
     "The complete first-grow roadmap: gear, seeds, and every stage from germination to cure, with the exact guide to read at each step.",
+  openGraph: {
+    title: "Start Here — Your First Grow, Mapped",
+    description:
+      "The complete first-grow roadmap: gear, seeds, and every stage from germination to cure, with the exact guide to read at each step.",
+    url: `${SITE}/start`,
+  },
+  alternates: { canonical: `${SITE}/start` },
 };
 
 const PHASE_NOTES: Record<string, string> = {

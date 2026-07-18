@@ -4,10 +4,22 @@ import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { SEED_BANKS, seedBanksByType } from "@/lib/seed-banks";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Seed Banks & Breeders — Where to Buy Cannabis Seeds",
   description:
     "Reputable seed banks and breeders for home growers — where to buy seeds, which breeders to trust, and what to look for. Community-vetted sources.",
+  openGraph: {
+    title: "Seed Banks & Breeders — Where to Buy Cannabis Seeds",
+    description:
+      "Reputable seed banks and breeders for home growers — where to buy seeds, which breeders to trust, and what to look for. Community-vetted sources.",
+    url: `${SITE}/seeds`,
+  },
+  alternates: { canonical: `${SITE}/seeds` },
 };
 
 export default function SeedsPage() {

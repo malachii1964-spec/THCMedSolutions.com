@@ -3,10 +3,22 @@ import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "https://lakeeriecannabis.com";
+
 export const metadata: Metadata = {
   title: "Local NY Hub — Buffalo to Niagara Cannabis Laws & Resources",
   description:
     "Western New York's plain-English guide to adult-use cannabis: possession limits, home-grow rules, how to find a licensed dispensary, and local resources — with links to official state sources.",
+  openGraph: {
+    title: "Local NY Hub — Buffalo to Niagara Cannabis Laws & Resources",
+    description:
+      "Western New York's plain-English guide to adult-use cannabis: possession limits, home-grow rules, how to find a licensed dispensary, and local resources — with links to official state sources.",
+    url: `${SITE}/local-ny`,
+  },
+  alternates: { canonical: `${SITE}/local-ny` },
 };
 
 const LAW_CARDS = [
