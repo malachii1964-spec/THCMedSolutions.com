@@ -99,6 +99,20 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- UX+NAV POLISH (2026-07-19): Major navigation and UX improvements.
+  Guide pages: sticky TOC sidebar (desktop xl+), mobile TOC floating
+  button with bottom-sheet drawer, reading progress bar (cyan, top of
+  viewport), prev/next same-stage navigation cards at page bottom,
+  difficulty color-coding (beginner=lime, intermediate=gold,
+  advanced=magenta), human-readable dates in semantic <time> elements.
+  Strain pages: alphabetical prev/next navigation with type badges,
+  BreadcrumbList JSON-LD. Guide index: grouped by grow stage with
+  section headers/blurbs when showing all, guide counts on filter
+  pills. New guide: environmental control basics (9 min, beginner,
+  temp/humidity/airflow targets by stage, VPD intro, emergency
+  procedures). BreadcrumbList JSON-LD on all 153 guide pages and
+  150 strain pages. 150 strains, 153 guides, 73 tests, 335 pages.
+  All gates green.
 - QUALITY+SEO MILESTONE (2026-07-19): Comprehensive quality pass.
   Deduplicated 16 guide pairs (168→152 guides, -3734 lines redundant
   content). For each pair, kept the version with more cross-links and
