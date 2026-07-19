@@ -3047,6 +3047,22 @@ export function getStrain(slug: string): Strain | undefined {
   return STRAINS.find((s) => s.slug === slug);
 }
 
+const STRAINS_ALPHA = [...STRAINS].sort((a, b) =>
+  a.name.localeCompare(b.name),
+);
+
+export function getAdjacentStrains(slug: string): {
+  prev: Strain | null;
+  next: Strain | null;
+} {
+  const idx = STRAINS_ALPHA.findIndex((s) => s.slug === slug);
+  if (idx === -1) return { prev: null, next: null };
+  return {
+    prev: idx > 0 ? STRAINS_ALPHA[idx - 1] : null,
+    next: idx < STRAINS_ALPHA.length - 1 ? STRAINS_ALPHA[idx + 1] : null,
+  };
+}
+
 export type StrainSort = "featured" | "thc-desc" | "flower-asc" | "name-asc";
 
 /** Upper bound of a THC range like "16–22%" or "<1%" → number for sorting. */

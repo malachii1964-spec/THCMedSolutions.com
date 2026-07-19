@@ -3,6 +3,7 @@ import {
   STRAINS,
   TERPENES,
   getStrain,
+  getAdjacentStrains,
   relatedGuideSlugs,
   strainsForGuide,
   sortStrains,
@@ -37,6 +38,20 @@ describe("strain database", () => {
   it("looks up by slug and rejects unknowns", () => {
     expect(getStrain("blue-dream")?.name).toBe("Blue Dream");
     expect(getStrain("not-a-strain")).toBeUndefined();
+  });
+
+  it("getAdjacentStrains returns alphabetical neighbors", () => {
+    const { prev, next } = getAdjacentStrains("blue-dream");
+    expect(prev).not.toBeNull();
+    expect(next).not.toBeNull();
+    expect(prev!.name.localeCompare("Blue Dream")).toBeLessThan(0);
+    expect(next!.name.localeCompare("Blue Dream")).toBeGreaterThan(0);
+  });
+
+  it("getAdjacentStrains returns null for unknown slugs", () => {
+    const { prev, next } = getAdjacentStrains("unknown-strain");
+    expect(prev).toBeNull();
+    expect(next).toBeNull();
   });
 });
 

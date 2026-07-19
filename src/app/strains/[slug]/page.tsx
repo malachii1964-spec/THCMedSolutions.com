@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
-import { STRAINS, getStrain, relatedGuideSlugs, TERPENES } from "@/lib/strains";
+import { STRAINS, getStrain, getAdjacentStrains, relatedGuideSlugs, TERPENES } from "@/lib/strains";
 import { getAllGuides } from "@/lib/guides";
 
 export function generateStaticParams() {
@@ -58,6 +58,7 @@ export default async function StrainPage({
   const s = getStrain(slug);
   if (!s) notFound();
 
+  const { prev: prevStrain, next: nextStrain } = getAdjacentStrains(slug);
   const allGuides = getAllGuides();
   const relatedGuides = relatedGuideSlugs(s)
     .map((gslug) => allGuides.find((g) => g.slug === gslug))
@@ -261,6 +262,50 @@ export default async function StrainPage({
               ))}
             </div>
           </section>
+        ) : null}
+
+        {prevStrain || nextStrain ? (
+          <nav
+            aria-label="Previous and next strains"
+            className="mt-10 grid gap-3 border-t border-white/5 pt-8 sm:grid-cols-2"
+          >
+            {prevStrain ? (
+              <Link
+                href={`/strains/${prevStrain.slug}`}
+                className="glass group rounded-xl px-5 py-4 transition hover:brightness-125"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-frost-dim">
+                  Previous
+                </span>
+                <span className="mt-1 block text-sm font-medium leading-snug text-frost group-hover:text-cyan">
+                  {prevStrain.name}
+                </span>
+                <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.1em] text-frost-dim">
+                  {prevStrain.type}
+                </span>
+              </Link>
+            ) : (
+              <span />
+            )}
+            {nextStrain ? (
+              <Link
+                href={`/strains/${nextStrain.slug}`}
+                className="glass group rounded-xl px-5 py-4 text-right transition hover:brightness-125"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-frost-dim">
+                  Next
+                </span>
+                <span className="mt-1 block text-sm font-medium leading-snug text-frost group-hover:text-cyan">
+                  {nextStrain.name}
+                </span>
+                <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.1em] text-frost-dim">
+                  {nextStrain.type}
+                </span>
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
         ) : null}
 
         <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
