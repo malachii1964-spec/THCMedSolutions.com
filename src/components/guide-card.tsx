@@ -2,6 +2,12 @@ import Link from "next/link";
 import type { GuideMeta } from "@/lib/guides";
 import { getStage } from "@/lib/stages";
 
+const DIFF_COLOR: Record<string, string> = {
+  beginner: "text-lime",
+  intermediate: "text-gold",
+  advanced: "text-magenta",
+};
+
 export function GuideCard({ guide }: { guide: GuideMeta }) {
   const stage = getStage(guide.stage);
   return (
@@ -27,7 +33,11 @@ export function GuideCard({ guide }: { guide: GuideMeta }) {
         {guide.summary}
       </p>
       <p className="mt-auto pt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
-        {guide.difficulty} · {guide.readMinutes} min read
+        <span className={DIFF_COLOR[guide.difficulty] ?? ""}>
+          {guide.difficulty}
+        </span>
+        {" · "}
+        {guide.readMinutes} min read
       </p>
     </Link>
   );

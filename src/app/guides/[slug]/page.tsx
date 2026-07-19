@@ -124,7 +124,14 @@ export default async function GuidePage({
             {stage?.cycleLabel ? ` · ${stage.cycleLabel}` : ""}
           </span>
           <span className="whitespace-nowrap text-frost-dim">
-            {guide.difficulty} · {guide.readMinutes} min
+            <span className={
+              guide.difficulty === "beginner" ? "text-lime" :
+              guide.difficulty === "advanced" ? "text-magenta" : "text-gold"
+            }>
+              {guide.difficulty}
+            </span>
+            {" · "}
+            {guide.readMinutes} min
           </span>
           {guide.membersOnly ? (
             <span className="rounded border border-gold/50 px-1.5 py-0.5 text-[10px] text-gold">
@@ -224,7 +231,15 @@ export default async function GuidePage({
         <GuideNav prev={prev} next={next} />
 
         <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
-          Updated {guide.updated} · Educational content only —{" "}
+          Updated{" "}
+          <time dateTime={guide.updated}>
+            {new Date(guide.updated + "T00:00:00").toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </time>
+          {" · "}Educational content only —{" "}
           <Link href="/legal" className="underline underline-offset-2">
             legal notice
           </Link>
