@@ -54,6 +54,22 @@ export function getGuide(slug: string): Guide | null {
   return { ...meta, content };
 }
 
+export function getAdjacentGuides(slug: string): {
+  prev: GuideMeta | null;
+  next: GuideMeta | null;
+} {
+  const all = getAllGuides();
+  const idx = all.findIndex((g) => g.slug === slug);
+  if (idx === -1) return { prev: null, next: null };
+  const stage = all[idx].stage;
+  const stageGuides = all.filter((g) => g.stage === stage);
+  const si = stageGuides.findIndex((g) => g.slug === slug);
+  return {
+    prev: si > 0 ? stageGuides[si - 1] : null,
+    next: si < stageGuides.length - 1 ? stageGuides[si + 1] : null,
+  };
+}
+
 /** First ~1/4 of a members-only guide shown to visitors as the teaser. */
 export function teaserOf(content: string): string {
   const paragraphs = content.split("\n\n");

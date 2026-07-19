@@ -7,12 +7,13 @@ import rehypeSlug from "rehype-slug";
 import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { LightCycle } from "@/components/light-cycle";
-import { getAllGuides, getGuide, teaserOf } from "@/lib/guides";
+import { getAllGuides, getAdjacentGuides, getGuide, teaserOf } from "@/lib/guides";
 import { strainsForGuide } from "@/lib/strains";
 import { getStage } from "@/lib/stages";
 import { getSessionUser } from "@/lib/session";
 import { listBookmarks } from "@/lib/bookmarks";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { GuideNav } from "@/components/guide-nav";
 import { GuideToc } from "@/components/guide-toc";
 import { extractTocItems } from "@/lib/toc";
 
@@ -71,6 +72,7 @@ export default async function GuidePage({
   const saved = user ? (await listBookmarks()).includes(guide.slug) : false;
 
   const tocItems = extractTocItems(body);
+  const { prev, next } = getAdjacentGuides(guide.slug);
   const suitedStrains = strainsForGuide(guide.slug);
   const shownStrains = suitedStrains.slice(0, 8);
   const moreStrains = suitedStrains.length - shownStrains.length;
@@ -216,6 +218,8 @@ export default async function GuidePage({
             </div>
           </section>
         ) : null}
+
+        <GuideNav prev={prev} next={next} />
 
         <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
           Updated {guide.updated} · Educational content only —{" "}

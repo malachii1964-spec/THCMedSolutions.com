@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { getAllGuides, getGuide, getGuidesByStage, teaserOf } from "./guides";
+import {
+  getAllGuides,
+  getAdjacentGuides,
+  getGuide,
+  getGuidesByStage,
+  teaserOf,
+} from "./guides";
 import { STAGES, getStage } from "./stages";
 import { safeNext } from "./safe-next";
 
@@ -39,6 +45,27 @@ describe("guide library", () => {
     expect(getGuide("..%2F..%2Fsecrets")).toBeNull();
     expect(getGuide("does-not-exist")).toBeNull();
     expect(getGuide("UPPER_case!")).toBeNull();
+  });
+
+  it("getAdjacentGuides returns same-stage neighbors", () => {
+    const all = getAllGuides();
+    const stage = all[0].stage;
+    const stageGuides = all.filter((g) => g.stage === stage);
+    expect(stageGuides.length).toBeGreaterThanOrEqual(2);
+
+    const first = getAdjacentGuides(stageGuides[0].slug);
+    expect(first.prev).toBeNull();
+    expect(first.next?.slug).toBe(stageGuides[1].slug);
+
+    const last = getAdjacentGuides(stageGuides[stageGuides.length - 1].slug);
+    expect(last.prev?.slug).toBe(stageGuides[stageGuides.length - 2].slug);
+    expect(last.next).toBeNull();
+  });
+
+  it("getAdjacentGuides returns null for unknown slugs", () => {
+    const result = getAdjacentGuides("nonexistent-slug");
+    expect(result.prev).toBeNull();
+    expect(result.next).toBeNull();
   });
 
   it("teaser is a strict prefix and meaningfully shorter", () => {
