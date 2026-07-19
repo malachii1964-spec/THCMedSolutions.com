@@ -99,6 +99,19 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- QUALITY+SEO MILESTONE (2026-07-19): Comprehensive quality pass.
+  Deduplicated 16 guide pairs (168→152 guides, -3734 lines redundant
+  content). For each pair, kept the version with more cross-links and
+  better content; upgraded co2-supplementation body from 761→1749
+  words; renamed 2 files to match existing cross-link targets. Updated
+  all references in growers.ts, symptoms.ts, and 6 MDX files. Zero
+  broken cross-links remain. SEO overhaul: sitemap.xml (334 URLs),
+  robots.txt, SVG gradient favicon, metadataBase in root layout, OG
+  metadata on all 26 page routes, JSON-LD structured data (WebSite on
+  homepage, Article on guides+strains), canonical URLs everywhere.
+  Added 8 new guides (root health, edibles, perpetual tips, irrigation,
+  UVB, beneficial insects, aeroponics, feminized seed production).
+  150 strains, 152 guides, 69 tests, 334 pages. All gates green.
 - 135-GUIDE MILESTONE (2026-07-18): Continued content scale-up from 114
   to 135 guides. New deep-dive topics: root rot & Pythium (hydro/soil
   diagnosis + treatment), cannabis plant anatomy (roots to trichomes),

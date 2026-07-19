@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { LightCycle } from "@/components/light-cycle";
@@ -12,6 +13,8 @@ import { getStage } from "@/lib/stages";
 import { getSessionUser } from "@/lib/session";
 import { listBookmarks } from "@/lib/bookmarks";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { GuideToc } from "@/components/guide-toc";
+import { extractTocItems } from "@/lib/toc";
 
 export function generateStaticParams() {
   return getAllGuides().map((g) => ({ slug: g.slug }));
@@ -67,6 +70,7 @@ export default async function GuidePage({
   const stage = getStage(guide.stage);
   const saved = user ? (await listBookmarks()).includes(guide.slug) : false;
 
+  const tocItems = extractTocItems(body);
   const suitedStrains = strainsForGuide(guide.slug);
   const shownStrains = suitedStrains.slice(0, 8);
   const moreStrains = suitedStrains.length - shownStrains.length;
@@ -94,7 +98,9 @@ export default async function GuidePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <OsHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
+        <div className="xl:flex xl:gap-10">
+        <div className="min-w-0 max-w-3xl">
         <nav className="font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
           <Link href="/guides" className="hover:text-frost">
             Guides
@@ -139,7 +145,7 @@ export default async function GuidePage({
         <article className="prose-guide mt-10">
           <MDXRemote
             source={body}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] } }}
           />
         </article>
 
@@ -217,6 +223,11 @@ export default async function GuidePage({
             legal notice
           </Link>
         </p>
+        </div>
+        <aside className="w-56 shrink-0">
+          <GuideToc items={tocItems} />
+        </aside>
+        </div>
       </main>
       <OsFooter />
     </div>
