@@ -107,7 +107,7 @@ export const SYMPTOMS: Symptom[] = [
       "Improve airflow, drop the humidity, remove the worst leaves, and treat the plant.",
     dontDo: "Don't let humidity sit high — especially in flower.",
     prevent: "Good airflow, spacing between plants, and controlled humidity.",
-    guideSlugs: ["pests-mites-gnats-mildew", "temp-humidity-vpd"],
+    guideSlugs: ["pests-mites-gnats-mildew", "temperature-humidity-vpd"],
   },
   {
     slug: "spider-mites",
@@ -144,7 +144,7 @@ export const SYMPTOMS: Symptom[] = [
       "Remove affected buds right away, drop the humidity, and boost airflow around the canopy.",
     dontDo: "Don't leave it — rot spreads through a whole cola fast.",
     prevent: "Airflow, defoliate dense spots, and keep flowering humidity low.",
-    guideSlugs: ["pests-mites-gnats-mildew", "temp-humidity-vpd"],
+    guideSlugs: ["pests-mites-gnats-mildew", "temperature-humidity-vpd"],
   },
   {
     slug: "drooping",
@@ -168,7 +168,7 @@ export const SYMPTOMS: Symptom[] = [
     quickFix: "Lower the temperature and raise or dim the light.",
     dontDo: "Don't run the light too close to a stressed canopy.",
     prevent: "Keep canopy temp and PPFD in the right range for the stage.",
-    guideSlugs: ["temp-humidity-vpd", "setting-up-your-grow-space"],
+    guideSlugs: ["temperature-humidity-vpd", "setting-up-your-grow-space"],
   },
   {
     slug: "purple-stems",
@@ -230,7 +230,7 @@ export const SYMPTOMS: Symptom[] = [
     quickFix: "Cool the room and keep the light at the right distance for flowering.",
     dontDo: "Don't cook the tops with a light that's too close or too hot.",
     prevent: "Manage heat and light intensity through late flower.",
-    guideSlugs: ["temp-humidity-vpd", "when-to-harvest-trichomes"],
+    guideSlugs: ["temperature-humidity-vpd", "when-to-harvest-trichomes"],
   },
 ];
 

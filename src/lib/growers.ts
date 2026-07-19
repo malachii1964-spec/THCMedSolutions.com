@@ -81,7 +81,7 @@ export const GROWERS: Grower[] = [
       "Dry slow (60/60) and cure for weeks in jars",
     ],
     guideSlugs: [
-      "temp-humidity-vpd",
+      "temperature-humidity-vpd",
       "low-stress-training-lst",
       "when-to-harvest-trichomes",
       "drying-and-curing",
@@ -212,7 +212,7 @@ export const GROWERS: Grower[] = [
       "Add CO2 only when your light level can use it",
       "Verify changes with data, not vibes",
     ],
-    guideSlugs: ["lighting-basics-ppfd", "temp-humidity-vpd"],
+    guideSlugs: ["lighting-basics-ppfd", "temperature-humidity-vpd"],
   },
 ];
 
