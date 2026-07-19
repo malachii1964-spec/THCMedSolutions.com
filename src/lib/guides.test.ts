@@ -4,6 +4,7 @@ import {
   getAdjacentGuides,
   getGuide,
   getGuidesByStage,
+  extractLinkedGuideSlugs,
   teaserOf,
 } from "./guides";
 import { STAGES, getStage } from "./stages";
@@ -66,6 +67,32 @@ describe("guide library", () => {
     const result = getAdjacentGuides("nonexistent-slug");
     expect(result.prev).toBeNull();
     expect(result.next).toBeNull();
+  });
+
+  it("extractLinkedGuideSlugs finds cross-referenced guides", () => {
+    const guide = getGuide("nutrient-deficiency-chart");
+    expect(guide).not.toBeNull();
+    const linked = extractLinkedGuideSlugs(guide!.content, guide!.slug);
+    expect(linked).toContain("ph-for-beginners");
+    expect(linked).toContain("cannabis-nutrient-lockout-recovery");
+    expect(linked).not.toContain("nutrient-deficiency-chart");
+    expect(new Set(linked).size).toBe(linked.length);
+  });
+
+  it("extractLinkedGuideSlugs returns empty for no links", () => {
+    expect(extractLinkedGuideSlugs("No links here.", "test")).toEqual([]);
+  });
+
+  it("every guide's internal links point to real guides (no dead links)", () => {
+    const allSlugs = new Set(getAllGuides().map((g) => g.slug));
+    for (const guide of getAllGuides()) {
+      const full = getGuide(guide.slug);
+      if (!full) continue;
+      const linked = extractLinkedGuideSlugs(full.content, guide.slug);
+      for (const slug of linked) {
+        expect(allSlugs.has(slug), `${guide.slug} links to missing guide: ${slug}`).toBe(true);
+      }
+    }
   });
 
   it("teaser is a strict prefix and meaningfully shorter", () => {

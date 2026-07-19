@@ -7,7 +7,7 @@ import rehypeSlug from "rehype-slug";
 import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { LightCycle } from "@/components/light-cycle";
-import { getAllGuides, getAdjacentGuides, getGuide, teaserOf } from "@/lib/guides";
+import { getAllGuides, getAdjacentGuides, getGuide, teaserOf, extractLinkedGuideSlugs } from "@/lib/guides";
 import { strainsForGuide } from "@/lib/strains";
 import { getStage } from "@/lib/stages";
 import { getSessionUser } from "@/lib/session";
@@ -74,6 +74,12 @@ export default async function GuidePage({
 
   const tocItems = extractTocItems(body);
   const { prev, next } = getAdjacentGuides(guide.slug);
+  const allGuides = getAllGuides();
+  const linkedSlugs = extractLinkedGuideSlugs(guide.content, guide.slug);
+  const relatedGuides = linkedSlugs
+    .map((s) => allGuides.find((g) => g.slug === s))
+    .filter((g): g is NonNullable<typeof g> => Boolean(g));
+
   const suitedStrains = strainsForGuide(guide.slug);
   const shownStrains = suitedStrains.slice(0, 8);
   const moreStrains = suitedStrains.length - shownStrains.length;
@@ -245,6 +251,34 @@ export default async function GuidePage({
                   +{moreStrains} more
                 </Link>
               ) : null}
+            </div>
+          </section>
+        ) : null}
+
+        {relatedGuides.length > 0 ? (
+          <section className="mt-12 border-t border-white/5 pt-8">
+            <h2 className="font-mono text-[11px] uppercase tracking-[0.2em] text-cyan">
+              Related reading
+            </h2>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {relatedGuides.map((g) => (
+                <Link
+                  key={g.slug}
+                  href={`/guides/${g.slug}`}
+                  className="glass group flex items-center justify-between gap-3 rounded-2xl p-4 transition hover:brightness-125"
+                >
+                  <div className="min-w-0">
+                    <h3 className="truncate font-display text-base font-semibold">
+                      {g.title}
+                    </h3>
+                    <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-frost-dim">
+                      {g.readMinutes} min read
+                      {g.membersOnly ? " · members" : ""}
+                    </p>
+                  </div>
+                  <span className="iris-text shrink-0 font-mono text-sm">→</span>
+                </Link>
+              ))}
             </div>
           </section>
         ) : null}

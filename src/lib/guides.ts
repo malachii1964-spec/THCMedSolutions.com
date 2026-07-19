@@ -70,6 +70,16 @@ export function getAdjacentGuides(slug: string): {
   };
 }
 
+export function extractLinkedGuideSlugs(content: string, selfSlug: string): string[] {
+  const re = /\]\(\/guides\/([a-z0-9-]+)\)/g;
+  const slugs = new Set<string>();
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(content)) !== null) {
+    if (m[1] !== selfSlug) slugs.add(m[1]);
+  }
+  return [...slugs];
+}
+
 /** First ~1/4 of a members-only guide shown to visitors as the teaser. */
 export function teaserOf(content: string): string {
   const paragraphs = content.split("\n\n");
