@@ -99,6 +99,17 @@ At the end of every working session:
 
 ## Project Log (keep current — this is the project's memory)
 ### Current state
+- CONTENT DEPTH + CROSS-LINKING (2026-07-19): Quality-focused pass.
+  Added "Related reading" section to guide pages — auto-derived from
+  inline cross-links in MDX content, zero manual curation. Eliminated
+  all 8 orphan guides (guides with zero cross-links). Enriched 7
+  thinnest core pathway guides: germination (395→750 words), seedling
+  care (362→780 words), watering/pH (446→680 words), lighting basics
+  (419→850 words), harvest trichomes (385→720 words), drying/curing
+  (479→1050 words), nutrient deficiency chart (51→260 lines). Added
+  dead-link test validating all internal links across 153 guides
+  (469+ cross-references, 0 broken). 153 guides, 150 strains, 76
+  tests, ~335 pages. All gates green.
 - UX+NAV POLISH (2026-07-19): Major navigation and UX improvements.
   Guide pages: sticky TOC sidebar (desktop xl+), mobile TOC floating
   button with bottom-sheet drawer, reading progress bar (cyan, top of
