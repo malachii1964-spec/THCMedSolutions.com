@@ -94,11 +94,31 @@ export default async function GuidePage({
     timeRequired: `PT${guide.readMinutes}M`,
   };
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE}/guides` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: stage?.name ?? guide.stage,
+        item: `${SITE}/guides?stage=${guide.stage}`,
+      },
+      { "@type": "ListItem", position: 4, name: guide.title },
+    ],
+  };
+
   return (
     <div className="os-scope min-h-screen bg-void text-frost">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <ReadingProgress />
       <GuideTocMobile items={tocItems} />

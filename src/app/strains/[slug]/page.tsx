@@ -86,11 +86,26 @@ export default async function StrainPage({
     keywords: [s.name, s.type, s.difficulty, ...s.effects, ...s.flavors],
   };
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Strains", item: `${SITE}/strains` },
+      { "@type": "ListItem", position: 3, name: s.type, item: `${SITE}/strains` },
+      { "@type": "ListItem", position: 4, name: s.name },
+    ],
+  };
+
   return (
     <div className="os-scope min-h-screen bg-void text-frost">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <OsHeader />
       <main className="mx-auto w-full max-w-3xl px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
