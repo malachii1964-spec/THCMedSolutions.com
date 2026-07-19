@@ -14,7 +14,7 @@ import { getSessionUser } from "@/lib/session";
 import { listBookmarks } from "@/lib/bookmarks";
 import { BookmarkButton } from "@/components/bookmark-button";
 import { GuideNav } from "@/components/guide-nav";
-import { GuideToc } from "@/components/guide-toc";
+import { GuideToc, GuideTocMobile } from "@/components/guide-toc";
 import { ReadingProgress } from "@/components/reading-progress";
 import { extractTocItems } from "@/lib/toc";
 
@@ -101,6 +101,7 @@ export default async function GuidePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ReadingProgress />
+      <GuideTocMobile items={tocItems} />
       <OsHeader />
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
         <div className="xl:flex xl:gap-10">
