@@ -170,6 +170,9 @@ body {
   text-underline-offset: 3px;
 }
 .prose-guide table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
   margin: 1.5rem 0;
   border-collapse: collapse;
@@ -184,10 +187,17 @@ body {
   text-align: left;
   padding: 0.5rem 0.75rem;
   border-bottom: 1px solid var(--panel-edge);
+  white-space: nowrap;
 }
 .prose-guide td {
   padding: 0.5rem 0.75rem;
   border-bottom: 1px solid color-mix(in srgb, var(--panel-edge) 50%, transparent);
+}
+.prose-guide tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--panel) 40%, transparent);
+}
+.prose-guide tbody tr:hover td {
+  background: color-mix(in srgb, var(--cyan) 6%, transparent);
 }
 .prose-guide blockquote {
   border-left: 3px solid var(--amber);
