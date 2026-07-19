@@ -35,7 +35,8 @@ export default async function GuidesPage({
     | undefined;
   const query = (q ?? "").trim().toLowerCase();
 
-  let guides = getAllGuides();
+  const allGuides = getAllGuides();
+  let guides = allGuides;
   if (activeStage) guides = guides.filter((g) => g.stage === activeStage);
   if (query) {
     guides = guides.filter(
@@ -44,6 +45,19 @@ export default async function GuidesPage({
         g.summary.toLowerCase().includes(query),
     );
   }
+
+  const stageCounts = new Map<string, number>();
+  for (const g of allGuides) {
+    stageCounts.set(g.stage, (stageCounts.get(g.stage) ?? 0) + 1);
+  }
+
+  const grouped = !activeStage && !query;
+  const stageGroups = grouped
+    ? STAGES.map((s) => ({
+        stage: s,
+        guides: guides.filter((g) => g.stage === s.id),
+      })).filter((sg) => sg.guides.length > 0)
+    : [];
 
   return (
     <div className="os-scope min-h-screen bg-void text-frost">
@@ -91,7 +105,8 @@ export default async function GuidesPage({
                 : "border-white/10 text-frost-dim hover:border-white/25 hover:text-frost"
             }`}
           >
-            All
+            All{" "}
+            <span className="opacity-60">{allGuides.length}</span>
           </Link>
           {STAGES.map((s) => (
             <Link
@@ -103,7 +118,8 @@ export default async function GuidesPage({
                   : "border-white/10 text-frost-dim hover:border-white/25 hover:text-frost"
               }`}
             >
-              {s.shortName}
+              {s.shortName}{" "}
+              <span className="opacity-60">{stageCounts.get(s.id) ?? 0}</span>
             </Link>
           ))}
         </nav>
@@ -120,6 +136,27 @@ export default async function GuidesPage({
               </Link>
               .
             </p>
+          </div>
+        ) : grouped ? (
+          <div className="mt-8 space-y-12">
+            {stageGroups.map(({ stage: s, guides: sg }) => (
+              <section key={s.id}>
+                <div className="flex items-baseline gap-3">
+                  <h2 className="font-display text-xl font-semibold text-frost">
+                    {s.name}
+                  </h2>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-frost-dim">
+                    {s.weeks} · {sg.length} guides
+                  </span>
+                </div>
+                <p className="mt-1 text-sm text-frost-dim">{s.blurb}</p>
+                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {sg.map((g) => (
+                    <GuideCard key={g.slug} guide={g} />
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
