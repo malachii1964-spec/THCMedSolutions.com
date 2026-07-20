@@ -15,6 +15,7 @@ function trustedOrigins(): string[] {
     origins.push(`https://${process.env.VERCEL_BRANCH_URL}`);
   origins.push("https://lakeeriecannabis.com");
   origins.push("https://www.lakeeriecannabis.com");
+  origins.push("https://*.vercel.app");
   return [...new Set(origins)];
 }
 
