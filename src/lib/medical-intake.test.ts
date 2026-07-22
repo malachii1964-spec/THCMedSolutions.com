@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { buildIntakeEmail, intakeSchema } from "./medical-intake";
+import {
+  buildIntakeEmail,
+  intakeSchema,
+  isHoneypotTripped,
+} from "./medical-intake";
 
 const valid = {
   name: "Jane Grower",
@@ -8,7 +12,7 @@ const valid = {
   preferredContact: "phone" as const,
   message: "Best to reach me after 5pm.",
   consent: true as const,
-  company: "",
+  hpToken: "",
 };
 
 describe("medical intake validation", () => {
@@ -22,10 +26,22 @@ describe("medical intake validation", () => {
     expect(intakeSchema.safeParse({ ...valid, name: "" }).success).toBe(false);
   });
 
-  it("rejects honeypot submissions (company must be empty)", () => {
-    expect(intakeSchema.safeParse({ ...valid, company: "Acme Bot" }).success).toBe(
-      false,
-    );
+  it("detects honeypot submissions without failing validation", () => {
+    // A filled honeypot must still PARSE (so browser autofill never shows a
+    // confusing error to a real user) but be flagged as spam.
+    const parsed = intakeSchema.safeParse({ ...valid, hpToken: "Acme Bot" });
+    expect(parsed.success).toBe(true);
+    if (parsed.success) {
+      expect(isHoneypotTripped(parsed.data)).toBe(true);
+    }
+  });
+
+  it("does not flag a clean submission as honeypot spam", () => {
+    const parsed = intakeSchema.safeParse(valid);
+    expect(parsed.success).toBe(true);
+    if (parsed.success) {
+      expect(isHoneypotTripped(parsed.data)).toBe(false);
+    }
   });
 
   it("treats message as optional", () => {

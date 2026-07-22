@@ -24,7 +24,7 @@ export function MedicalIntakeForm({ phone }: { phone: string }) {
       preferredContact: preferred,
       message: String(fd.get("message") ?? ""),
       consent: fd.get("consent") === "on",
-      company: String(fd.get("company") ?? ""), // honeypot
+      hpToken: String(fd.get("hpToken") ?? ""), // honeypot
     };
 
     try {
@@ -146,12 +146,16 @@ export function MedicalIntakeForm({ phone }: { phone: string }) {
         />
       </div>
 
-      {/* Honeypot — visually hidden, off-screen; bots fill it, humans don't. */}
+      {/* Honeypot — visually hidden, off-screen; bots fill it, humans don't.
+          Non-semantic name + autoComplete="off" so browser autofill and
+          password managers leave it empty for real users. */}
       <div aria-hidden className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
-        <label>
-          Company
-          <input name="company" tabIndex={-1} autoComplete="off" />
-        </label>
+        <input
+          name="hpToken"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden
+        />
       </div>
 
       <label className="mt-5 flex items-start gap-2.5 text-[13px] leading-relaxed text-frost-dim">

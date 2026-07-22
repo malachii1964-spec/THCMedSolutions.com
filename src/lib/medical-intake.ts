@@ -15,11 +15,19 @@ export const intakeSchema = z.object({
   consent: z.literal(true, {
     message: "Please confirm consent to be contacted",
   }),
-  // Honeypot — real users never fill this; bots do. Must be empty.
-  company: z.string().max(0).optional().default(""),
+  // Honeypot — real users never fill this; bots do. We accept any value here
+  // (so browser autofill never trips a confusing validation error) and detect
+  // spam separately via isHoneypotTripped(). The field name is deliberately
+  // non-semantic so password managers and autofill leave it alone.
+  hpToken: z.string().optional().default(""),
 });
 
 export type IntakeInput = z.infer<typeof intakeSchema>;
+
+/** True when the honeypot was filled — treat as a bot and silently drop. */
+export function isHoneypotTripped(data: IntakeInput): boolean {
+  return data.hpToken.trim().length > 0;
+}
 
 /** Builds the email sent to the provider's office. Pure — easy to test. */
 export function buildIntakeEmail(data: IntakeInput) {

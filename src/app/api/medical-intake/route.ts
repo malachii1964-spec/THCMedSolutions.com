@@ -3,17 +3,23 @@ import {
   buildIntakeEmail,
   intakeConfigured,
   intakeSchema,
+  isHoneypotTripped,
 } from "@/lib/medical-intake";
 import { MEDICAL_PROVIDER } from "@/lib/site";
 
 export async function POST(req: Request) {
   const parsed = intakeSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {
-    // Honeypot trips land here too — respond generically, don't tip off bots.
     return Response.json(
       { error: parsed.error.issues[0]?.message ?? "Please check the form." },
       { status: 400 },
     );
+  }
+
+  // Honeypot filled → almost certainly a bot. Pretend it worked (so bots don't
+  // learn they were caught) but send nothing.
+  if (isHoneypotTripped(parsed.data)) {
+    return Response.json({ ok: true });
   }
 
   // Not wired up yet (no Resend key / destination email). Be honest and point
