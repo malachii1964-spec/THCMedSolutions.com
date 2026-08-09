@@ -5,10 +5,7 @@ import { BuildMyGrow } from "@/components/build-my-grow";
 import { getAllGuides } from "@/lib/guides";
 import { GROWERS } from "@/lib/growers";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export const metadata: Metadata = {
   title: "Build My Grow — Your Personalized Grow Plan",

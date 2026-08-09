@@ -4,10 +4,7 @@ import { OsFooter } from "@/components/os-footer";
 import { MedicalIntakeForm } from "@/components/medical-intake-form";
 import { MEDICAL_PROVIDER } from "@/lib/site";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export const metadata: Metadata = {
   title: "Get Your NY Medical Card — Connect With a Local Doctor",

@@ -22,10 +22,7 @@ export function generateStaticParams() {
   return getAllGuides().map((g) => ({ slug: g.slug }));
 }
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export async function generateMetadata({
   params,

@@ -2,10 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllGuides } from "@/lib/guides";
 import { STRAINS } from "@/lib/strains";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const guides = getAllGuides();

@@ -3,10 +3,7 @@ import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { GrowTools } from "@/components/grow-tools";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export const metadata: Metadata = {
   title: "Grow Tools — VPD, DLI & Yield Calculators",

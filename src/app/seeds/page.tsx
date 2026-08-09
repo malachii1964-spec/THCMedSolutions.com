@@ -4,10 +4,7 @@ import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
 import { SEED_BANKS, seedBanksByType } from "@/lib/seed-banks";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export const metadata: Metadata = {
   title: "Seed Banks & Breeders — Where to Buy Cannabis Seeds",

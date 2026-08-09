@@ -6,10 +6,7 @@ import { LightCycle } from "@/components/light-cycle";
 import { getAllGuides } from "@/lib/guides";
 import { STAGES } from "@/lib/stages";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export const metadata: Metadata = {
   title: "Start Here — Your First Grow, Mapped",

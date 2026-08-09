@@ -6,10 +6,7 @@ import { GuideCard } from "@/components/guide-card";
 import { getAllGuides } from "@/lib/guides";
 import { STAGES, type StageId } from "@/lib/stages";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export const metadata: Metadata = {
   title: "Grow Guides",

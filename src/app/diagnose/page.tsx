@@ -6,10 +6,7 @@ import { SymptomChecker } from "@/components/symptom-checker";
 import { SYMPTOMS } from "@/lib/symptoms";
 import { getAllGuides } from "@/lib/guides";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 export const metadata: Metadata = {
   title: "Visual Plant Doctor — Diagnose Your Cannabis Plant",

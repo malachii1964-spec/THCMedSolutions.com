@@ -5,10 +5,7 @@ import { OsFooter } from "@/components/os-footer";
 import { StrainDirectory } from "@/components/strain-directory";
 import { getDirectory } from "@/lib/strain-directory";
 
-const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "https://lakeeriecannabis.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
 
 const entries = getDirectory();
 
