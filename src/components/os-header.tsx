@@ -24,6 +24,7 @@ const NAV_GROUPS: NavGroup[] = [
       { label: "Strain Directory", href: "/strain-directory" },
       { label: "Terpenes", href: "/terpenes" },
       { label: "Seeds & Breeders", href: "/seeds" },
+      { label: "Fast Buds Codes", href: "/fast-buds-codes" },
     ],
   },
   {

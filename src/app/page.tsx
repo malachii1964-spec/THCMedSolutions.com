@@ -104,6 +104,13 @@ const MODULES = [
     visual: SeedGlyph,
   },
   {
+    name: "Fast Buds Code Vault",
+    body: "Visual code cards for DABOMB, LEC42, FROST42, MALACHI, and MATTYJ — built for frost-forward Fast Buds genetics.",
+    cta: "Open codes",
+    href: "/fast-buds-codes",
+    visual: SeedGlyph,
+  },
+  {
     name: "Recipes & Preparations",
     body: "Turn your harvest into edibles, tinctures, topicals, and concentrates — with real dosing math.",
     cta: "View recipes",

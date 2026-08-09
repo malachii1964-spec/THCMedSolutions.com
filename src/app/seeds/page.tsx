@@ -63,6 +63,39 @@ export default function SeedsPage() {
           </div>
         </section>
 
+        {/* Fast Buds code vault */}
+        <section className="border-t border-white/5">
+          <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+            <div className="glass iris-border grid gap-6 rounded-3xl p-6 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-lime">
+                  Lake Erie Cannabis affiliate lane
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
+                  Fast Buds codes are live.
+                </h2>
+                <p className="mt-4 max-w-2xl text-frost-dim">
+                  Open the visual code vault for DABOMB, LEC42, FROST42,
+                  MALACHI, and MATTYJ. New-release cards are built around Mango
+                  Frost Auto and Mendo Frost Auto.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                <Link
+                  href="/fast-buds-codes"
+                  className="btn-iris rounded-full px-6 py-3 text-center font-mono text-[12px] font-semibold uppercase tracking-[0.14em] transition hover:brightness-110"
+                >
+                  Open Fast Buds codes
+                </Link>
+                <p className="text-[11px] leading-relaxed text-frost-dim">
+                  Affiliate disclosure: Lake Erie Cannabis may earn a
+                  commission if visitors use partner links or codes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* buying guide */}
         <section className="border-t border-white/5">
           <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
