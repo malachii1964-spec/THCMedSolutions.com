@@ -126,12 +126,12 @@ export function StrainDirectory({ entries }: { entries: DirectoryEntry[] }) {
               <Link
                 key={e.name}
                 href={`/strains/${e.slug}`}
-                className="glass iris-border rounded-2xl p-4 transition hover:-translate-y-0.5 hover:brightness-110"
+                className="glass iris-border min-w-0 rounded-2xl p-4 transition hover:-translate-y-0.5 hover:brightness-110"
               >
                 {inner}
               </Link>
             ) : (
-              <div key={e.name} className="glass rounded-2xl p-4">
+              <div key={e.name} className="glass min-w-0 rounded-2xl p-4">
                 {inner}
               </div>
             );

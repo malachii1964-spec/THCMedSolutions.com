@@ -63,7 +63,7 @@ export default function SeedsPage() {
         {/* Fast Buds code vault */}
         <section className="border-t border-white/5">
           <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-            <div className="glass iris-border grid gap-6 rounded-3xl p-6 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+            <div className="glass iris-border grid grid-cols-1 gap-6 rounded-3xl p-6 lg:grid-cols-[1fr_0.8fr] lg:items-center">
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-lime">
                   Lake Erie Cannabis affiliate lane

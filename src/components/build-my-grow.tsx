@@ -100,9 +100,9 @@ export function BuildMyGrow({
     .filter((g): g is GuideLite => Boolean(g));
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+    <div className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-[0.9fr_1.1fr]">
       {/* choices */}
-      <div className="glass iris-border h-fit space-y-5 rounded-3xl p-6 lg:sticky lg:top-24">
+      <div className="glass iris-border h-fit min-w-0 space-y-5 rounded-3xl p-6 lg:sticky lg:top-24">
         <Group
           label="Where are you growing?"
           value={env}

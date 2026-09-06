@@ -33,9 +33,9 @@ export function SymptomChecker({
   const current = SYMPTOMS.find((s) => s.slug === selected) ?? list[0];
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+    <div className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-[0.95fr_1.05fr]">
       {/* symptom picker */}
-      <div>
+      <div className="min-w-0">
         <div className="flex flex-wrap gap-2">
           {PARTS.map((p) => (
             <button
@@ -57,7 +57,7 @@ export function SymptomChecker({
             <button
               key={s.slug}
               onClick={() => setSelected(s.slug)}
-              className={`glass flex items-center justify-between gap-3 rounded-2xl p-4 text-left transition hover:brightness-125 ${
+              className={`glass flex min-w-0 items-center justify-between gap-3 rounded-2xl p-4 text-left transition hover:brightness-125 ${
                 current.slug === s.slug ? "iris-border" : ""
               }`}
             >
