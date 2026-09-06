@@ -3,78 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { OsHeader } from "@/components/os-header";
 import { OsFooter } from "@/components/os-footer";
+import { type CodeCard, CODES } from "@/lib/fast-buds";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lakeeriecannabis.com";
-
-const FAST_BUDS_BASE =
-  "https://2fast4buds.com/us";
-
-type CodeCard = {
-  code: string;
-  strain: string;
-  lane: string;
-  image: string;
-  alt: string;
-  href: string;
-  note: string;
-  highlight: string;
-  featured?: boolean;
-};
-
-const CODES: CodeCard[] = [
-  {
-    code: "DABOMB",
-    strain: "Mango Frost Auto",
-    lane: "New release",
-    image: "/fast-buds/fast-buds-mango-frost-auto-dabomb-card.png",
-    alt: "DABOMB Fast Buds code card featuring Mango Frost Auto flower artwork",
-    href: `${FAST_BUDS_BASE}/seeds/mango-frost-auto?coupon=DABOMB&utm_source=lakeeriecannabis&utm_medium=affiliate&utm_campaign=new_release_frost_drop`,
-    note: "Frozen mango terp energy, resin-first auto structure, and the kind of visual frost that makes a run feel special before harvest even lands.",
-    highlight: "Frozen mango terps + frost-heavy auto speed.",
-    featured: true,
-  },
-  {
-    code: "LEC42",
-    strain: "Mendo Frost Auto",
-    lane: "New release",
-    image: "/fast-buds/fast-buds-mendo-frost-auto-lec42-card.png",
-    alt: "LEC42 Fast Buds code card featuring Mendo Frost Auto flower artwork",
-    href: `${FAST_BUDS_BASE}/seeds/mendo-frost-auto?coupon=LEC42&utm_source=lakeeriecannabis&utm_medium=affiliate&utm_campaign=new_release_frost_drop`,
-    note: "Mendo-inspired gas, dense flower posture, and a cold-room frost profile built for growers who want the tent to look expensive.",
-    highlight: "Mendo gas + dense frost-vault flower.",
-    featured: true,
-  },
-  {
-    code: "FROST42",
-    strain: "Strawberry Gorilla Auto",
-    lane: "Frost Protocol",
-    image: "/fast-buds/fast-buds-frost42-strawberry-gorilla-card.png",
-    alt: "FROST42 Fast Buds code card featuring Strawberry Gorilla Auto flower artwork",
-    href: `${FAST_BUDS_BASE}/seeds/strawberry-gorilla-auto?coupon=FROST42&utm_source=lakeeriecannabis&utm_medium=affiliate&utm_campaign=frost_protocol`,
-    note: "The headline Lake Erie Cannabis frost lane: loud strawberry-gas genetics, heavy resin potential, and a code built to be remembered.",
-    highlight: "The original Frost Protocol lane.",
-  },
-  {
-    code: "MALACHI",
-    strain: "Banana Purple Punch Auto",
-    lane: "Partner code",
-    image: "/fast-buds/fast-buds-malachi-banana-purple-punch-card.png",
-    alt: "MALACHI Fast Buds code card featuring Banana Purple Punch Auto flower artwork",
-    href: `${FAST_BUDS_BASE}/seeds/banana-purple-punch-auto?coupon=MALACHI&utm_source=lakeeriecannabis&utm_medium=affiliate&utm_campaign=malachi_code`,
-    note: "A color-and-terp lane for growers chasing purple flower appeal, dessert fruit notes, and fast-cycle autoflower momentum.",
-    highlight: "Purple dessert-auto energy.",
-  },
-  {
-    code: "MATTYJ",
-    strain: "Gorilla Cookies Auto",
-    lane: "Partner code",
-    image: "/fast-buds/fast-buds-mattyj-gorilla-cookies-card.png",
-    alt: "MATTYJ Fast Buds code card featuring Gorilla Cookies Auto flower artwork",
-    href: `${FAST_BUDS_BASE}/seeds/gorilla-cookies-auto?coupon=MATTYJ&utm_source=lakeeriecannabis&utm_medium=affiliate&utm_campaign=mattyj_code`,
-    note: "Resin pressure, Cookies/Gorilla backbone, and a proven Fast Buds auto lane for growers who want weight and frost in one package.",
-    highlight: "Cookies resin + Gorilla weight.",
-  },
-];
 
 export const metadata: Metadata = {
   title: "Fast Buds Codes: DABOMB, LEC42, FROST42, MALACHI, MATTYJ",
@@ -131,7 +62,7 @@ export default function FastBudsCodesPage() {
               opacity: 0.24,
             }}
           />
-          <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pt-36">
+          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pt-36">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-lime">
                 Lake Erie Cannabis x Fast Buds
