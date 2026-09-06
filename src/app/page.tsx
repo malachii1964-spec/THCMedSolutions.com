@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { OsHeader } from "@/components/os-header";
+import { FastBudsSplash } from "@/components/fast-buds-splash";
 import { OsFooter } from "@/components/os-footer";
 import { Reveal } from "@/components/reveal";
 import { GuideCard } from "@/components/guide-card";
@@ -215,6 +216,8 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <OsHeader />
+      {/* Landing page only: waits for age consent, then shows once per drop. */}
+      <FastBudsSplash />
 
       <main>
         {/* ─────────────────────────── HERO ─────────────────────────── */}

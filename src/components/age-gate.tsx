@@ -1,19 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const COOKIE = "thcms_age_ok";
-
-function hasConsent() {
-  return document.cookie.split("; ").some((c) => c === `${COOKIE}=1`);
-}
+import { grantAgeConsent, hasAgeConsent } from "@/lib/age-consent";
 
 export function AgeGate() {
   const [open, setOpen] = useState(false);
   const [refused, setRefused] = useState(false);
 
   useEffect(() => {
-    if (hasConsent()) return;
+    if (hasAgeConsent()) return;
     const id = window.setTimeout(() => setOpen(true), 0);
     return () => window.clearTimeout(id);
   }, []);
@@ -29,7 +24,9 @@ export function AgeGate() {
   if (!open) return null;
 
   function confirm() {
-    document.cookie = `${COOKIE}=1; path=/; max-age=31536000; samesite=lax`;
+    // Announces consent so anything waiting on the gate (the Fast Buds splash)
+    // can appear immediately rather than only on the next page load.
+    grantAgeConsent();
     setOpen(false);
   }
 

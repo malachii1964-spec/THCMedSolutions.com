@@ -554,3 +554,20 @@ body {
   .hero-drift,
   .water-shimmer::before { animation: none; }
 }
+
+/* Fast Buds splash — one orchestrated entrance. Transform + opacity only. */
+@media (prefers-reduced-motion: no-preference) {
+  .fb-splash-in {
+    animation: fb-splash-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes fb-splash-in {
+    from {
+      transform: translate3d(0, 14px, 0) scale(0.985);
+      opacity: 0;
+    }
+    to {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 1;
+    }
+  }
+}
