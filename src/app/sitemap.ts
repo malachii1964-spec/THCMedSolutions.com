@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/faq`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${SITE}/plant-doctor`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE}/medical-card`, changeFrequency: "monthly", priority: 0.4 },
+    { url: `${SITE}/support`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/legal`, changeFrequency: "yearly", priority: 0.2 },
   ];
 

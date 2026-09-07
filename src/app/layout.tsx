@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Albert_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { AgeGate } from "@/components/age-gate";
+import { SupportBanner } from "@/components/support-banner";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -76,6 +77,8 @@ export default function RootLayout({
         <AgeGate />
         <div id="main-content" />
         {children}
+        {/* Site-wide, non-blocking. Renders nothing until a Ko-fi handle is set. */}
+        <SupportBanner />
       </body>
     </html>
   );
