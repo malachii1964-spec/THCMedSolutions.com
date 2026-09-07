@@ -13,7 +13,7 @@
  */
 
 /** Your ko-fi.com handle, e.g. "lakeeriecannabis" — no slashes, no URL. */
-export const KOFI_USERNAME = "";
+export const KOFI_USERNAME = "lakeeriecannabis";
 
 export const KOFI_URL = KOFI_USERNAME
   ? `https://ko-fi.com/${KOFI_USERNAME}`

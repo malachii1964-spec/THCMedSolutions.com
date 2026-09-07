@@ -12,25 +12,22 @@ import {
 } from "@/lib/support";
 
 describe("support configuration", () => {
-  it("stays switched off until a handle is set", () => {
-    // A dead donate button costs more trust than no button, so both the banner
-    // and the page must be inert while the handle is empty.
-    if (KOFI_USERNAME === "") {
-      expect(supportEnabled()).toBe(false);
-      expect(KOFI_URL).toBe("");
-    } else {
-      expect(supportEnabled()).toBe(true);
-    }
+  it("is enabled exactly when a handle is configured", () => {
+    // Widened so TypeScript does not narrow the literal and reject the
+    // comparison; the invariant must hold whether or not a handle is set,
+    // because an empty handle has to leave the banner and page inert.
+    const handle: string = KOFI_USERNAME;
+    expect(supportEnabled()).toBe(handle.length > 0);
+    expect(KOFI_URL === "").toBe(handle.length === 0);
   });
 
   it("builds a ko-fi.com URL from a bare handle, never a pasted URL", () => {
     // Guards the most likely mistake: pasting "https://ko-fi.com/name" into the
     // handle, which would produce a doubled, broken URL.
-    expect(KOFI_USERNAME).not.toContain("/");
-    expect(KOFI_USERNAME).not.toContain("http");
-    if (KOFI_USERNAME) {
-      expect(KOFI_URL).toBe(`https://ko-fi.com/${KOFI_USERNAME}`);
-    }
+    const handle: string = KOFI_USERNAME;
+    expect(handle).not.toContain("/");
+    expect(handle).not.toContain("http");
+    if (handle) expect(KOFI_URL).toBe(`https://ko-fi.com/${handle}`);
   });
 });
 
